@@ -1,0 +1,1 @@
+from comdexpy.queries.cosmos.bank import Query as BankQueries
