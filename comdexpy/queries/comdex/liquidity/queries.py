@@ -1,4 +1,5 @@
 from grpclib.client import Channel
+from typing import List
 from comdexpy.proto.comdex.liquidity.v1beta1 import (
     Params, 
     QueryParamsRequest, 
@@ -13,6 +14,7 @@ from comdexpy.proto.comdex.liquidity.v1beta1 import (
     Pairs,
     QueryPairsRequest,
     DepositRequest,
+    DepositRequests,
     QueryDepositRequestRequest,
     QueryDepositRequestsRequest,
     QueryWithdrawRequestRequest,
@@ -75,7 +77,7 @@ class Query():
 
 
 
-    async def get_pools(self, pair_id: int, disabled: bool, app_id: int) -> pools:
+    async def get_pools(self, pair_id: int, disabled: str, app_id: int) -> Pools:
         """This function retrieves the pools data of the liquidity module for a given pair ID and App ID.
 
         Args:
@@ -85,7 +87,7 @@ class Query():
 
         Returns:
         pools: A collection of pools data from the liquidity module that match the given parameters.
-        """"
+        """
         
         resp = await self.stub_liquidity.pools(QueryPoolsRequest(pair_id=pair_id, disabled=disabled, app_id=app_id))
         return resp.pools
@@ -162,7 +164,7 @@ class Query():
 
 
 
-    async def get_deposit_requests(self, pool_id: int, app_id: int) -> Pair:
+    async def get_deposit_requests(self, pool_id: int, app_id: int) -> DepositRequests:
         """Gets deposit requests details for a specific pool ID and App ID in the liquidity module.
 
         Args:

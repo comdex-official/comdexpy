@@ -18,7 +18,7 @@ async def sample_query(channel):
     params = await liquidity.get_generic_params(1)
     print(params.to_dict())
     
-    pools = await liquidity.get_pools(1,'true',1)
+    pools = await liquidity.get_pools(1,"",1)
     print(pools.to_dict())
     
     pool = await liquidity.get_pool(1,1)
