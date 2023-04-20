@@ -24,10 +24,10 @@ async def sample_query(channel):
     pool = await liquidity.get_pool(1,1)
     print(pool.to_dict())
 
-    pair = await liquidity.get_pool(1,1)
+    pair = await liquidity.get_pair(1,1)
     print(pair.to_dict())
 
-    pairs = await liquidity.get_pools([],1)
+    pairs = await liquidity.get_pairs([],1)
     print(pairs.to_dict())
 
     deposit_request = await liquidity.get_deposit_request(1,1,1)
