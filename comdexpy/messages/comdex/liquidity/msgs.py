@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
 from ...base import BaseMessageWrapper
+
 from ....proto.comdex.liquidity.v1beta1 import MsgCreatePair as MsgCreatePairProto
 from ....proto.comdex.liquidity.v1beta1 import MsgCreatePool as MsgCreatePoolProto
 from ....proto.comdex.liquidity.v1beta1 import MsgCreateRangedPool as MsgCreateRangedPoolProto
@@ -132,17 +133,6 @@ class MsgCancelAllOrders(BaseMessageWrapper, MsgCancelAllOrdersProto):
     @property
     def legacy_url(self):
         return "comdex/liquidity/MsgCancelAllOrders"
-    
-
-
-class MsgCancelMmOrder(BaseMessageWrapper, MsgCancelMmOrderProto):
-    @property
-    def type_url(self):
-        return "comdex.liquidity.v1beta1.MsgCancelMMOrder"
-
-    @property
-    def legacy_url(self):
-        return "comdex/liquidity/MsgCancelMMOrder"
     
 
 
