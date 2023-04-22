@@ -1,1 +1,2 @@
-from comdexpy.queries import *
+from comdexpy import queries
+from comdexpy import messages
