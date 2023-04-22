@@ -2,17 +2,19 @@ from dataclasses import dataclass
 
 from ...base import BaseMessageWrapper
 
-from ....proto.comdex.vault.v1beta1 import MsgCreateRequest as MsgCreateRequestProto
-from ....proto.comdex.vault.v1beta1 import MsgDepositRequest as MsgDepositRequestProto
-from ....proto.comdex.vault.v1beta1 import MsgWithdrawRequest as MsgWithdrawRequestProto
-from ....proto.comdex.vault.v1beta1 import MsgDrawRequest as MsgDrawRequestProto
-from ....proto.comdex.vault.v1beta1 import MsgRepayRequest as MsgRepayRequestProto
-from ....proto.comdex.vault.v1beta1 import MsgCloseRequest as MsgCloseRequestProto
-from ....proto.comdex.vault.v1beta1 import MsgDepositAndDrawRequest as MsgDepositAndDrawRequestProto
-from ....proto.comdex.vault.v1beta1 import MsgCreateStableMintRequest as MsgCreateStableMintRequestProto
-from ....proto.comdex.vault.v1beta1 import MsgDepositStableMintRequest as MsgDepositStableMintRequestProto
-from ....proto.comdex.vault.v1beta1 import MsgWithdrawStableMintRequest as MsgWithdrawStableMintRequestProto
-from ....proto.comdex.vault.v1beta1 import MsgVaultInterestCalcRequest as MsgVaultInterestCalcRequestProto
+from ....proto.comdex.vault.v1beta1 import (
+    MsgCreateRequest as MsgCreateRequestProto,
+    MsgDepositRequest as MsgDepositRequestProto,
+    MsgWithdrawRequest as MsgWithdrawRequestProto,
+    MsgDrawRequest as MsgDrawRequestProto,
+    MsgRepayRequest as MsgRepayRequestProto,
+    MsgCloseRequest as MsgCloseRequestProto,
+    MsgDepositAndDrawRequest as MsgDepositAndDrawRequestProto,
+    MsgCreateStableMintRequest as MsgCreateStableMintRequestProto,
+    MsgDepositStableMintRequest as MsgDepositStableMintRequestProto,
+    MsgWithdrawStableMintRequest as MsgWithdrawStableMintRequestProto,
+    MsgVaultInterestCalcRequest as MsgVaultInterestCalcRequestProto,
+)
 
 
 

@@ -2,19 +2,21 @@ from dataclasses import dataclass
 
 from ...base import BaseMessageWrapper
 
-from ....proto.comdex.liquidity.v1beta1 import MsgCreatePair as MsgCreatePairProto
-from ....proto.comdex.liquidity.v1beta1 import MsgCreatePool as MsgCreatePoolProto
-from ....proto.comdex.liquidity.v1beta1 import MsgCreateRangedPool as MsgCreateRangedPoolProto
-from ....proto.comdex.liquidity.v1beta1 import MsgDeposit as MsgDepositProto
-from ....proto.comdex.liquidity.v1beta1 import MsgWithdraw as MsgWithdrawProto
-from ....proto.comdex.liquidity.v1beta1 import MsgLimitOrder as MsgLimitOrderProto
-from ....proto.comdex.liquidity.v1beta1 import MsgMarketOrder as MsgMarketOrderProto
-from ....proto.comdex.liquidity.v1beta1 import MsgMmOrder as MsgMmOrderProto
-from ....proto.comdex.liquidity.v1beta1 import MsgCancelOrder as MsgCancelOrderProto
-from ....proto.comdex.liquidity.v1beta1 import MsgCancelAllOrders as MsgCancelAllOrdersProto
-from ....proto.comdex.liquidity.v1beta1 import MsgCancelMmOrder as MsgCancelMmOrderProto
-from ....proto.comdex.liquidity.v1beta1 import MsgFarm as MsgFarmProto
-from ....proto.comdex.liquidity.v1beta1 import MsgUnfarm as MsgUnfarmProto
+from ....proto.comdex.liquidity.v1beta1 import (
+    MsgCreatePair as MsgCreatePairProto,
+    MsgCreatePool as MsgCreatePoolProto,
+    MsgCreateRangedPool as MsgCreateRangedPoolProto,
+    MsgDeposit as MsgDepositProto,
+    MsgWithdraw as MsgWithdrawProto,
+    MsgLimitOrder as MsgLimitOrderProto,
+    MsgMarketOrder as MsgMarketOrderProto,
+    MsgMmOrder as MsgMmOrderProto,
+    MsgCancelOrder as MsgCancelOrderProto,
+    MsgCancelAllOrders as MsgCancelAllOrdersProto,
+    MsgCancelMmOrder as MsgCancelMmOrderProto,
+    MsgFarm as MsgFarmProto,
+    MsgUnfarm as MsgUnfarmProto,
+)
 
 
 
