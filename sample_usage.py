@@ -7,6 +7,7 @@ from comdexpy.queries.cosmos.bank import Query as BankQueries
 from comdexpy.messages.cosmos.bank import MsgSend
 from comdexpy.proto.cosmos.base.v1beta1 import Coin
 
+from comdexpy.proto.comdex.liquidity.v1beta1 import MsgDeposit
 from comdexpy.send_tx import SignAndBroadcastMessage
 
 async def get_connection():
@@ -30,20 +31,20 @@ async def sample_query(channel):
     pairs = await liquidity.get_pairs(["ucmdx"], 1)
     print(pairs.to_dict())
 
-    deposit_request = await liquidity.get_deposit_request(1, 1, 1)
-    print(deposit_request.to_dict())
+    #deposit_request = await liquidity.get_deposit_request(1, 1, 1)
+    #print(deposit_request.to_dict())
 
     deposit_requests = await liquidity.get_deposit_requests(1, 1)
     print(deposit_requests.to_dict())
     
-    withdraw_request = await liquidity.get_withdraw_request(1, 1, 1)
-    print(withdraw_request.to_dict())
+    #withdraw_request = await liquidity.get_withdraw_request(1, 1, 1)
+    #print(withdraw_request.to_dict())
 
     withdraw_requests = await liquidity.get_withdraw_requests(1, 1)
     print(withdraw_requests.to_dict())
    
-    order = await liquidity.get_order(1, 1, 1)
-    print(order.to_dict())
+    #order = await liquidity.get_order(1, 1, 1)
+    #print(order.to_dict())
 
     orders = await liquidity.get_orders(1, 1)
     print(orders.to_dict())
@@ -77,20 +78,34 @@ async def sample_query(channel):
 
 async def sample_tx(connection):
     wallet = Wallet.from_mnemonic("home plate head toast deputy silent piece skate truth hold certain own")
-    sender = wallet.get_address().to_acc_bech32()
+    #sender = wallet.get_address().to_acc_bech32()
     msg_send = MsgSend(
-        from_address=sender,
-        to_address="comdex",
+        from_address="comdex1l3u5zxac8tfsr07tmrk53s8c2nxk8wcp9j2k5t",
+        to_address="comdex1l3u5zxac8tfsr07tmrk53s8c2nxk8wcp9j2k5t",
         amount=[Coin(amount="1000000", denom="ucmdx")],
     )
     response = await SignAndBroadcastMessage.send_tx(connection, wallet, msg_send)
     print(response)
 
 
+
+async def sample_tx_deposit(connection):   
+    wallet = Wallet.from_mnemonic("home plate head toast deputy silent piece skate truth hold certain own")
+    sender = wallet.get_address().to_acc_bech32()
+    msg_deposit = MsgDeposit(
+        depositor = sender,
+        pool_id = 2,
+        deposit_coins = [Coin(amount="1000000", denom="ucmdx"),Coin(amount= "51360",denom="ucmst")],
+        app_id = 1
+    )
+    response = await SignAndBroadcastMessage.send_tx(connection, wallet, msg_deposit)
+    print(response)
+
+
 async def main():
     connection = await get_connection()
-    await sample_query(connection.channel())
-    await sample_tx(connection)
+    #await sample_query(connection.channel())
+    await sample_tx_deposit(connection)
     connection.close()
 
 
