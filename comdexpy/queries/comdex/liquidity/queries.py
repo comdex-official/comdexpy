@@ -71,7 +71,7 @@ class Query():
         GenericParams: An object containing the generic parameters of the liquidity module for the specified App ID.
         """
         resp = await self.stub_liquidity.generic_params(QueryGenericParamsRequest(app_id=app_id))
-        return resp.params
+        return resp
 
 
 
@@ -106,7 +106,7 @@ class Query():
         """
         
         resp = await self.stub_liquidity.pool(QueryPoolRequest(pool_id=pool_id, app_id=app_id))
-        return resp.pool
+        return resp
     
 
 
@@ -123,7 +123,7 @@ class Query():
         """
         
         resp = await self.stub_liquidity.pair(QueryPairRequest(pair_id=pair_id,app_id=app_id))
-        return resp.pair
+        return resp
 
 
 
@@ -158,7 +158,7 @@ class Query():
         """
         
         resp = await self.stub_liquidity.deposit_request(QueryDepositRequestRequest(pool_id=pool_id, id=id, app_id=app_id))
-        return resp.deposit_request
+        return resp
 
 
 
@@ -193,7 +193,7 @@ class Query():
         """
         
         resp = await self.stub_liquidity.withdraw_request(QueryWithdrawRequestRequest(pool_id=pool_id, id=id, app_id=app_id))
-        return resp.withdraw_request
+        return resp
 
 
 
@@ -228,7 +228,7 @@ class Query():
         """
         
         resp = await self.stub_liquidity.order(QueryOrderRequest(pair_id=pair_id, id=id, app_id=app_id))
-        return resp.order
+        return resp
     
 
 
@@ -317,7 +317,7 @@ class Query():
         """
         
         resp = await self.stub_liquidity.pool_incentives(QueryPoolsIncentivesRequest(app_id=app_id))
-        return resp.pool_incentives
+        return resp
     
 
 
@@ -350,7 +350,7 @@ class Query():
         TotalActiveAndQueuedPoolCoins: An object containing the total active and queued pool coins related to the given app ID.
         """
         resp = await self.stub_liquidity.total_active_and_queued_pool_coin(QueryAllFarmedPoolCoinsRequest(app_id=app_id))
-        return resp.app_id
+        return resp
     
 
 
@@ -369,7 +369,7 @@ class Query():
         OrdersByOrderer: An object containing the order details for the given inputs.
         """
      #   resp = await self.stub_liquidity.orders_by_orderer(QueryOrdersByOrdererRequest(orderer=orderer, pair_id=pair_id, app_id=app_id))
-      #  return resp.orders   
+      #  return resp 
     
 
 

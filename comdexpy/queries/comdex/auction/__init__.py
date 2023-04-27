@@ -1,1 +1,1 @@
-from comdexpy.queries.comdex.vault.queries import *
+from comdexpy.queries.comdex.auction.queries import *
