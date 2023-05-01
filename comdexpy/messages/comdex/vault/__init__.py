@@ -9,5 +9,5 @@ from .msgs import (
     MsgCreateStableMintRequest,
     MsgDepositStableMintRequest,
     MsgWithdrawStableMintRequest,
-    MsgVaultInterestCalcRequest,
+    MsgVaultInterestCalcRequest
 )

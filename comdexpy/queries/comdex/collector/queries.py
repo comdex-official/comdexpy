@@ -32,7 +32,7 @@ class Query():
         Returns: 
              Params: The parameters associated with the given ID.
         """
-        resp = await self.stub_collector.params(QueryParamsRequest(id=id))
+        resp = await self.stub_collector.params(QueryParamsRequest())
         return resp
 
 

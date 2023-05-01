@@ -2,10 +2,12 @@ from dataclasses import dataclass
 
 from ...base import BaseMessageWrapper
 
-from ....proto.comdex.auction.v1beta1 import MsgPlaceSurplusBidRequest as MsgPlaceSurplusBidRequestProto
-from ....proto.comdex.auction.v1beta1 import MsgPlaceDebtBidRequest as MsgPlaceDebtBidRequestProto
-from ....proto.comdex.auction.v1beta1 import MsgPlaceDutchBidRequest as MsgPlaceDutchBidRequestProto
-from ....proto.comdex.auction.v1beta1 import MsgPlaceDutchLendBidRequest as MsgPlaceDutchLendBidRequestProto
+from ....proto.comdex.auction.v1beta1 import (
+                    MsgPlaceSurplusBidRequest as MsgPlaceSurplusBidRequestProto,
+                    MsgPlaceDebtBidRequest as MsgPlaceDebtBidRequestProto,
+                    MsgPlaceDutchBidRequest as MsgPlaceDutchBidRequestProto,
+                    MsgPlaceDutchLendBidRequest as MsgPlaceDutchLendBidRequestProto
+)
 
 
 

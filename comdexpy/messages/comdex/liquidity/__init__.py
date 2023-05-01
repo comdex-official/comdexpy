@@ -11,5 +11,5 @@ from .msgs import (
     MsgCancelAllOrders,
     MsgCancelMmOrder,
     MsgFarm,
-    MsgUnfarm,
+    MsgUnfarm
 )

@@ -13,7 +13,7 @@ from ....proto.comdex.vault.v1beta1 import (
     MsgCreateStableMintRequest as MsgCreateStableMintRequestProto,
     MsgDepositStableMintRequest as MsgDepositStableMintRequestProto,
     MsgWithdrawStableMintRequest as MsgWithdrawStableMintRequestProto,
-    MsgVaultInterestCalcRequest as MsgVaultInterestCalcRequestProto,
+    MsgVaultInterestCalcRequest as MsgVaultInterestCalcRequestProto
 )
 
 

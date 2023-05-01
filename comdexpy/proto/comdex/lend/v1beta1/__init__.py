@@ -1394,6 +1394,7 @@ class QueryStub(betterproto.ServiceStub):
 
     async def query_pool_asset_lb_mapping(
         self,
+        query_pool_asset_lb_mapping_request:"QueryPoolAssetLbMappingRequest",
         *,
         timeout: Optional[float] = None,
         deadline: Optional["Deadline"] = None,
