@@ -2,6 +2,7 @@ from grpclib.client import Channel
 from typing import List
 
 from comdexpy.proto.cosmos.base.query.v1beta1 import PageRequest
+
 from comdexpy.proto.comdex.auction.v1beta1 import (
     QuerySurplusAuctionRequest,
     SurplusAuction,
@@ -32,9 +33,9 @@ from comdexpy.proto.comdex.auction.v1beta1 import (
     QueryDutchLendBiddingsRequest,
     QueryDutchLendBiddingsResponse,
     QueryFilterDutchAuctionsRequest,
-    QueryFilterDutchAuctionsResponse
-
-
+    QueryFilterDutchAuctionsResponse,
+    QueryBiddingsForSurplusAuctionRequest,
+    QueryBiddingsForSurplusAuctionResponse
 
 )
 from comdexpy.proto.comdex.auction.v1beta1 import QueryStub as AuctionQueryStub
@@ -45,7 +46,8 @@ class Query():
         self.stub_auction = AuctionQueryStub(channel)
 
 
-    async def get_surplus_auction(self,app_id: int, auction_mapping_id: int, auction_id: int, history:bool) -> SurplusAuction:
+    async def get_surplus_auction(self, app_id: int, auction_mapping_id: int, auction_id: int, history:bool) -> SurplusAuction:
+
         """Retrieves a specific surplus auction based on the given parameters
 
         Args: 
@@ -63,6 +65,7 @@ class Query():
 
 
     async def get_surplus_auctions(self, app_id: int, history: bool, pagination: PageRequest = None) -> QuerySurplusAuctionsResponse:
+
         """Retrieves surplus auctions data based on the given parameters.
 
         Args:
@@ -80,6 +83,7 @@ class Query():
 
 
     async def get_surplus_biddings(self, bidder: str, app_id: int, history: bool, pagination: PageRequest = None) -> SurplusBiddings:
+
         """Retrieves surplus biddings for a specific bidder and application ID.
 
         Args:
@@ -101,6 +105,7 @@ class Query():
 
 
     async def get_debt_auction(self, app_id: int, auction_mapping_id: int, auction_id: int, history:bool) -> DebtAuction:
+
         """Retrieves the details of a specific debt auction using its associated identifiers.
 
         Args:
@@ -121,6 +126,7 @@ class Query():
 
 
     async def get_debt_auctions(self, app_id: int, history: bool, pagination: PageRequest = None) -> QueryDebtAuctionsResponse:
+
         """Retrieves debt auction information based on the given parameters
 
         Args:
@@ -139,6 +145,7 @@ class Query():
 
 
     async def get_debt_biddings(self, bidder: str, app_id: int, history: bool, pagination: PageRequest = None) -> DebtBiddings:
+
         """Retrieves the debt biddings associated with a specific bidder and application ID
 
         Args:
@@ -160,6 +167,7 @@ class Query():
 
 
     async def get_dutch_auction(self, app_id: int, auction_mapping_id: int, auction_id: int, history:bool) -> DutchAuction:
+
         """Retrieves the information of a Dutch auction based on the provided parameters.
 
         Args:    
@@ -179,6 +187,7 @@ class Query():
 
 
     async def get_dutch_auctions(self, app_id: int, history: bool, pagination: PageRequest = None) -> QueryDutchAuctionsResponse:
+
         """Retrieves Dutch auction information from the server using the provided app_id, history flag, and optional pagination.
 
         Args:
@@ -196,6 +205,7 @@ class Query():
 
 
     async def get_dutch_biddings(self, bidder: str, app_id: int, history: bool, pagination: PageRequest = None) -> DutchBiddings:
+
         """Retrieves Dutch auction biddings based on the given parameters.
 
         Args:
@@ -215,6 +225,7 @@ class Query():
 
 
     async def get_protocol_statistics(self, app_id: int, pagination: PageRequest = None) -> ProtocolStatistics:
+
         """Retrieves the protocol statistics for a given application ID, with optional pagination support.
 
         Args:
@@ -231,7 +242,8 @@ class Query():
 
 
 
-    #async def get_biddings_for_surplus_auction(self, app_id: int, auction_mapping_id: int, auction_id: int, history:bool, pagination: PageRequest = None) -> QueryBiddingsForSurplusAuctionResponse:
+    async def get_biddings_for_surplus_auction(self, app_id: int, auction_mapping_id: int, auction_id: int, history:bool, pagination: PageRequest = None) -> QueryBiddingsForSurplusAuctionResponse:
+
         """Retrieves the biddings for a surplus auction based on the provided parameter.
 
         Args:
@@ -245,13 +257,14 @@ class Query():
                 A response object containing the queried biddings for the surplus auction, along with any additional metadata as per the request parameters.
         """
         
-       # resp = await self.stub_auction.query_(QueryBiddingsForSurplusAuctionRequest(app_id=app_id, auction_mapping_id=auction_mapping_id, auction_id=auction_id, history=history, pagination=pagination))
-       # return resp
+        resp = await self.stub_auction.query_biddings_for_surplus_auction(QueryBiddingsForSurplusAuctionRequest(app_id=app_id, auction_mapping_id=auction_mapping_id, auction_id=auction_id, history=history, pagination=pagination))
+        return resp
     
 
 
    
     async def get_generic_auction_param(self, app_id: int) -> AuctionParams:
+
         """Retrieve the generic auction parameters for a specific app.
 
         Args:
@@ -268,6 +281,7 @@ class Query():
 
    
     async def get_dutch_lend_auction(self, app_id: int, auction_mapping_id: int, auction_id: int, history:bool) -> QueryDutchLendAuctionResponse:
+
         """Retrieves information about a Dutch lend auction based on the provided parameters.
 
 
@@ -288,6 +302,7 @@ class Query():
 
     
     async def get_dutch_lend_auctions(self, app_id: int, history: bool, pagination: PageRequest = None) -> QueryDutchLendAuctionsResponse:
+
         """Retrieves a list of Dutch lend auctions based on the given app_id, history flag, and optional pagination parameters.
 
         Args:
@@ -307,6 +322,7 @@ class Query():
 
     
     async def get_dutch_lend_biddings(self, bidder: str, app_id: int, history: bool, pagination: PageRequest = None) -> QueryDutchLendBiddingsResponse:
+
         """Fetches Dutch lend biddings for a specific bidder and app.
 
         Args:
@@ -327,6 +343,7 @@ class Query():
 
 
     async def get_filter_dutch_auctions(self, app_id: int, denom: List[str], history: bool, pagination: PageRequest = None) -> QueryFilterDutchAuctionsResponse:
+        
         """Retrieve Dutch auction details based on given filters.
 
 

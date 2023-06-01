@@ -29,6 +29,7 @@ class Query():
         self.stub_liquidation = LiquidationQueryStub(channel)
 
     async def get_locked_vault(self, app_id: int, id: int) -> LockedVault:
+
         """Retrieves the locked vault information for a given app ID and vault ID.
 
         Args: 
@@ -45,6 +46,7 @@ class Query():
 
 
     async def get_locked_vaults(self, pagination: PageRequest = None) -> QueryLockedVaultsResponse:
+
         """Retrieves locked vaults information with optional pagination support.
 
         Args:
@@ -60,6 +62,7 @@ class Query():
 
 
     async def get_liquidation_params(self) -> Params:
+
         """This asynchronous function retrieves the liquidation parameters.
 
         Args:
@@ -77,6 +80,7 @@ class Query():
 
 
     async def get_locked_vaults_history(self, pagination: PageRequest = None) -> QueryLockedVaultsHistoryResponse:
+
         """Retrieves the history of locked vaults with support for pagination.
 
         Args:
@@ -93,6 +97,7 @@ class Query():
 
 
     async def get_user_locked_vaults(self, user_address: str, pagination: PageRequest = None) -> QueryUserLockedVaultsResponse:
+
         """Retrieves the locked vaults associated with a given user address, and supports pagination to limit the number of results returned.
 
         Args:
@@ -110,6 +115,7 @@ class Query():
 
 
     async def get_user_locked_vaults_history(self, user_address: str, pagination: PageRequest = None) -> QueryUserLockedVaultsHistoryResponse:
+
         """Retrieves the history of locked vaults for a specific user address, with optional pagination support.
 
         Args:
@@ -130,6 +136,7 @@ class Query():
 
 
     async def get_locked_vaults_pair(self, pair_id: int, pagination: PageRequest = None) -> QueryLockedVaultsPairResponse:
+
         """Retrieves the locked vaults information for a given pair ID and returns the result as a QueryLockedVaultsPairResponse object.
 
         Args:
@@ -149,6 +156,7 @@ class Query():
 
 
     async def get_app_ids(self) -> QueryAppIdsResponse:
+        
         """Queries the application IDs from the liquidation system and returns a QueryAppIdsResponse containing the list of IDs.
 
         Args:

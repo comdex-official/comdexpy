@@ -29,7 +29,7 @@ assert __base_query_v1_beta1__
 class MsgCreateRequest(BaseMessageWrapper, MsgCreateRequestProto):
     @property
     def type_url(self):
-        return "comdex.vault.v1beta1.MsgCreateRequest"
+        return "/comdex.vault.v1beta1.MsgCreateRequest"
 
     @property
     def legacy_url(self):
@@ -40,7 +40,7 @@ class MsgCreateRequest(BaseMessageWrapper, MsgCreateRequestProto):
 class MsgDepositRequest(BaseMessageWrapper, MsgDepositRequestProto):
     @property
     def type_url(self):
-        return "comdex.vault.v1beta1.MsgDepositRequest"
+        return "/comdex.vault.v1beta1.MsgDepositRequest"
 
     @property
     def legacy_url(self):
@@ -51,7 +51,7 @@ class MsgDepositRequest(BaseMessageWrapper, MsgDepositRequestProto):
 class MsgWithdrawRequest(BaseMessageWrapper, MsgWithdrawRequestProto):
     @property
     def type_url(self):
-        return "comdex.vault.v1beta1.MsgWithdrawRequest"
+        return "/comdex.vault.v1beta1.MsgWithdrawRequest"
 
     @property
     def legacy_url(self):
@@ -62,7 +62,7 @@ class MsgWithdrawRequest(BaseMessageWrapper, MsgWithdrawRequestProto):
 class MsgDrawRequest(BaseMessageWrapper, MsgDrawRequestProto):
     @property
     def type_url(self):
-        return "comdex.vault.v1beta1.MsgDrawRequest"
+        return "/comdex.vault.v1beta1.MsgDrawRequest"
 
     @property
     def legacy_url(self):
@@ -73,7 +73,7 @@ class MsgDrawRequest(BaseMessageWrapper, MsgDrawRequestProto):
 class MsgRepayRequest(BaseMessageWrapper, MsgRepayRequestProto):
     @property
     def type_url(self):
-        return "comdex.vault.v1beta1.MsgRepayRequest"
+        return "/comdex.vault.v1beta1.MsgRepayRequest"
 
     @property
     def legacy_url(self):
@@ -84,7 +84,7 @@ class MsgRepayRequest(BaseMessageWrapper, MsgRepayRequestProto):
 class MsgCloseRequest(BaseMessageWrapper, MsgCloseRequestProto):
     @property
     def type_url(self):
-        return "comdex.vault.v1beta1.MsgCloseRequest"
+        return "/comdex.vault.v1beta1.MsgCloseRequest"
 
     @property
     def legacy_url(self):
@@ -95,7 +95,7 @@ class MsgCloseRequest(BaseMessageWrapper, MsgCloseRequestProto):
 class MsgDepositAndDrawRequest(BaseMessageWrapper, MsgDepositAndDrawRequestProto):
     @property
     def type_url(self):
-        return "comdex.vault.v1beta1.MsgDepositAndDrawRequest"
+        return "/comdex.vault.v1beta1.MsgDepositAndDrawRequest"
 
     @property
     def legacy_url(self):
@@ -106,7 +106,7 @@ class MsgDepositAndDrawRequest(BaseMessageWrapper, MsgDepositAndDrawRequestProto
 class MsgCreateStableMintRequest(BaseMessageWrapper, MsgCreateStableMintRequestProto):
     @property
     def type_url(self):
-        return "comdex.vault.v1beta1.MsgCreateStableMintRequest"
+        return "/comdex.vault.v1beta1.MsgCreateStableMintRequest"
 
     @property
     def legacy_url(self):
@@ -117,7 +117,7 @@ class MsgCreateStableMintRequest(BaseMessageWrapper, MsgCreateStableMintRequestP
 class MsgDepositStableMintRequest(BaseMessageWrapper, MsgDepositStableMintRequestProto):
     @property
     def type_url(self):
-        return "comdex.vault.v1beta1.MsgDepositStableMintRequest"
+        return "/comdex.vault.v1beta1.MsgDepositStableMintRequest"
 
     @property
     def legacy_url(self):
@@ -128,7 +128,7 @@ class MsgDepositStableMintRequest(BaseMessageWrapper, MsgDepositStableMintReques
 class MsgWithdrawStableMintRequest(BaseMessageWrapper, MsgWithdrawStableMintRequestProto):
     @property
     def type_url(self):
-        return "comdex.vault.v1beta1.MsgWithdrawStableMintRequest"
+        return "/comdex.vault.v1beta1.MsgWithdrawStableMintRequest"
 
     @property
     def legacy_url(self):
@@ -139,7 +139,7 @@ class MsgWithdrawStableMintRequest(BaseMessageWrapper, MsgWithdrawStableMintRequ
 class MsgVaultInterestCalcRequest(BaseMessageWrapper, MsgVaultInterestCalcRequestProto):
     @property
     def type_url(self):
-        return "comdex.vault.v1beta1.MsgVaultInterestCalcRequest"
+        return "/comdex.vault.v1beta1.MsgVaultInterestCalcRequest"
 
     @property
     def legacy_url(self):

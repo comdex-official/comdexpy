@@ -15,11 +15,11 @@ from ....proto.comdex.liquidity.v1beta1 import (
     MsgCancelAllOrders as MsgCancelAllOrdersProto,
     MsgCancelMmOrder as MsgCancelMmOrderProto,
     MsgFarm as MsgFarmProto,
-    MsgUnfarm as MsgUnfarmProto,
+    MsgUnfarm as MsgUnfarmProto
 )
 
-
-
+from comdexpy.proto.cosmos.base import v1beta1 as ___cosmos_base_v1_beta1__
+from comdexpy.proto.cosmos.base.query import v1beta1 as ___cosmos_base_query_v1_beta1__
 
 from ....proto.cosmos.base import v1beta1 as __base_v1_beta1__
 from ....proto.cosmos.base.query import v1beta1 as __base_query_v1_beta1__
@@ -31,7 +31,7 @@ assert __base_query_v1_beta1__
 class MsgCreatePair(BaseMessageWrapper, MsgCreatePairProto):
     @property
     def type_url(self):
-        return "comdex.liquidity.v1beta1.MsgCreatePair"
+        return "/comdex.liquidity.v1beta1.MsgCreatePair"
 
     @property
     def legacy_url(self):
@@ -42,7 +42,7 @@ class MsgCreatePair(BaseMessageWrapper, MsgCreatePairProto):
 class MsgCreatePool(BaseMessageWrapper, MsgCreatePoolProto):
     @property
     def type_url(self):
-        return "comdex.liquidity.v1beta1.MsgCreatePool"
+        return "/comdex.liquidity.v1beta1.MsgCreatePool"
 
     @property
     def legacy_url(self):
@@ -53,7 +53,7 @@ class MsgCreatePool(BaseMessageWrapper, MsgCreatePoolProto):
 class MsgCreateRangedPool(BaseMessageWrapper, MsgCreateRangedPoolProto):
     @property
     def type_url(self):
-        return "comdex.liquidity.v1beta1.MsgCreateRangedPool"
+        return "/comdex.liquidity.v1beta1.MsgCreateRangedPool"
 
     @property
     def legacy_url(self):
@@ -64,7 +64,7 @@ class MsgCreateRangedPool(BaseMessageWrapper, MsgCreateRangedPoolProto):
 class MsgDeposit(BaseMessageWrapper, MsgDepositProto):
     @property
     def type_url(self):
-        return "comdex.liquidity.v1beta1.MsgDeposit"
+        return "/comdex.liquidity.v1beta1.MsgDeposit"
 
     @property
     def legacy_url(self):
@@ -75,7 +75,7 @@ class MsgDeposit(BaseMessageWrapper, MsgDepositProto):
 class MsgWithdraw(BaseMessageWrapper, MsgWithdrawProto):
     @property
     def type_url(self):
-        return "comdex.liquidity.v1beta1.MsgWithdraw"
+        return "/comdex.liquidity.v1beta1.MsgWithdraw"
 
     @property
     def legacy_url(self):
@@ -86,7 +86,7 @@ class MsgWithdraw(BaseMessageWrapper, MsgWithdrawProto):
 class MsgLimitOrder(BaseMessageWrapper, MsgLimitOrderProto):
     @property
     def type_url(self):
-        return "comdex.liquidity.v1beta1.MsgLimitOrder"
+        return "/comdex.liquidity.v1beta1.MsgLimitOrder"
 
     @property
     def legacy_url(self):
@@ -97,7 +97,7 @@ class MsgLimitOrder(BaseMessageWrapper, MsgLimitOrderProto):
 class MsgMarketOrder(BaseMessageWrapper, MsgMarketOrderProto):
     @property
     def type_url(self):
-        return "comdex.liquidity.v1beta1.MsgMarketOrder"
+        return "/comdex.liquidity.v1beta1.MsgMarketOrder"
 
     @property
     def legacy_url(self):
@@ -108,7 +108,7 @@ class MsgMarketOrder(BaseMessageWrapper, MsgMarketOrderProto):
 class MsgMmOrder(BaseMessageWrapper, MsgMmOrderProto):
     @property
     def type_url(self):
-        return "comdex.liquidity.v1beta1.MsgMMOrder"
+        return "/comdex.liquidity.v1beta1.MsgMMOrder"
 
     @property
     def legacy_url(self):
@@ -119,7 +119,7 @@ class MsgMmOrder(BaseMessageWrapper, MsgMmOrderProto):
 class MsgCancelOrder(BaseMessageWrapper, MsgCancelOrderProto):
     @property
     def type_url(self):
-        return "comdex.liquidity.v1beta1.MsgCancelOrder"
+        return "/comdex.liquidity.v1beta1.MsgCancelOrder"
 
     @property
     def legacy_url(self):
@@ -130,7 +130,7 @@ class MsgCancelOrder(BaseMessageWrapper, MsgCancelOrderProto):
 class MsgCancelAllOrders(BaseMessageWrapper, MsgCancelAllOrdersProto):
     @property
     def type_url(self):
-        return "comdex.liquidity.v1beta1.MsgCancelAllOrders"
+        return "/comdex.liquidity.v1beta1.MsgCancelAllOrders"
 
     @property
     def legacy_url(self):
@@ -141,7 +141,7 @@ class MsgCancelAllOrders(BaseMessageWrapper, MsgCancelAllOrdersProto):
 class MsgCancelMmOrder(BaseMessageWrapper, MsgCancelMmOrderProto):
     @property
     def type_url(self):
-        return "comdex.liquidity.v1beta1.MsgCancelMMOrder"
+        return "/comdex.liquidity.v1beta1.MsgCancelMMOrder"
 
     @property
     def legacy_url(self):
@@ -152,7 +152,7 @@ class MsgCancelMmOrder(BaseMessageWrapper, MsgCancelMmOrderProto):
 class MsgFarm(BaseMessageWrapper, MsgFarmProto):
     @property
     def type_url(self):
-        return "comdex.liquidity.v1beta1.MsgFarm"
+        return "/comdex.liquidity.v1beta1.MsgFarm"
 
     @property
     def legacy_url(self):
@@ -163,7 +163,7 @@ class MsgFarm(BaseMessageWrapper, MsgFarmProto):
 class MsgUnfarm(BaseMessageWrapper, MsgUnfarmProto):
     @property
     def type_url(self):
-        return "comdex.liquidity.v1beta1.MsgUnfarm"
+        return "/comdex.liquidity.v1beta1.MsgUnfarm"
 
     @property
     def legacy_url(self):

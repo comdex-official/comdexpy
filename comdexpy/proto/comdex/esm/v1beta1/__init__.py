@@ -319,6 +319,7 @@ class QueryStub(betterproto.ServiceStub):
 
     async def query_esm_trigger_params(
         self,
+        query_esm_trigger_params_request:"QueryEsmTriggerParamsRequest",
         *,
         timeout: Optional[float] = None,
         deadline: Optional["Deadline"] = None,
@@ -335,6 +336,7 @@ class QueryStub(betterproto.ServiceStub):
 
     async def query_esm_status(
         self,
+        query_esm_status_request:"QueryEsmStatusRequest",
         *,
         timeout: Optional[float] = None,
         deadline: Optional["Deadline"] = None,

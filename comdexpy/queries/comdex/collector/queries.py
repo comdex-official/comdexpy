@@ -24,6 +24,7 @@ class Query():
         self.stub_collector = CollectorQueryStub(channel)
 
     async def get_params(self) -> Params:
+        
         """Retrieve the parameters associated with the given ID.
 
         Args: 
@@ -38,6 +39,7 @@ class Query():
 
 
     async def get_collector_lookup_by_app(self, app_id: int, pagination: PageRequest = None) -> CollectorLookupTableData:
+        
         """Retrieves collector lookup data based on the given app ID and pagination parameters.
 
         Args:
@@ -54,6 +56,7 @@ class Query():
 
 
     async def get_collector_lookup_by_app_and_asset(self, app_id: int, asset_id: int) -> CollectorLookupTableData:
+        
         """Retrieves a CollectorLookupTableData object based on the provided app_id and asset_id.
 
         Args:
@@ -71,6 +74,7 @@ class Query():
 
 
     async def get_collector_data_by_app_and_asset(self, app_id: int, asset_id: int) -> CollectorData:
+        
         """Queries collector data by app ID and asset ID using gRPC stub and returns the response.
 
         Args:
@@ -88,6 +92,7 @@ class Query():
 
 
     async def get_auction_mapping_for_app_and_asset(self, app_id: int, asset_id: int) -> AppAssetIdToAuctionLookupTable:
+        
         """Retrieves an auction mapping lookup table for a given app and asset.
 
         Args:
@@ -105,6 +110,7 @@ class Query():
 
 
     async def get_net_fee_collected_for_app_and_asset(self, app_id: int, asset_id: int) -> AppAssetIdToFeeCollectedData:
+        
         """Queries the net fee collected for a given app and asset from the gRPC server using the collector stub.
 
         Args:

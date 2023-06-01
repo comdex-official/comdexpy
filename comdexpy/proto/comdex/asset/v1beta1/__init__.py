@@ -2,8 +2,26 @@
 # sources: comdex/asset/v1beta1/asset.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
+from datetime import (
+    datetime)
+
+from typing import (
+    TYPE_CHECKING,
+    Dict,
+    List,
+    Optional)
 
 import betterproto
+import grpclib
+from betterproto.grpc.grpclib_server import ServiceBase
+
+from ....cosmos.base import v1beta1 as ___cosmos_base_v1_beta1__
+from ....cosmos.base.query import v1beta1 as ___cosmos_base_query_v1_beta1__
+
+if TYPE_CHECKING:
+    import grpclib.server
+    from betterproto.grpc.grpclib_client import MetadataLike
+    from grpclib.metadata import Deadline
 
 
 @dataclass(eq=False, repr=False)
@@ -15,3 +33,810 @@ class Asset(betterproto.Message):
     is_on_chain: bool = betterproto.bool_field(5)
     is_oracle_price_required: bool = betterproto.bool_field(6)
     is_cdp_mintable: bool = betterproto.bool_field(7)
+
+
+@dataclass(eq=False, repr=False)
+class Pair(betterproto.Message):
+    id: int = betterproto.uint64_field(1)
+    asset_in: int = betterproto.uint64_field(2)
+    asset_out: int = betterproto.uint64_field(3)
+
+
+@dataclass(eq=False, repr=False)
+class PairInfo(betterproto.Message):
+    id: int = betterproto.uint64_field(1)
+    asset_in: int = betterproto.uint64_field(2)
+    denom_in: str = betterproto.string_field(3)
+    asset_out: int = betterproto.uint64_field(4)
+    denom_out: str = betterproto.string_field(5)
+
+
+@dataclass(eq=False, repr=False)
+class AssetPair(betterproto.Message):
+    id: int = betterproto.uint64_field(1)
+    name: str = betterproto.string_field(2)
+    denom: str = betterproto.string_field(3)
+    decimals: str = betterproto.string_field(4)
+    is_on_chain: bool = betterproto.bool_field(5)
+    is_oracle_price_required: bool = betterproto.bool_field(6)
+    is_cdp_mintable: bool = betterproto.bool_field(7)
+    asset_out: int = betterproto.uint64_field(8)
+
+
+@dataclass(eq=False, repr=False)
+class ExtendedPairVault(betterproto.Message):
+    id: int = betterproto.uint64_field(1)
+    app_id: int = betterproto.uint64_field(2)
+    pairid: int = betterproto.uint64_field(3)
+    stability_fee: str = betterproto.string_field(4)
+    closing_fee: str = betterproto.string_field(5)
+    liquidation_penalty: str = betterproto.string_field(6)
+    draw_down_fee: str = betterproto.string_field(7)
+    is_vault_active: bool = betterproto.bool_field(8)
+    debt_ceiling: str = betterproto.string_field(9)
+    debt_floor: str = betterproto.string_field(10)
+    is_stable_mint_vault: bool = betterproto.bool_field(11)
+    min_cr: str = betterproto.string_field(12)
+    pair_name: str = betterproto.string_field(13)
+    asset_out_oracle_price: bool = betterproto.bool_field(14)
+    asset_out_price: int = betterproto.uint64_field(15)
+    min_usd_value_left: int = betterproto.uint64_field(16)
+    block_height: int = betterproto.uint64_field(17)
+    block_time: datetime = betterproto.message_field(13)
+
+
+@dataclass(eq=False, repr=False)
+class Params(betterproto.Message):
+    pass
+
+
+@dataclass(eq=False, repr=False)
+class GenesisState(betterproto.Message):
+    assets: List["Asset"] = betterproto.message_field(1)
+    pairs: List["Pair"] = betterproto.message_field(2)
+    app_data: List["AppData"] = betterproto.message_field(3)
+    extended_pair_vault: List["ExtendedPairVault"] = betterproto.message_field(4)
+    params: "Params" = betterproto.message_field(5)
+
+
+@dataclass(eq=False, repr=False)
+class AppData(betterproto.Message):
+    id: int = betterproto.uint64_field(1)
+    name: str = betterproto.string_field(2)
+    short_name: str = betterproto.string_field(3)
+    min_gov_deposit: str = betterproto.string_field(4)
+    gov_time_in_seconds: int = betterproto.uint64_field(5)
+    genesis_token: List["MintGenesisToken"] = betterproto.message_field(6)
+
+
+@dataclass(eq=False, repr=False)
+class MintGenesisToken(betterproto.Message):
+    asset_id: int = betterproto.uint64_field(1)
+    genesis_supply: str = betterproto.string_field(2)
+    is_gov_token: bool = betterproto.bool_field(3)
+    recipient: str = betterproto.string_field(4)
+
+
+@dataclass(eq=False, repr=False)
+class AppAndGovTime(betterproto.Message):
+    app_id: int = betterproto.uint64_field(1)
+    gov_time_in_seconds: int = betterproto.uint64_field(2)
+    min_gov_deposit: str = betterproto.string_field(3)
+
+
+@dataclass(eq=False, repr=False)
+class QueryAssetsRequest(betterproto.Message):
+    pagination: "___cosmos_base_query_v1_beta1__.PageRequest" = (
+        betterproto.message_field(1)
+    )
+
+
+@dataclass(eq=False, repr=False)
+class QueryAssetsResponse(betterproto.Message):
+    assets: List["Asset"] = betterproto.message_field(1)
+    pagination: "___cosmos_base_query_v1_beta1__.PageRequest" = (
+        betterproto.message_field(2)
+    )
+
+
+@dataclass(eq=False, repr=False)
+class QueryAssetRequest(betterproto.Message):
+    id: int = betterproto.uint64_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class QueryAssetResponse(betterproto.Message):
+    asset: "Asset" = betterproto.message_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class QueryAssetPairsRequest(betterproto.Message):
+    pagination: "___cosmos_base_query_v1_beta1__.PageRequest" = (
+        betterproto.message_field(1)
+    )
+
+
+@dataclass(eq=False, repr=False)
+class QueryAssetPairsResponse(betterproto.Message):
+    pairs_info: List["PairInfo"] = betterproto.message_field(1)
+    pagination: "___cosmos_base_query_v1_beta1__.PageRequest" = (
+        betterproto.message_field(2)
+    )
+
+
+@dataclass(eq=False, repr=False)
+class QueryAssetPairRequest(betterproto.Message):
+    id: int = betterproto.uint64_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class QueryAssetPairResponse(betterproto.Message):
+    pair_info: "PairInfo" = betterproto.message_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class QueryAppRequest(betterproto.Message):
+    id: int = betterproto.uint64_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class QueryAppResponse(betterproto.Message):
+    app: "AppData" = betterproto.message_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class QueryGovTokenByAppRequest(betterproto.Message):
+    app_id: int = betterproto.uint64_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class QueryGovTokenByAppResponse(betterproto.Message):
+    gov_asset_id: int = betterproto.uint64_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class QueryAppsRequest(betterproto.Message):
+    pagination: "___cosmos_base_query_v1_beta1__.PageRequest" = (
+        betterproto.message_field(1)
+    )
+
+
+@dataclass(eq=False, repr=False)
+class QueryAppsResponse(betterproto.Message):
+    apps: List["AppData"] = betterproto.message_field(1)
+    pagination: "___cosmos_base_query_v1_beta1__.PageRequest" = (
+        betterproto.message_field(2)
+    )
+
+
+@dataclass(eq=False, repr=False)
+class QueryExtendedPairVaultRequest(betterproto.Message):
+    id: int = betterproto.uint64_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class QueryExtendedPairVaultResponse(betterproto.Message):
+    pair_vault: "ExtendedPairVault" = betterproto.message_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class QueryAllExtendedPairVaultsRequest(betterproto.Message):
+    pagination: "___cosmos_base_query_v1_beta1__.PageRequest" = (
+        betterproto.message_field(1)
+    )
+
+
+@dataclass(eq=False, repr=False)
+class QueryAllExtendedPairVaultsResponse(betterproto.Message):
+    pair_vault: List["ExtendedPairVault"] = betterproto.message_field(1)
+    pagination: "___cosmos_base_query_v1_beta1__.PageRequest" = (
+        betterproto.message_field(2)
+    )
+
+
+@dataclass(eq=False, repr=False)
+class QueryAllExtendedPairVaultsByAppRequest(betterproto.Message):
+    app_id: int = betterproto.uint64_field(1)
+    pagination: "___cosmos_base_query_v1_beta1__.PageRequest" = (
+        betterproto.message_field(2)
+    )
+
+
+@dataclass(eq=False, repr=False)
+class QueryAllExtendedPairVaultsByAppResponse(betterproto.Message):
+    extended_pair: List["ExtendedPairVault"] = betterproto.message_field(1)
+    pagination: "___cosmos_base_query_v1_beta1__.PageRequest" = (
+        betterproto.message_field(2)
+    )
+
+
+@dataclass(eq=False, repr=False)
+class QueryAllExtendedPairStableVaultsIDByAppRequest(betterproto.Message):
+    app_id: int = betterproto.uint64_field(1)
+    pagination: "___cosmos_base_query_v1_beta1__.PageRequest" = (
+        betterproto.message_field(2)
+    )
+
+
+@dataclass(eq=False, repr=False)
+class QueryAllExtendedPairStableVaultsIDByAppResponse(betterproto.Message):
+    extended_pair_id: List[int] = betterproto.uint64_field(1)
+    pagination: "___cosmos_base_query_v1_beta1__.PageRequest" = (
+        betterproto.message_field(2)
+    )
+
+
+@dataclass(eq=False, repr=False)
+class QueryAllExtendedPairStableVaultsByAppRequest(betterproto.Message):
+    app_id: int = betterproto.uint64_field(1)
+    pagination: "___cosmos_base_query_v1_beta1__.PageRequest" = (
+        betterproto.message_field(2)
+    )
+
+
+@dataclass(eq=False, repr=False)
+class QueryAllExtendedPairStableVaultsByAppResponse(betterproto.Message):
+    extended_pair: List["ExtendedPairVault"] = betterproto.message_field(1)
+    pagination: "___cosmos_base_query_v1_beta1__.PageRequest" = (
+        betterproto.message_field(2)
+    )
+
+
+@dataclass(eq=False, repr=False)
+class QueryExtendedPairVaultsByAppWithoutStableRequest(betterproto.Message):
+    app_id: int = betterproto.uint64_field(1)
+    pagination: "___cosmos_base_query_v1_beta1__.PageRequest" = (
+        betterproto.message_field(2)
+    )
+
+
+@dataclass(eq=False, repr=False)
+class QueryExtendedPairVaultsByAppWithoutStableResponse(betterproto.Message):
+    extended_pair: List["ExtendedPairVault"] = betterproto.message_field(1)
+    pagination: "___cosmos_base_query_v1_beta1__.PageRequest" = (
+        betterproto.message_field(2)
+    )
+
+
+class QueryStub(betterproto.ServiceStub):
+    async def query_assets(
+        self,
+        query_assets_request:"QueryAssetsRequest",
+        *,
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["MetadataLike"] = None
+    ) -> "QueryAssetsResponse":
+        return await self._unary_unary(
+            "/comdex.asset.v1beta1.Query/QueryAssets",
+            query_assets_request,
+            QueryAssetsResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+    
+
+
+    async def query_asset(
+        self,
+        query_asset_request: "QueryAssetRequest",
+        *,
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["MetadataLike"] = None
+    ) -> "QueryAssetResponse":
+        return await self._unary_unary(
+            "/comdex.asset.v1beta1.Query/QueryAsset",
+            query_asset_request,
+            QueryAssetResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+    
+
+
+    async def query_asset_pairs(
+        self,
+        query_asset_pairs_request:"QueryAssetPairsRequest",
+        *,
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["MetadataLike"] = None
+    ) -> "QueryAssetPairsResponse":
+        return await self._unary_unary(
+            "/comdex.asset.v1beta1.Query/QueryPairs",
+            query_asset_pairs_request,
+            QueryAssetPairsResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+
+  
+    async def query_asset_pair(
+        self,
+        query_asset_pair_request: "QueryAssetPairRequest",
+        *,
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["MetadataLike"] = None
+    ) -> "QueryAssetPairResponse":
+        return await self._unary_unary(
+            "/comdex.asset.v1beta1.Query/QueryPair",
+            query_asset_pair_request,
+            QueryAssetPairResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+    
+
+
+    async def query_app(
+        self,
+        query_app_request: "QueryAppRequest",
+        *,
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["MetadataLike"] = None
+    ) -> "QueryAppResponse":
+        return await self._unary_unary(
+            "/comdex.asset.v1beta1.Query/QueryApp",
+            query_app_request,
+            QueryAppResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+    
+
+
+    async def query_gov_token_by_app(
+        self,
+        query_gov_token_by_app_request: "QueryGovTokenByAppRequest",
+        *,
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["MetadataLike"] = None
+    ) -> "QueryGovTokenByAppResponse":
+        return await self._unary_unary(
+            "/comdex.asset.v1beta1.Query/QueryGovTokenByApp",
+            query_gov_token_by_app_request,
+            QueryGovTokenByAppResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+    
+
+
+    async def query_apps(
+        self,
+        query_apps_request:"QueryAppsRequest",
+        *,
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["MetadataLike"] = None
+    ) -> "QueryAppsResponse":
+        return await self._unary_unary(
+            "/comdex.asset.v1beta1.Query/QueryApps",
+            query_apps_request,
+            QueryAppsResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+    
+
+
+    async def query_extended_pair_vault(
+        self,
+        query_extended_pair_vault_request:"QueryExtendedPairVaultRequest",
+        *,
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["MetadataLike"] = None
+    ) -> "QueryExtendedPairVaultResponse":
+        return await self._unary_unary(
+            "/comdex.asset.v1beta1.Query/QueryExtendedPairVault",
+            query_extended_pair_vault_request,
+            QueryExtendedPairVaultResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+    
+
+
+    async def query_all_extended_pair_vaults(
+        self,
+        query_all_extended_pair_vaults_request:"QueryAllExtendedPairVaultsRequest",
+        *,
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["MetadataLike"] = None
+    ) -> "QueryAllExtendedPairVaultsResponse":
+        return await self._unary_unary(
+            "/comdex.asset.v1beta1.Query/QueryAllExtendedPairVaults",
+            query_all_extended_pair_vaults_request,
+            QueryAllExtendedPairVaultsResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+    
+
+
+    async def query_all_extended_pair_vaults_by_app(
+        self,
+        query_all_extended_pair_vaults_by_app_request:"QueryAllExtendedPairVaultsByAppRequest",
+        *,
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["MetadataLike"] = None
+    ) -> "QueryAllExtendedPairVaultsByAppResponse":
+        return await self._unary_unary(
+            "/comdex.asset.v1beta1.Query/QueryAllExtendedPairVaultsByApp",
+            query_all_extended_pair_vaults_by_app_request,
+            QueryAllExtendedPairVaultsByAppResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+    
+
+
+    async def query_all_extended_pair_stable_vaults_id_by_app(
+        self,
+        query_all_extended_pair_stable_vaults_id_by_app_request:"QueryAllExtendedPairStableVaultsIDByAppRequest",
+        *,
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["MetadataLike"] = None
+    ) -> "QueryAllExtendedPairStableVaultsIDByAppResponse":
+        return await self._unary_unary(
+            "/comdex.asset.v1beta1.Query/QueryAllExtendedPairStableVaultsIDByApp",
+            query_all_extended_pair_stable_vaults_id_by_app_request,
+            QueryAllExtendedPairStableVaultsIDByAppResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+    
+
+
+    async def query_all_extended_pair_stable_vaults_by_app(
+        self,
+        query_all_extended_pair_stable_vaults_by_app_request:"QueryAllExtendedPairStableVaultsByAppRequest",
+        *,
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["MetadataLike"] = None
+    ) -> "QueryAllExtendedPairStableVaultsByAppResponse":
+        return await self._unary_unary(
+            "/comdex.asset.v1beta1.Query/QueryAllExtendedPairStableVaultsByApp",
+            query_all_extended_pair_stable_vaults_by_app_request,
+            QueryAllExtendedPairStableVaultsByAppResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+    
+
+
+    async def query_extended_pair_vaults_by_app_without_stable(
+        self,
+        query_extended_pair_vaults_by_app_without_stable_request:"QueryExtendedPairVaultsByAppWithoutStableRequest",
+        *,
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["MetadataLike"] = None
+    ) -> "QueryExtendedPairVaultsByAppWithoutStableResponse":
+        return await self._unary_unary(
+            "/comdex.asset.v1beta1.Query/QueryExtendedPairVaultsByAppWithoutStable",
+            query_extended_pair_vaults_by_app_without_stable_request,
+            QueryExtendedPairVaultsByAppWithoutStableResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+
+
+class QueryBase(ServiceBase):
+    async def query_asset(
+        self, query_asset_request: "QueryAssetRequest"
+    ) -> "QueryAssetResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def query_assets(self) -> "QueryAssetsResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+    
+    async def query_asset_pair(
+        self, query_asset_pair_request: "QueryAssetPairRequest"
+    ) -> "QueryAssetPairResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def query_asset_pairs(self) -> "QueryAssetPairsResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+    
+    async def query_app(
+        self, query_app_request: "QueryAppRequest"
+    ) -> "QueryAppResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def query_gov_token_by_app(
+        self, query_gov_token_by_app_request: "QueryGovTokenByAppRequest"
+    ) -> "QueryGovTokenByAppResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def query_apps(self) -> "QueryAppsResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+    
+    async def query_extended_pair_vault(
+        self, query_extended_pair_vault_request: "QueryExtendedPairVaultRequest"
+    ) -> "QueryExtendedPairVaultResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+    
+    async def query_all_extended_pair_vaults(self) -> "QueryAllExtendedPairVaultsResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+    
+    async def query_all_extended_pair_vaults_by_app(
+        self, query_all_extended_pair_vaults_by_app_request: "QueryAllExtendedPairVaultsByAppRequest"
+    ) -> "QueryAllExtendedPairVaultsByAppResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+    
+    async def query_all_extended_pair_stable_vaults_id_by_app(
+        self, query_all_extended_pair_stable_vaults_id_by_app_request: "QueryAllExtendedPairStableVaultsIDByAppRequest"
+    ) -> "QueryAllExtendedPairStableVaultsIDByAppResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+    
+    async def query_all_extended_pair_stable_vaults_by_app(
+        self, query_all_extended_pair_stable_vaults_by_app_request: "QueryAllExtendedPairStableVaultsByAppRequest"
+    ) -> "QueryAllExtendedPairStableVaultsByAppResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+    
+    async def query_extended_pair_vaults_by_app_without_stable(
+        self, query_extended_pair_vaults_by_app_without_stable_request: "QueryExtendedPairVaultsByAppWithoutStableRequest"
+    ) -> "QueryExtendedPairVaultsByAppWithoutStableResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+
+    async def __rpc_query_asset(
+        self,
+        stream: "grpclib.server.Stream[QueryAssetRequest, QueryAssetResponse]",
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.query_asset(request)
+        await stream.send_message(response)
+
+    async def __rpc_query_assets(
+        self,
+        stream: "grpclib.server.Stream[QueryAssetsRequest, QueryAssetsResponse]",
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.query_assets(request)
+        await stream.send_message(response)
+
+    async def __rpc_query_asset_pair(
+        self,
+        stream: "grpclib.server.Stream[QueryAssetPairRequest, QueryAssetPairResponse]",
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.query_asset_pair(request)
+        await stream.send_message(response)
+
+    async def __rpc_query_asset_pairs(
+        self,
+        stream: "grpclib.server.Stream[QueryAssetPairsRequest, QueryAssetPairsResponse]",
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.query_asset_pairs(request)
+        await stream.send_message(response)
+
+    async def __rpc_query_app(
+        self,
+        stream: "grpclib.server.Stream[QueryAppRequest, QueryAppResponse]",
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.query_app(request)
+        await stream.send_message(response)
+    
+    async def __rpc_query_gov_token_by_app(
+        self,
+        stream: "grpclib.server.Stream[QueryGovTokenByAppRequest, QueryGovTokenByAppResponse]",
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.query_gov_token_by_app(request)
+        await stream.send_message(response)
+
+    async def __rpc_query_apps(
+        self,
+        stream: "grpclib.server.Stream[QueryAppsRequest, QueryAppsResponse]",
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.query_apps(request)
+        await stream.send_message(response)
+
+    async def __rpc_query_extended_pair_vault(
+        self,
+        stream: "grpclib.server.Stream[QueryExtendedPairVaultRequest, QueryExtendedPairVaultResponse]",
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.query_extended_pair_vault(request)
+        await stream.send_message(response)
+
+    async def __rpc_query_all_extended_pair_vaults(
+        self,
+        stream: "grpclib.server.Stream[QueryAllExtendedPairVaultsRequest, QueryAllExtendedPairVaultsResponse]",
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.query_all_extended_pair_vaults(request)
+        await stream.send_message(response)
+
+    async def __rpc_query_all_extended_pair_vaults_by_app(
+        self,
+        stream: "grpclib.server.Stream[QueryAllExtendedPairVaultsByAppRequest, QueryAllExtendedPairVaultsByAppResponse]",
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.query_all_extended_pair_vaults_by_app(request)
+        await stream.send_message(response)
+
+    async def __rpc_query_all_extended_pair_stable_vaults_id_by_app(
+        self,
+        stream: "grpclib.server.Stream[QueryAllExtendedPairStableVaultsIDByAppRequest, QueryAllExtendedPairStableVaultsIDByAppResponse]",
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.query_all_extended_pair_stable_vaults_id_by_app(request)
+        await stream.send_message(response)
+
+    async def __rpc_query_all_extended_pair_stable_vaults_by_app(
+        self,
+        stream: "grpclib.server.Stream[QueryAllExtendedPairStableVaultsByAppRequest, QueryAllExtendedPairStableVaultsByAppResponse]",
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.query_all_extended_pair_stable_vaults_by_app(request)
+        await stream.send_message(response)
+
+    async def __rpc_query_extended_pair_vaults_by_app_without_stable(
+        self,
+        stream: "grpclib.server.Stream[QueryExtendedPairVaultsByAppWithoutStableRequest, QueryExtendedPairVaultsByAppWithoutStableResponse]",
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.query_extended_pair_vaults_by_app_without_stable(request)
+        await stream.send_message(response)
+
+    
+    def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
+        return {
+            "/comdex.asset.v1beta1.Query/QueryAsset": grpclib.const.Handler(
+                self.__rpc_query_asset,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                QueryAssetRequest,
+                QueryAssetResponse,
+            ),
+            "/comdex.asset.v1beta1.Query/QueryAssets": grpclib.const.Handler(
+                self.__rpc_query_assets,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                QueryAssetsRequest,
+                QueryAssetsResponse,
+            ),
+            "/comdex.asset.v1beta1.Query/QueryAssetPair": grpclib.const.Handler(
+                self.__rpc_query_asset_pair,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                QueryAssetPairRequest,
+                QueryAssetPairResponse,
+            ),
+            "/comdex.asset.v1beta1.Query/QueryAssetPairs": grpclib.const.Handler(
+                self.__rpc_query_asset_pairs,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                QueryAssetPairsRequest,
+                QueryAssetPairsResponse,
+            ),
+            "/comdex.asset.v1beta1.Query/QueryApp": grpclib.const.Handler(
+                self.__rpc_query_app,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                QueryAppRequest,
+                QueryAppResponse,
+            ),
+            "/comdex.asset.v1beta1.Query/QueryGovTokenByApp": grpclib.const.Handler(
+                self.__rpc_query_gov_token_by_app,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                QueryGovTokenByAppRequest,
+                QueryGovTokenByAppResponse,
+            ),
+            "/comdex.asset.v1beta1.Query/QueryApps": grpclib.const.Handler(
+                self.__rpc_query_apps,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                QueryAppsRequest,
+                QueryAppsResponse,
+            ),
+            "/comdex.asset.v1beta1.Query/QueryExtendedPairVault": grpclib.const.Handler(
+                self.__rpc_query_extended_pair_vault,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                QueryExtendedPairVaultRequest,
+                QueryExtendedPairVaultResponse,
+            ),
+            "/comdex.asset.v1beta1.Query/QueryAllExtendedPairVaults": grpclib.const.Handler(
+                self.__rpc_query_all_extended_pair_vaults,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                QueryAllExtendedPairVaultsRequest,
+                QueryAllExtendedPairVaultsResponse,
+            ),
+            "/comdex.asset.v1beta1.Query/QueryAllExtendedPairVaultsByApp": grpclib.const.Handler(
+                self.__rpc_query_all_extended_pair_vaults_by_app,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                QueryAllExtendedPairVaultsByAppRequest,
+                QueryAllExtendedPairVaultsByAppResponse,
+            ),
+            "/comdex.asset.v1beta1.Query/QueryAllExtendedPairStableVaultsIDByApp": grpclib.const.Handler(
+                self.__rpc_query_all_extended_pair_stable_vaults_id_by_app,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                QueryAllExtendedPairStableVaultsIDByAppRequest,
+                QueryAllExtendedPairStableVaultsIDByAppResponse,
+            ),
+            "/comdex.asset.v1beta1.Query/QueryAllExtendedPairStableVaultsByApp": grpclib.const.Handler(
+                self.__rpc_query_all_extended_pair_stable_vaults_by_app,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                QueryAllExtendedPairStableVaultsByAppRequest,
+                QueryAllExtendedPairStableVaultsByAppResponse,
+            ),
+            "/comdex.asset.v1beta1.Query/QueryExtendedPairVaultsByAppWithoutStable": grpclib.const.Handler(
+                self.__rpc_query_extended_pair_vaults_by_app_without_stable,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                QueryExtendedPairVaultsByAppWithoutStableRequest,
+                QueryExtendedPairVaultsByAppWithoutStableResponse,
+            ),
+        }    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+

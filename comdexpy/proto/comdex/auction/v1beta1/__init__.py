@@ -833,6 +833,23 @@ class QueryStub(betterproto.ServiceStub):
             deadline=deadline,
             metadata=metadata,
         )
+    
+    async def query_biddings_for_surplus_auction(
+        self,
+        query_biddings_for_surplus_auctions_request: "QueryBiddingsForSurplusAuctionRequest",
+        *,
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["MetadataLike"] = None
+    ) -> "QueryBiddingsForSurplusAuctionResponse":
+        return await self._unary_unary(
+            "/comdex.auction.v1beta1.Query/QueryBiddingsForSurplusAuction",
+            query_biddings_for_surplus_auctions_request,
+            QueryBiddingsForSurplusAuctionResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
 
 
 class MsgBase(ServiceBase):
@@ -992,6 +1009,11 @@ class QueryBase(ServiceBase):
         self, query_filter_dutch_auctions_request: "QueryFilterDutchAuctionsRequest"
     ) -> "QueryFilterDutchAuctionsResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+    
+    async def query_biddings_for_surplus_auction(
+        self, query_biddings_for_surplus_auction_request: "QueryBiddingsForSurplusAuctionRequest"
+    ) -> "QueryBiddingsForSurplusAuctionResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_query_surplus_auction(
         self,
@@ -1113,6 +1135,15 @@ class QueryBase(ServiceBase):
         response = await self.query_filter_dutch_auctions(request)
         await stream.send_message(response)
 
+    async def __rpc_query_biddings_for_surplus_auction(
+        self,
+        stream: "grpclib.server.Stream[QueryBiddingsForSurplusAuctionRequest, QueryBiddingsForSurplusAuctionResponse]",
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.query_biddings_for_surplus_auction(request)
+        await stream.send_message(response)
+
+
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
             "/comdex.auction.v1beta1.Query/QuerySurplusAuction": grpclib.const.Handler(
@@ -1204,5 +1235,11 @@ class QueryBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 QueryFilterDutchAuctionsRequest,
                 QueryFilterDutchAuctionsResponse,
+            ),
+            "/comdex.auction.v1beta1.Query/QueryBiddingsForSurplusAuction": grpclib.const.Handler(
+                self.__rpc_query_biddings_for_surplus_auction,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                QueryBiddingsForSurplusAuctionRequest,
+                QueryBiddingsForSurplusAuctionResponse,
             ),
         }

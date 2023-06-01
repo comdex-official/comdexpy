@@ -10,7 +10,8 @@ from ....proto.comdex.auction.v1beta1 import (
 )
 
 
-
+from comdexpy.proto.cosmos.base import v1beta1 as ___cosmos_base_v1_beta1__
+from comdexpy.proto.cosmos.base.query import v1beta1 as ___cosmos_base_query_v1_beta1__
 
 from ....proto.cosmos.base import v1beta1 as __base_v1_beta1__
 from ....proto.cosmos.base.query import v1beta1 as __base_query_v1_beta1__
@@ -22,7 +23,7 @@ assert __base_query_v1_beta1__
 class MsgPlaceSurplusBidRequest(BaseMessageWrapper, MsgPlaceSurplusBidRequestProto):
     @property
     def type_url(self):
-        return "comdex.auction.v1beta1.MsgPlaceSurplusBidRequest"
+        return "/comdex.auction.v1beta1.MsgPlaceSurplusBidRequest"
 
     @property
     def legacy_url(self):
@@ -33,7 +34,7 @@ class MsgPlaceSurplusBidRequest(BaseMessageWrapper, MsgPlaceSurplusBidRequestPro
 class MsgPlaceDebtBidRequest(BaseMessageWrapper, MsgPlaceDebtBidRequestProto):
     @property
     def type_url(self):
-        return "comdex.auction.v1beta1.MsgPlaceDebtBidRequest"
+        return "/comdex.auction.v1beta1.MsgPlaceDebtBidRequest"
 
     @property
     def legacy_url(self):
@@ -44,7 +45,7 @@ class MsgPlaceDebtBidRequest(BaseMessageWrapper, MsgPlaceDebtBidRequestProto):
 class MsgPlaceDutchBidRequest(BaseMessageWrapper, MsgPlaceDutchBidRequestProto):
     @property
     def type_url(self):
-        return "comdex.auction.v1beta1.MsgPlaceDutchBidRequest"
+        return "/comdex.auction.v1beta1.MsgPlaceDutchBidRequest"
 
     @property
     def legacy_url(self):
@@ -55,7 +56,7 @@ class MsgPlaceDutchBidRequest(BaseMessageWrapper, MsgPlaceDutchBidRequestProto):
 class MsgPlaceDutchLendBidRequest(BaseMessageWrapper, MsgPlaceDutchLendBidRequestProto):
     @property
     def type_url(self):
-        return "comdex.auction.v1beta1.MsgPlaceDutchLendBidRequest"
+        return "/comdex.auction.v1beta1.MsgPlaceDutchLendBidRequest"
 
     @property
     def legacy_url(self):

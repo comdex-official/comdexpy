@@ -20,7 +20,7 @@ assert __base_query_v1_beta1__
 class MsgLiquidateVaultRequest(BaseMessageWrapper, MsgLiquidateVaultRequestProto):
     @property
     def type_url(self):
-        return "comdex.liquidation.v1beta1.MsgLiquidateVaultRequest"
+        return "/comdex.liquidation.v1beta1.MsgLiquidateVaultRequest"
 
     @property
     def legacy_url(self):
@@ -31,7 +31,7 @@ class MsgLiquidateVaultRequest(BaseMessageWrapper, MsgLiquidateVaultRequestProto
 class MsgLiquidateBorrowRequest(BaseMessageWrapper, MsgLiquidateBorrowRequestProto):
     @property
     def type_url(self):
-        return "comdex.liquidation.v1beta1.MsgLiquidateBorrowRequest"
+        return "/comdex.liquidation.v1beta1.MsgLiquidateBorrowRequest"
 
     @property
     def legacy_url(self):

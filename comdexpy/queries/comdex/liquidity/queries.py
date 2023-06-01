@@ -40,7 +40,6 @@ from comdexpy.proto.comdex.liquidity.v1beta1 import (
     QueryDeserializePoolCoinResponse,
     QueryFarmedPoolCoinResponse
 
-
 )
 from comdexpy.proto.comdex.liquidity.v1beta1 import QueryStub as LiquidityQueryStub
 
@@ -50,6 +49,7 @@ class Query():
         self.stub_liquidity = LiquidityQueryStub(channel)
 
     async def get_params(self) -> Params:
+
         """Gets params of liquidity module.
 
         Args: None
@@ -62,6 +62,7 @@ class Query():
 
 
     async def get_generic_params(self, app_id: int) -> GenericParams:
+
         """Gets generic params of liquidity module for specific App ID.
 
         Args:
@@ -77,6 +78,7 @@ class Query():
 
 
     async def get_pools(self, pair_id: int, disabled: str, app_id: int,pagination: PageRequest = None) -> QueryPoolsResponse:
+
         """This function retrieves the pools data of the liquidity module for a given pair ID and App ID.
 
         Args:
@@ -95,6 +97,7 @@ class Query():
 
 
     async def get_pool(self, pool_id: int, app_id: int) -> Pool:
+
         """This function retrieves the pool data of the liquidity module for a given pair ID and App ID.
 
         Args:
@@ -112,6 +115,7 @@ class Query():
 
 
     async def get_pair(self, pair_id: int, app_id: int) -> Pair:
+
         """This function retrieves the pool data of the liquidity module for a given pair ID and App ID.
 
         Args:
@@ -129,6 +133,7 @@ class Query():
 
 
     async def get_pairs(self, denoms: List[str], app_id: int, pagination: PageRequest = None) -> QueryPairsResponse:
+
         """This function retrieves the pool data of the liquidity module for a given denom and App ID.
 
         Args:
@@ -146,6 +151,7 @@ class Query():
 
 
     async def get_deposit_request(self,  pool_id: int, id: int, app_id: int) -> DepositRequest:
+
         """Gets deposit request details for a specific pool ID, request ID, and App ID in the liquidity module.
 
         Args:
@@ -164,6 +170,7 @@ class Query():
 
 
     async def get_deposit_requests(self, pool_id: int, app_id: int,pagination: PageRequest = None) -> QueryDepositRequestsResponse:
+
         """Gets deposit requests details for a specific pool ID and App ID in the liquidity module.
 
         Args:
@@ -181,6 +188,7 @@ class Query():
 
 
     async def get_withdraw_request(self, pool_id: int, id: int, app_id: int) -> WithdrawRequest:
+
         """Retrieves a withdraw request with the given pool ID, request ID, and App ID in the liquidity module.
 
         Args:
@@ -199,6 +207,7 @@ class Query():
 
 
     async def get_withdraw_requests(self, pool_id: int, app_id: int,pagination: PageRequest = None) -> QueryWithdrawRequestsResponse:
+
         """Retrieves a withdraw requests with the given pool ID and App ID in the liquidity module.
 
         Args:
@@ -216,6 +225,7 @@ class Query():
 
 
     async def get_order(self, pair_id: int, id: int, app_id: int) -> Order:
+
         """Retrieves the order details for a given pair ID, order ID, and app ID in the liquidity module.
 
         Args:
@@ -234,6 +244,7 @@ class Query():
 
    
     async def get_orders(self, pair_id: int, app_id: int, pagination: PageRequest = None) -> QueryOrdersResponse:
+
         """Retrieves the order details for a specified trading pair and application ID in the liquidity module.
 
         Args:
@@ -251,6 +262,7 @@ class Query():
 
    
     async def get_orderbooks(self, app_id: int, pair_ids:List[int], price_unit_powers:List[int], num_ticks: int) -> QueryOrderBooksResponse:
+
         """Retrieves orderbook data for the given app ID, pair IDs, price unit powers, and number of ticks in the liquidity module.
 
 
@@ -271,6 +283,7 @@ class Query():
 
     
     async def get_farmer(self, app_id: int, pool_id: int,farmer: str) -> QueryFarmerResponse:
+
         """Retrieves the details for a given app ID, pool ID, and farmer in the liquidity module.
 
         Args:
@@ -289,6 +302,7 @@ class Query():
 
     
     async def get_deserialize_pool_coin(self, pool_id: int,pool_coin_amount: int ,app_id: int) -> QueryDeserializePoolCoinResponse:
+
         """Retrieves the orders details for a given pair ID and app ID in the liquidity module.
 
         Args:
@@ -307,6 +321,7 @@ class Query():
 
 
     async def get_pool_incentives(self, app_id: int) -> PoolIncentive:
+
         """Retrieves the pool incentives for a given app ID in the liquidity module.
 
         Args:
@@ -323,8 +338,8 @@ class Query():
 
 
     async def get_farmed_pool_coin(self, pool_id: int, app_id: int) -> QueryFarmedPoolCoinResponse:
-        """Retrieves the details of a specific farmed pool coin associated with a given pool ID and app ID
-           from the liquidity module.
+
+        """Retrieves the details of a specific farmed pool coin associated with a given pool ID and app ID from the liquidity module.
 
         Args:
         pool_id (int): The unique identifier of the pool.
@@ -341,6 +356,7 @@ class Query():
 
 
     async def get_total_active_queued_pool_coin(self, app_id: int) -> TotalActiveAndQueuedPoolCoins:
+
         """This asynchronous function retrieves the total active and queued pool coins associated with a specific app ID in the liquidity module.
 
         Args:
@@ -355,7 +371,8 @@ class Query():
 
 
 
-    #async def get_orders_by_orderer(self,orderer:str ,pair_id: int, app_id: int) -> OrdersByOrderer:
+    async def get_orders_by_orderer(self,orderer:str ,pair_id: int, app_id: int) -> QueryOrdersResponse:
+    
         """
         Asynchronously retrieves the order details associated with a specific orderer, pair ID, and app ID
         in the liquidity module.
@@ -368,8 +385,8 @@ class Query():
         Returns:
         OrdersByOrderer: An object containing the order details for the given inputs.
         """
-     #   resp = await self.stub_liquidity.orders_by_orderer(QueryOrdersByOrdererRequest(orderer=orderer, pair_id=pair_id, app_id=app_id))
-      #  return resp 
+        resp = await self.stub_liquidity.orders_by_orderer(QueryOrdersByOrdererRequest(orderer=orderer, pair_id=pair_id, app_id=app_id))
+        return resp 
     
 
 

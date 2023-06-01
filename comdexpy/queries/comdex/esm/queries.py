@@ -28,6 +28,7 @@ class Query():
         self.stub_esm = ESMQueryStub(channel)
 
     async def get_params(self) -> Params:
+        
         """Get the parameters for a specific entity.
 
         Args: 
@@ -36,12 +37,13 @@ class Query():
         Returns: 
              The parameters for the entity.
         """
-        resp = await self.stub_esm.params(QueryParamsRequest(id=id))
+        resp = await self.stub_esm.params(QueryParamsRequest())
         return resp.params
 
 
 
     async def get_esm_trigger_params(self, id: int) -> EsmTriggerParams:
+        
         """Get the trigger parameters for a specific ESM trigger.
 
 
@@ -58,6 +60,7 @@ class Query():
 
 
     async def get_esm_status(self, id: int) -> EsmStatus:
+        
         """Get the status of an ESM with a given ID.
 
         Args:
@@ -74,6 +77,7 @@ class Query():
 
 
     async def get_current_deposit_stats(self, id: int) -> CurrentDepositStats:
+        
         """Get the current deposit statistics for a given ID.
 
         Args:
@@ -90,6 +94,7 @@ class Query():
 
 
     async def get_users_deposit_mapping(self, id: int, depositor: str) -> UsersDepositMapping:
+        
         """Get the deposit mapping for the specified user.
 
         Args:
@@ -107,6 +112,7 @@ class Query():
 
 
     async def get_data_after_cool_off(self, id: int) -> DataAfterCoolOff:
+        
         """Get data after cool off period for a given id.
 
         Args:
@@ -124,7 +130,8 @@ class Query():
 
 
     
-    async def get_snapshot_price(self, id: int, asset_id: int) -> QuerySnapshotPriceResponse:
+    async def get_snapshot_price(self, app_id: int, asset_id: int) -> QuerySnapshotPriceResponse:
+        
         """Get the snapshot price for a given ID and asset ID.
 
         Args:
@@ -137,13 +144,14 @@ class Query():
 
         """
         
-        resp = await self.stub_esm.query_snapshot_price(QuerySnapshotPriceRequest(id=id, asset_id=asset_id))
+        resp = await self.stub_esm.query_snapshot_price(QuerySnapshotPriceRequest(app_id=app_id, asset_id=asset_id))
         return resp
     
 
 
 
     async def get_asset_data_after_cool_off(self, app_id: int) -> AssetToAmount:
+        
         """Retrieve asset data after cool-off period.
 
         Args:
@@ -158,3 +166,4 @@ class Query():
         resp = await self.stub_esm.query_asset_data_after_cool_off(QueryAssetDataAfterCoolOffRequest(app_id=app_id))
         return resp
     
+

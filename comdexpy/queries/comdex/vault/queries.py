@@ -66,6 +66,7 @@ class Query():
         self.stub_vault = VaultQueryStub(channel)
 
     async def get_vault_info(self,id: int) -> QueryVaultResponse:
+        
         """Queries information about a vault with the specified ID.
 
         Args: 
@@ -80,6 +81,7 @@ class Query():
 
 
     async def get_vault_info_by_vault_id(self, id: int) -> QueryVaultInfoByVaultIdResponse:
+        
         """Queries information about a vault using a given vault ID.
 
         Args:
@@ -95,6 +97,7 @@ class Query():
 
 
     async def get_vault_info_of_owner_by_app_id(self, app_id: int,owner: str, pagination: PageRequest = None) -> QueryVaultInfoOfOwnerByAppResponse:
+        
         """Queries the vault information of a specific owner for a given app ID, with an optional pagination parameter.
 
         Args:
@@ -113,6 +116,7 @@ class Query():
 
 
     async def get_all_vaults(self, pagination: PageRequest = None) -> QueryAllVaultsResponse:
+        
         """Retrieve a list of all vaults.
 
         Args:
@@ -129,6 +133,7 @@ class Query():
 
 
     async def get_all_vaults_by_app(self, app_id: int) -> QueryAllVaultsByAppResponse:
+        
         """Queries all the vaults associated with a given app ID.
 
         Args:
@@ -145,6 +150,7 @@ class Query():
 
 
     async def get_all_vaults_by_app_and_extended_pair(self, app_id: int, extended_pair_id: int, pagination: PageRequest = None) -> QueryAllVaultsByAppAndExtendedPairResponse:
+        
         """Queries all vaults associated with a particular app and extended pair.
 
         Args:
@@ -165,6 +171,7 @@ class Query():
 
 
     async def get_vault_id_of_owner_by_extended_pair_and_app(self, app_id: int, owner: str, extended_pair_id: int, pagination: PageRequest = None) -> QueryVaultIdOfOwnerByExtendedPairAndAppResponse:
+        
         """Queries the vault ID of a particular owner based on the provided application ID, owner name, and extended pair ID. 
 
         Args:
@@ -184,6 +191,7 @@ class Query():
 
 
     async def get_vault_ids_by_app_in_all_extended_pairs(self, app_id: int, pagination: PageRequest = None) -> QueryVaultIdsByAppInAllExtendedPairsResponse:
+        
         """Retrieves the IDs of all vaults associated with a given app ID in all extended pairs. 
 
         Args:
@@ -201,6 +209,7 @@ class Query():
 
 
     async def get_all_vault_ids_by_an_owner(self, owner: str) -> QueryAllVaultIdsByAnOwnerResponse:
+        
         """Queries all vault IDs owned by a specific owner.
 
         Args:
@@ -217,6 +226,7 @@ class Query():
 
 
     async def get_token_minted_by_app_and_extended_pair(self, app_id: int, extended_pair_id: int, pagination: PageRequest = None) -> QueryTokenMintedByAppAndExtendedPairResponse:
+        
         """Retrieve a list of tokens minted by a given app and extended pair.
 
         Args:
@@ -235,6 +245,7 @@ class Query():
 
 
     async def get_token_minted_asset_wise_by_app(self, app_id: int, pagination: PageRequest = None) -> QueryTokenMintedAssetWiseByAppResponse:
+        
         """Retrieves information about tokens minted asset-wise by a particular application (identified by app_id) from a remote server
 
         Args:
@@ -252,6 +263,7 @@ class Query():
 
    
     async def get_vault_count_by_app(self, app_id: int) -> QueryVaultCountByAppResponse:
+        
         """Queries the count of vaults for a specific application
 
         Args:
@@ -268,6 +280,7 @@ class Query():
 
    
     async def get_vault_count_by_app_and_extended_pair(self, app_id: int, extended_pair_id: int, pagination: PageRequest = None) -> QueryVaultCountByAppAndExtendedPairResponse:
+        
         """Queries the count of vaults by application and extended pair ID.
 
 
@@ -287,6 +300,7 @@ class Query():
 
     
     async def get_total_value_locked_by_app_and_extended_pair(self, app_id: int, extended_pair_id: int, pagination: PageRequest = None) -> QueryTotalValueLockedByAppAndExtendedPairResponse:
+        
         """Queries the total value locked by an app and an extended pair.
 
         Args:
@@ -306,6 +320,7 @@ class Query():
 
     
     async def get_extended_pair_ids_by_app(self, app_id: int, pagination: PageRequest = None) -> QueryExtendedPairIDsByAppResponse:
+        
         """Retrieves extended pair IDs by application ID.
 
         Args:
@@ -323,6 +338,7 @@ class Query():
 
 
     async def get_stable_vault_by_vault_id(self, stable_vault_id: int) -> QueryStableVaultByVaultIdResponse:
+        
         """Queries a stable vault by its ID and returns the response.
 
 
@@ -340,6 +356,7 @@ class Query():
 
 
     async def get_stable_vault_by_app(self, app_id: int, pagination: PageRequest = None) -> QueryStableVaultByAppResponse:
+        
         """Queries a stable vault by the given app ID, with an optional pagination parameter.
 
         Args:
@@ -357,6 +374,7 @@ class Query():
 
 
     async def get_stable_vault_by_app_and_extended_pair(self, app_id: int, extended_pair_id: int) -> QueryStableVaultByAppAndExtendedPairResponse:
+        
         """Retrieves a stable vault given an app ID and an extended pair ID.
 
         Args:
@@ -373,6 +391,7 @@ class Query():
 
 
     async def get_extended_pair_vault_mapping_by_app_and_extended_pair(self, app_id: int, extended_pair_id: int) -> QueryExtendedPairVaultMappingByAppAndExtendedPairResponse:
+        
         """
         Queries the extended pair vault mapping by app ID and extended pair ID and returns the response.
 
@@ -390,6 +409,7 @@ class Query():
 
 
     async def get_extended_pair_vault_mapping_by_app(self, app_id: int, pagination: PageRequest = None) -> QueryExtendedPairVaultMappingByAppResponse:
+        
         """Retrieves extended pair-vault mapping information by an application ID.
 
         Args:
@@ -406,6 +426,7 @@ class Query():
 
 
     async def get_tvl_by_app_of_all_extended_pairs(self, app_id: int, pagination: PageRequest = None) -> QueryTvlByAppOfAllExtendedPairsResponse:
+        
         """Queries the Total Value Locked (TVL) for all extended pairs of a given application ID.
 
         Args:
@@ -422,6 +443,7 @@ class Query():
 
 
     async def get_tvl_by_app(self, app_id: int) -> QueryTvlByAppResponse:
+        
         """Retrieves the Total Value Locked (TVL) for a given app ID using the Vault service.
 
         Args:
@@ -437,6 +459,7 @@ class Query():
 
     
     async def get_user_my_position_by_app(self, app_id: int, owner: str) -> QueryUserMyPositionByAppResponse:
+        
         """Gets the user's position by a specified app ID and owner.
 
         Args:
@@ -453,6 +476,7 @@ class Query():
 
     
     async def get_pairs_locked_and_minted_statistic_by_app(self, app_id: int, pagination: PageRequest = None) -> QueryPairsLockedAndMintedStatisticByAppResponse:
+        
         """Retrieves statistics on pairs that have been locked and minted by a specific app.
 
         Args:
@@ -469,6 +493,7 @@ class Query():
 
 
     async def get_all_stable_mint_vault_rewards(self, pagination: PageRequest = None) -> QueryAllStableMintVaultRewardsResponse:
+        
         """Retrieves all the stablecoin mint vault rewards.
 
         Args:
@@ -484,6 +509,7 @@ class Query():
 
 
     async def get_user_extended_pair_total_data(self, owner: str) -> QueryUserExtendedPairTotalDataResponse:
+        
         """Retrieves the extended total data for a specific user, specified by the "owner" argument.
 
         Args:

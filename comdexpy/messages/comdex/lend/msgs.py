@@ -18,7 +18,8 @@ from ....proto.comdex.lend.v1beta1 import (
     MsgFundReserveAccounts as MsgFundReserveAccountsProto
 )
 
-
+from comdexpy.proto.cosmos.base import v1beta1 as ___cosmos_base_v1_beta1__
+from comdexpy.proto.cosmos.base.query import v1beta1 as ___cosmos_base_query_v1_beta1__
 
 
 from ....proto.cosmos.base import v1beta1 as __base_v1_beta1__
@@ -31,7 +32,7 @@ assert __base_query_v1_beta1__
 class MsgLend(BaseMessageWrapper, MsgLendProto):
     @property
     def type_url(self):
-        return "comdex.lend.v1beta1.MsgLend"
+        return "/comdex.lend.v1beta1.MsgLend"
 
     @property
     def legacy_url(self):
@@ -42,7 +43,7 @@ class MsgLend(BaseMessageWrapper, MsgLendProto):
 class MsgDeposit(BaseMessageWrapper, MsgDepositProto):
     @property
     def type_url(self):
-        return "comdex.lend.v1beta1.MsgDeposit"
+        return "/comdex.lend.v1beta1.MsgDeposit"
 
     @property
     def legacy_url(self):
@@ -53,7 +54,7 @@ class MsgDeposit(BaseMessageWrapper, MsgDepositProto):
 class MsgWithdraw(BaseMessageWrapper, MsgWithdrawProto):
     @property
     def type_url(self):
-        return "comdex.lend.v1beta1.MsgWithdraw"
+        return "/comdex.lend.v1beta1.MsgWithdraw"
 
     @property
     def legacy_url(self):
@@ -64,7 +65,7 @@ class MsgWithdraw(BaseMessageWrapper, MsgWithdrawProto):
 class MsgCloseLend(BaseMessageWrapper, MsgCloseLendProto):
     @property
     def type_url(self):
-        return "comdex.lend.v1beta1.MsgCloseLend"
+        return "/comdex.lend.v1beta1.MsgCloseLend"
 
     @property
     def legacy_url(self):
@@ -75,7 +76,7 @@ class MsgCloseLend(BaseMessageWrapper, MsgCloseLendProto):
 class MsgBorrow(BaseMessageWrapper, MsgBorrowProto):
     @property
     def type_url(self):
-        return "comdex.lend.v1beta1.MsgBorrow"
+        return "/comdex.lend.v1beta1.MsgBorrow"
 
     @property
     def legacy_url(self):
@@ -86,7 +87,7 @@ class MsgBorrow(BaseMessageWrapper, MsgBorrowProto):
 class MsgRepay(BaseMessageWrapper, MsgRepayProto):
     @property
     def type_url(self):
-        return "comdex.lend.v1beta1.MsgRepay"
+        return "/comdex.lend.v1beta1.MsgRepay"
 
     @property
     def legacy_url(self):
@@ -97,7 +98,7 @@ class MsgRepay(BaseMessageWrapper, MsgRepayProto):
 class MsgDepositBorrow(BaseMessageWrapper, MsgDepositBorrowProto):
     @property
     def type_url(self):
-        return "comdex.lend.v1beta1.MsgDepositBorrow"
+        return "/comdex.lend.v1beta1.MsgDepositBorrow"
 
     @property
     def legacy_url(self):
@@ -108,7 +109,7 @@ class MsgDepositBorrow(BaseMessageWrapper, MsgDepositBorrowProto):
 class MsgDraw(BaseMessageWrapper, MsgDrawProto):
     @property
     def type_url(self):
-        return "comdex.lend.v1beta1.MsgDraw"
+        return "/comdex.lend.v1beta1.MsgDraw"
 
     @property
     def legacy_url(self):
@@ -119,7 +120,7 @@ class MsgDraw(BaseMessageWrapper, MsgDrawProto):
 class MsgCloseBorrow(BaseMessageWrapper, MsgCloseBorrowProto):
     @property
     def type_url(self):
-        return "comdex.lend.v1beta1.MsgCloseBorrow"
+        return "/comdex.lend.v1beta1.MsgCloseBorrow"
 
     @property
     def legacy_url(self):
@@ -130,7 +131,7 @@ class MsgCloseBorrow(BaseMessageWrapper, MsgCloseBorrowProto):
 class MsgBorrowAlternate(BaseMessageWrapper, MsgBorrowAlternateProto):
     @property
     def type_url(self):
-        return "comdex.lend.v1beta1.MsgBorrowAlternate"
+        return "/comdex.lend.v1beta1.MsgBorrowAlternate"
 
     @property
     def legacy_url(self):
@@ -141,7 +142,7 @@ class MsgBorrowAlternate(BaseMessageWrapper, MsgBorrowAlternateProto):
 class MsgFundModuleAccounts(BaseMessageWrapper, MsgFundModuleAccountsProto):
     @property
     def type_url(self):
-        return "comdex.lend.v1beta1.MsgFundModuleAccounts"
+        return "/comdex.lend.v1beta1.MsgFundModuleAccounts"
 
     @property
     def legacy_url(self):
@@ -152,7 +153,7 @@ class MsgFundModuleAccounts(BaseMessageWrapper, MsgFundModuleAccountsProto):
 class MsgCalculateInterestAndRewards(BaseMessageWrapper, MsgCalculateInterestAndRewardsProto):
     @property
     def type_url(self):
-        return "comdex.lend.v1beta1.MsgCalculateInterestAndRewards"
+        return "/comdex.lend.v1beta1.MsgCalculateInterestAndRewards"
 
     @property
     def legacy_url(self):
@@ -163,7 +164,7 @@ class MsgCalculateInterestAndRewards(BaseMessageWrapper, MsgCalculateInterestAnd
 class MsgFundReserveAccounts(BaseMessageWrapper, MsgFundReserveAccountsProto):
     @property
     def type_url(self):
-        return "comdex.lend.v1beta1.MsgFundReserveAccounts"
+        return "/comdex.lend.v1beta1.MsgFundReserveAccounts"
 
     @property
     def legacy_url(self):
