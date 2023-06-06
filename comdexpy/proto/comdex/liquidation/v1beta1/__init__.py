@@ -7,7 +7,7 @@ from typing import (
     TYPE_CHECKING,
     Dict,
     List,
-    Optional,
+    Optional
 )
 
 import betterproto
@@ -284,14 +284,14 @@ class QueryStub(betterproto.ServiceStub):
 
     async def query_liquidation_params(
         self,
-        query_liquidation_params_request: "QueryLiquidationParamsRequest",
+        query_liquidation_params_request:"QueryLiquidationParamsRequest",
         *,
         timeout: Optional[float] = None,
         deadline: Optional["Deadline"] = None,
         metadata: Optional["MetadataLike"] = None
     ) -> "QueryLiquidationParamsResponse":
         return await self._unary_unary(
-            "/comdex.liquidation.v1beta1.Query/QueryLiquidationParams",
+            "/comdex.liquidation.v1beta1.Query/QueryParams",
             query_liquidation_params_request,
             QueryLiquidationParamsResponse,
             timeout=timeout,

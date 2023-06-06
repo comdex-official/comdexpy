@@ -2,12 +2,14 @@
 # sources: comdex/vault/v1beta1/events.proto, comdex/vault/v1beta1/genesis.proto, comdex/vault/v1beta1/query.proto, comdex/vault/v1beta1/tx.proto, comdex/vault/v1beta1/vault.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
+
 from datetime import datetime
+
 from typing import (
     TYPE_CHECKING,
     Dict,
     List,
-    Optional,
+    Optional
 )
 
 import betterproto
@@ -16,6 +18,7 @@ from betterproto.grpc.grpclib_server import ServiceBase
 
 from ....cosmos.base import v1beta1 as ___cosmos_base_v1_beta1__
 from ....cosmos.base.query import v1beta1 as ___cosmos_base_query_v1_beta1__
+
 
 
 if TYPE_CHECKING:
@@ -911,6 +914,7 @@ class QueryStub(betterproto.ServiceStub):
 
     async def query_vault_info_by_vault_id(
         self,
+        query_vault_info_by_vault_id_request:"QueryVaultInfoByVaultIdRequest",
         *,
         timeout: Optional[float] = None,
         deadline: Optional["Deadline"] = None,
@@ -995,6 +999,7 @@ class QueryStub(betterproto.ServiceStub):
 
     async def query_vault_id_of_owner_by_extended_pair_and_app(
         self,
+        query_vault_id_of_owner_by_extended_pair_and_app_request:"QueryVaultIdOfOwnerByExtendedPairAndAppResponse",
         *,
         timeout: Optional[float] = None,
         deadline: Optional["Deadline"] = None,
@@ -1147,6 +1152,7 @@ class QueryStub(betterproto.ServiceStub):
 
     async def query_stable_vault_by_vault_id(
         self,
+        query_stable_vault_by_vault_id_request: "QueryStableVaultByVaultIdRequest",
         *,
         timeout: Optional[float] = None,
         deadline: Optional["Deadline"] = None,
@@ -1231,6 +1237,7 @@ class QueryStub(betterproto.ServiceStub):
 
     async def query_tvl_by_app_of_all_extended_pairs(
         self,
+        query_tvl_by_app_of_all_extended_pairs_request: "QueryTvlByAppOfAllExtendedPairsRequest",
         *,
         timeout: Optional[float] = None,
         deadline: Optional["Deadline"] = None,
@@ -1247,6 +1254,7 @@ class QueryStub(betterproto.ServiceStub):
 
     async def query_tvl_by_app(
         self,
+        query_tvl_by_app_request: "QueryTvlByAppRequest",
         *,
         timeout: Optional[float] = None,
         deadline: Optional["Deadline"] = None,

@@ -4,21 +4,27 @@
 from dataclasses import dataclass
 from datetime import (
     datetime,
-    timedelta,
+    timedelta
 )
+
 from typing import (
     TYPE_CHECKING,
     Dict,
     List,
-    Optional,
+    Optional
 )
 
 import betterproto
 import grpclib
 from betterproto.grpc.grpclib_server import ServiceBase
 
+
 from ....cosmos.base import v1beta1 as ___cosmos_base_v1_beta1__
-from ....cosmos.base.query import v1beta1 as ___cosmos_base_query_v1_beta1__
+from ....cosmos.base.query import v1beta1 as ___cosmos_base_query_v1_beta1__ 
+
+
+assert ___cosmos_base_v1_beta1__
+assert ___cosmos_base_query_v1_beta1__
 
 
 if TYPE_CHECKING:

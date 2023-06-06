@@ -3,11 +3,12 @@
 # plugin: python-betterproto
 from dataclasses import dataclass
 from datetime import datetime
+
 from typing import (
     TYPE_CHECKING,
     Dict,
     List,
-    Optional,
+    Optional
 )
 
 import betterproto
@@ -1394,6 +1395,7 @@ class QueryStub(betterproto.ServiceStub):
 
     async def query_pool_asset_lb_mapping(
         self,
+        query_pool_asset_lb_mapping_request:"QueryPoolAssetLbMappingRequest",
         *,
         timeout: Optional[float] = None,
         deadline: Optional["Deadline"] = None,
