@@ -36,7 +36,7 @@ If you have any feedback, please reach out to us at https://forum.comdex.one/
 
 ## License
 
-This software is licensed under the GPL-3.0 license. See [LICENSE](docs/license) for full disclosure.
+This software is licensed under the GPL-3.0 license. See [LICENSE](comdexpy/docs/license) for full disclosure.
 
 
 
