@@ -1,5 +1,5 @@
 
-![](docs/imgcomdex.png)
+![](comdexpy/docs/images/imgcomdex.png)
 
 
 
@@ -22,7 +22,7 @@ This library enables developers to interact with the blockchain, query data, and
 
 ## Usage
 
-![](docs/carbon.png)
+![](comdexpy/docs/images/carbon.png)
 
 ## Documentation
 
