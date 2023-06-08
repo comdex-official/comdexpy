@@ -1,5 +1,5 @@
 
-![](imgcomdex.png)
+![](docs/imgcomdex.png)
 
 
 
@@ -22,7 +22,7 @@ This library enables developers to interact with the blockchain, query data, and
 
 ## Usage
 
-![](carbon.png)
+![](docs/carbon.png)
 
 ## Documentation
 
@@ -36,7 +36,7 @@ If you have any feedback, please reach out to us at https://forum.comdex.one/
 
 ## License
 
-This software is licensed under the GPL-3.0 license. See [LICENSE](docs/LICENSE) for full disclosure.
+This software is licensed under the GPL-3.0 license. See [LICENSE](docs/license) for full disclosure.
 
 
 
