@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIQUIDATION &mdash; comdexpy 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LIQUIDITY" href="liquidity.html" />
+    <link rel="prev" title="LEND" href="lend.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            comdexpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Module</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="asset.html">ASSET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auction.html">AUCTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collector.html">COLLECTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="esm.html">ESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lend.html">LEND</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">LIQUIDATION</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#query">Query</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-locked-vault">1.get_locked_vault</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-locked-vaults">2.get_locked_vaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-liquidation-params">3.get_liquidation_params</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-locked-vaults-history">4.get_locked_vaults_history</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-user-locked-vaults">5.get_user_locked_vaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-user-locked-vaults-history">6.get_user_locked_vaults_history</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-locked-vaults-pair">7.get_locked_vaults_pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-app-ids">8.get_app_ids</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#messages">Messages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#msgliquidatevaultrequest">1.MsgLiquidateVaultRequest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgliquidateborrowrequest">2.MsgLiquidateBorrowRequest</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="liquidity.html">LIQUIDITY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vault.html">VAULT</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/asset.html">Asset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/auction.html">Auction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/collector.html">Collector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/esm.html">ESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/lend.html">Lend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/liquidation.html">Liquidation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/liquidity.html">Liquidity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/vault.html">Vault</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">comdexpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">LIQUIDATION</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/liquidation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="liquidation">
+<h1>LIQUIDATION<a class="headerlink" href="#liquidation" title="Permalink to this heading"></a></h1>
+<section id="query">
+<h2>Query<a class="headerlink" href="#query" title="Permalink to this heading"></a></h2>
+<section id="get-locked-vault">
+<h3>1.get_locked_vault<a class="headerlink" href="#get-locked-vault" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the locked vault information for a given app ID and vault ID.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The application ID to filter the locked vault.</p>
+<p>id (int): The unique identifier of the locked vault to be retrieved.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the LockedVault class containing the locked vault information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-locked-vaults">
+<h3>2.get_locked_vaults<a class="headerlink" href="#get-locked-vaults" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves locked vaults information with optional pagination support.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>An object containing pagination information such as start index and page size. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing a list of locked vaults and their details, along with pagination information if applicable.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-liquidation-params">
+<h3>3.get_liquidation_params<a class="headerlink" href="#get-liquidation-params" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“This asynchronous function retrieves the liquidation parameters.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>None</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the Params class containing the liquidation parameters.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-locked-vaults-history">
+<h3>4.get_locked_vaults_history<a class="headerlink" href="#get-locked-vaults-history" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the history of locked vaults with support for pagination.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>An object containing pagination-related parameters, such as page number and items per page. Default is None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the locked vaults history.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-user-locked-vaults">
+<h3>5.get_user_locked_vaults<a class="headerlink" href="#get-user-locked-vaults" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the locked vaults associated with a given user address, and supports pagination to limit the number of results returned.”</p>
+<dl>
+<dt>Args:</dt><dd><p>user_address (str): The user’s blockchain address for which locked vaults should be fetched.</p>
+<p>pagination (PageRequest, optional): An optional pagination object to limit the number of results returned. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the list of locked vaults for the specified user address, along with any relevant pagination details.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-user-locked-vaults-history">
+<h3>6.get_user_locked_vaults_history<a class="headerlink" href="#get-user-locked-vaults-history" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the history of locked vaults for a specific user address, with optional pagination support.”</p>
+<dl>
+<dt>Args:</dt><dd><p>user_address (str): The user’s Ethereum address to query the locked vaults history for.</p>
+<p>pagination (PageRequest, optional): An optional pagination object to control the number of records returned and the starting point of the results.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing the user’s locked vaults history with information such as vault IDs, locked amounts, and timestamps.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-locked-vaults-pair">
+<h3>7.get_locked_vaults_pair<a class="headerlink" href="#get-locked-vaults-pair" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the locked vaults information for a given pair ID and returns the result as a QueryLockedVaultsPairResponse object.”</p>
+<dl>
+<dt>Args:</dt><dd><p>pair_id (int): The ID of the pair for which to query locked vaults.</p>
+<p>pagination (PageRequest, optional): An optional pagination object to control the number of results returned.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the locked vaults information for the given pair ID, along with any associated pagination details.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-app-ids">
+<h3>8.get_app_ids<a class="headerlink" href="#get-app-ids" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries the application IDs from the liquidation system and returns a QueryAppIdsResponse containing the list of IDs.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>None</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the list of application IDs.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="messages">
+<h2>Messages<a class="headerlink" href="#messages" title="Permalink to this heading"></a></h2>
+<section id="msgliquidatevaultrequest">
+<h3>1.MsgLiquidateVaultRequest<a class="headerlink" href="#msgliquidatevaultrequest" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><dl>
+<dt>MsgLiquidateVaultRequest{</dt><dd><p>string   from</p>
+<p>uint64   app_id</p>
+<p>uint64   vault_id</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgliquidateborrowrequest">
+<h3>2.MsgLiquidateBorrowRequest<a class="headerlink" href="#msgliquidateborrowrequest" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><dl>
+<dt>MsgLiquidateBorrowRequest{</dt><dd><p>string   from</p>
+<p>uint64   borrow_id</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lend.html" class="btn btn-neutral float-left" title="LEND" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="liquidity.html" class="btn btn-neutral float-right" title="LIQUIDITY" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Comdex.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

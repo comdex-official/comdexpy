@@ -1,0 +1,33 @@
+==============
+Asset 
+==============
+
+.. code:: python
+
+
+ import asyncio
+ from comdexpy.client import Client
+
+ from comdexpy.queries.comdex.asset import Query as AssetQueries
+
+
+ async def get_connection():
+    grpc_url = "comdex-grpc.lavenderfive.com"
+    return Client.from_endpoint(grpc_url, 443)
+
+ async def query(channel):
+    asset = AssetQueries(channel)
+
+    #Query assets
+    assets_info = await asset.get_assets()
+    print(assets_info)
+
+
+ async def main():
+    connection = await get_connection()
+    await query(connection.channel())
+    connection.close()
+
+
+ if __name__ == "__main__":
+    asyncio.run(main())

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASSET &mdash; comdexpy 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AUCTION" href="auction.html" />
+    <link rel="prev" title="INTRODUCTION" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            comdexpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Module</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ASSET</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#query">QUERY</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-assets">1.get_assets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-asset">2.get_asset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-asset-pairs">3.get_asset_pairs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-asset-pair">4.get_asset_pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-app">5.get_app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-gov-token-by-app">6.get_gov_token_by_app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-apps">7.get_apps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-extended-pair-vault">8.get_extended_pair_vault</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-all-extended-pair-vaults">9.get_all_extended_pair_vaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-all-extended-pair-vaults-by-app">10.get_all_extended_pair_vaults_by_app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-all-extended-pair-stable-vaults-id-by-app">11.get_all_extended_pair_stable_vaults_id_by_app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-all-extended-pair-stable-vaults-by-app">12.get_all_extended_pair_stable_vaults_by_app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-extended-pair-vaults-by-app-without-stable">13.get_extended_pair_vaults_by_app_without_stable</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="auction.html">AUCTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collector.html">COLLECTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="esm.html">ESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lend.html">LEND</a></li>
+<li class="toctree-l1"><a class="reference internal" href="liquidation.html">LIQUIDATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="liquidity.html">LIQUIDITY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vault.html">VAULT</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/asset.html">Asset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/auction.html">Auction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/collector.html">Collector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/esm.html">ESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/lend.html">Lend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/liquidation.html">Liquidation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/liquidity.html">Liquidity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/vault.html">Vault</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">comdexpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ASSET</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/asset.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="asset">
+<h1>ASSET<a class="headerlink" href="#asset" title="Permalink to this heading"></a></h1>
+<section id="query">
+<h2>QUERY<a class="headerlink" href="#query" title="Permalink to this heading"></a></h2>
+<section id="get-assets">
+<h3>1.get_assets<a class="headerlink" href="#get-assets" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieve a list of assets from the server with optional pagination.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pagination (PageRequest, optional): A pagination object specifying the desired page and page size for the response. Defaults to None, which means no pagination</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing a list of assets and any associated metadata, such as total number of assets and pagination info.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-asset">
+<h3>2.get_asset<a class="headerlink" href="#get-asset" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the asset information for a given asset ID asynchronously.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>id (int): The unique identifier of the asset to retrieve.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the ‘Asset’ class containing the asset information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-asset-pairs">
+<h3>3.get_asset_pairs<a class="headerlink" href="#get-asset-pairs" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Fetches and returns the asset pairs from the server using the provided pagination request.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pagination (PageRequest, optional): An object containing pagination parameters such as limit and offset for the asset pairs query. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the requested asset pairs and any related metadata.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-asset-pair">
+<h3>4.get_asset_pair<a class="headerlink" href="#get-asset-pair" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves asset pair information for a given ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>id (int): The unique identifier for the asset pair.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing information about the asset pair corresponding to the provided ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-app">
+<h3>5.get_app<a class="headerlink" href="#get-app" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieve application data based on the given ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>id (int): The unique identifier for the application to retrieve.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An AppData object containing the application’s information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-gov-token-by-app">
+<h3>6.get_gov_token_by_app<a class="headerlink" href="#get-gov-token-by-app" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the government token associated with a specific app by querying the asset.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>app_id (int): The unique identifier of the app for which the government token is to be retrieved.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the government token details for the specified app.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-apps">
+<h3>7.get_apps<a class="headerlink" href="#get-apps" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries a list of applications from the server using the provided pagination parameters.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pagination (PageRequest, optional): An object containing pagination parameters such as the page number and the number of items per page.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the list of applications and pagination information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-extended-pair-vault">
+<h3>8.get_extended_pair_vault<a class="headerlink" href="#get-extended-pair-vault" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the details of an ExtendedPairVault with the given ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>id (int): The unique identifier for the ExtendedPairVault to be fetched.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the details of the requested ExtendedPairVault.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-all-extended-pair-vaults">
+<h3>9.get_all_extended_pair_vaults<a class="headerlink" href="#get-all-extended-pair-vaults" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieve all extended pair vaults from the data source.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pagination (PageRequest, optional): An instance of PageRequest containing pagination parameters such as offset and limit. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of QueryAllExtendedPairVaultsResponse containing a list of extended pair vaults and pagination details.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-all-extended-pair-vaults-by-app">
+<h3>10.get_all_extended_pair_vaults_by_app<a class="headerlink" href="#get-all-extended-pair-vaults-by-app" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves all extended pair vaults associated with a given application ID.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The unique identifier for the application whose extended pair vaults are to be fetched.</p>
+<p>pagination (PageRequest, optional): An optional parameter to specify pagination details for the results. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing the extended pair vaults associated with the specified application ID, along with any relevant pagination information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-all-extended-pair-stable-vaults-id-by-app">
+<h3>11.get_all_extended_pair_stable_vaults_id_by_app<a class="headerlink" href="#get-all-extended-pair-stable-vaults-id-by-app" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves all the extended pair stable vault IDs associated with a given app_id. It supports pagination to enable efficient retrieval of large datasets.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The ID of the application for which the extended pair stable vault IDs are to be retrieved.</p>
+<p>pagination (PageRequest, optional): A pagination object containing information about the desired page size and the starting point for the results. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the response with a list of extended pair stable vault IDs and the pagination information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-all-extended-pair-stable-vaults-by-app">
+<h3>12.get_all_extended_pair_stable_vaults_by_app<a class="headerlink" href="#get-all-extended-pair-stable-vaults-by-app" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves all extended pair stable vaults associated with the specified app ID.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The unique identifier of the application for which to retrieve the extended pair stable vaults.</p>
+<p>pagination (PageRequest, optional): An optional pagination object for limiting the results. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing a list of extended pair stable vaults associated with the given app ID and pagination details.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-extended-pair-vaults-by-app-without-stable">
+<h3>13.get_extended_pair_vaults_by_app_without_stable<a class="headerlink" href="#get-extended-pair-vaults-by-app-without-stable" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves extended pair vaults associated with a given app_id, excluding stable vaults. It also supports pagination for the results.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The unique identifier of the application for which the extended pair vaults are to be fetched.</p>
+<p>pagination (PageRequest, optional): An optional pagination object to navigate through the results. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the extended pair vaults information and any relevant pagination details.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="INTRODUCTION" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="auction.html" class="btn btn-neutral float-right" title="AUCTION" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Comdex.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

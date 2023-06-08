@@ -1,0 +1,200 @@
+=================
+ASSET 
+=================
+------------
+
+QUERY 
+---------
+------------
+ 
+
+ -get_assets 
+
+
+        "Retrieve a list of assets from the server with optional pagination."
+
+        Args: 
+                pagination (PageRequest, optional): A pagination object specifying the desired page and page size for the response. Defaults to None, which means no pagination
+
+        Returns: 
+                A response object containing a list of assets and any associated metadata, such as total number of assets and pagination info.
+        
+
+-----
+
+ -get_asset
+
+        "Retrieves the asset information for a given asset ID asynchronously."
+
+
+        Args:
+                id (int): The unique identifier of the asset to retrieve.
+
+        Returns:
+                An instance of the 'Asset' class containing the asset information.
+        
+
+----
+
+
+ -get_asset_pairs
+
+        "Fetches and returns the asset pairs from the server using the provided pagination request."
+
+        Args:
+                pagination (PageRequest, optional): An object containing pagination parameters such as limit and offset for the asset pairs query. Defaults to None.
+
+
+        Returns:
+                An object containing the requested asset pairs and any related metadata.
+
+----
+
+
+ -get_asset_pair
+
+        "Retrieves asset pair information for a given ID."
+
+        Args:
+                id (int): The unique identifier for the asset pair.
+
+        Returns:
+                An object containing information about the asset pair corresponding to the provided ID.
+        
+    
+----
+
+ -get_app
+
+        "Retrieve application data based on the given ID."
+
+        Args:
+                id (int): The unique identifier for the application to retrieve.
+
+        Returns:
+                An AppData object containing the application's information.
+        
+----
+
+ -get_gov_token_by_app
+
+        "Retrieves the government token associated with a specific app by querying the asset."
+
+        Args:
+                app_id (int): The unique identifier of the app for which the government token is to be retrieved.
+
+        Returns:
+                An object containing the government token details for the specified app.
+
+    
+
+----
+
+
+ -get_apps
+
+        "Queries a list of applications from the server using the provided pagination parameters."
+
+        Args:    
+                pagination (PageRequest, optional): An object containing pagination parameters such as the page number and the number of items per page.
+       
+        Returns:
+                An object containing the list of applications and pagination information.
+        
+
+
+----
+
+
+ -get_extended_pair_vault
+
+        "Retrieves the details of an ExtendedPairVault with the given ID."
+
+        Args:
+                id (int): The unique identifier for the ExtendedPairVault to be fetched.
+
+        Returns:
+                An object containing the details of the requested ExtendedPairVault.
+        
+
+
+----
+
+
+ -get_all_extended_pair_vaults
+
+        "Retrieve all extended pair vaults from the data source."
+
+        Args:
+                pagination (PageRequest, optional): An instance of PageRequest containing pagination parameters such as offset and limit. Defaults to None.
+
+        Returns:
+                An instance of QueryAllExtendedPairVaultsResponse containing a list of extended pair vaults and pagination details.
+        
+
+----
+
+
+ -get_all_extended_pair_vaults_by_app
+
+        "Retrieves all extended pair vaults associated with a given application ID."
+
+        Args:
+                app_id (int): The unique identifier for the application whose extended pair vaults are to be fetched.
+                
+                pagination (PageRequest, optional): An optional parameter to specify pagination details for the results. Defaults to None.
+
+        Returns:
+                A response object containing the extended pair vaults associated with the specified application ID, along with any relevant pagination information.
+        
+
+----
+
+   
+ -get_all_extended_pair_stable_vaults_id_by_app
+
+        "Retrieves all the extended pair stable vault IDs associated with a given app_id. It supports pagination to enable efficient retrieval of large datasets."
+
+
+        Args:
+                app_id (int): The ID of the application for which the extended pair stable vault IDs are to be retrieved.
+                
+                pagination (PageRequest, optional): A pagination object containing information about the desired page size and the starting point for the results. Defaults to None.
+
+        Returns:
+                 An object containing the response with a list of extended pair stable vault IDs and the pagination information.
+        
+    
+----
+   
+
+ -get_all_extended_pair_stable_vaults_by_app
+
+        "Retrieves all extended pair stable vaults associated with the specified app ID."
+
+
+        Args:
+                app_id (int): The unique identifier of the application for which to retrieve the extended pair stable vaults.
+                
+                pagination (PageRequest, optional): An optional pagination object for limiting the results. Defaults to None.
+
+        Returns:
+                A response object containing a list of extended pair stable vaults associated with the given app ID and pagination details.
+        
+    
+----
+
+    
+ -get_extended_pair_vaults_by_app_without_stable
+
+        "Retrieves extended pair vaults associated with a given app_id, excluding stable vaults. It also supports pagination for the results."
+
+        Args:
+                app_id (int): The unique identifier of the application for which the extended pair vaults are to be fetched.
+                
+                pagination (PageRequest, optional): An optional pagination object to navigate through the results. Defaults to None.
+        
+        Returns:  
+                An object containing the extended pair vaults information and any relevant pagination details.
+    
+        

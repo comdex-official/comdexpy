@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COLLECTOR &mdash; comdexpy 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ESM" href="esm.html" />
+    <link rel="prev" title="AUCTION" href="auction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            comdexpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Module</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="asset.html">ASSET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auction.html">AUCTION</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">COLLECTOR</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#query">Query</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-params">1.get_params</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-collector-lookup-by-app">2.get_collector_lookup_by_app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-collector-lookup-by-app-and-asset">3.get_collector_lookup_by_app_and_asset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-collector-data-by-app-and-asset">4.get_collector_data_by_app_and_asset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-auction-mapping-for-app-and-asset">5.get_auction_mapping_for_app_and_asset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-net-fee-collected-for-app-and-asset">6.get_net_fee_collected_for_app_and_asset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="esm.html">ESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lend.html">LEND</a></li>
+<li class="toctree-l1"><a class="reference internal" href="liquidation.html">LIQUIDATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="liquidity.html">LIQUIDITY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vault.html">VAULT</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/asset.html">Asset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/auction.html">Auction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/collector.html">Collector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/esm.html">ESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/lend.html">Lend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/liquidation.html">Liquidation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/liquidity.html">Liquidity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/vault.html">Vault</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">comdexpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">COLLECTOR</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/collector.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="collector">
+<h1>COLLECTOR<a class="headerlink" href="#collector" title="Permalink to this heading"></a></h1>
+<section id="query">
+<h2>Query<a class="headerlink" href="#query" title="Permalink to this heading"></a></h2>
+<section id="get-params">
+<h3>1.get_params<a class="headerlink" href="#get-params" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieve the parameters associated with the given ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>None</p>
+</dd>
+<dt>Returns:</dt><dd><p>Params: The parameters associated with the given ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-collector-lookup-by-app">
+<h3>2.get_collector_lookup_by_app<a class="headerlink" href="#get-collector-lookup-by-app" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves collector lookup data based on the given app ID and pagination parameters.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): an integer value representing the ID of the application for which the collector lookup data needs to be retrieved.</p>
+<p>pagination (PageRequest): an optional object of type “PageRequest” containing parameters for pagination, such as the page number and page size.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object of type “CollectorLookupTableData” containing the collector lookup data retrieved for the specified app ID and pagination parameters.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-collector-lookup-by-app-and-asset">
+<h3>3.get_collector_lookup_by_app_and_asset<a class="headerlink" href="#get-collector-lookup-by-app-and-asset" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves a CollectorLookupTableData object based on the provided app_id and asset_id.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id: An integer representing the ID of the application.</p>
+<p>asset_id: An integer representing the ID of the asset.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing information about the collector lookup for the specified app and asset.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-collector-data-by-app-and-asset">
+<h3>4.get_collector_data_by_app_and_asset<a class="headerlink" href="#get-collector-data-by-app-and-asset" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries collector data by app ID and asset ID using gRPC stub and returns the response.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id: integer representing the ID of the application.</p>
+<p>asset_id: integer representing the ID of the asset.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the data collected by the collector for the given app ID and asset ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-auction-mapping-for-app-and-asset">
+<h3>5.get_auction_mapping_for_app_and_asset<a class="headerlink" href="#get-auction-mapping-for-app-and-asset" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves an auction mapping lookup table for a given app and asset.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id: an integer representing the ID of the app for which the auction mapping is requested.</p>
+<p>asset_id: an integer representing the ID of the asset for which the auction mapping is requested.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the ‘AppAssetIdToAuctionLookupTable’ class, which contains a mapping of auction IDs to auction metadata for the specified app and asset.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-net-fee-collected-for-app-and-asset">
+<h3>6.get_net_fee_collected_for_app_and_asset<a class="headerlink" href="#get-net-fee-collected-for-app-and-asset" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries the net fee collected for a given app and asset from the gRPC server using the collector stub.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The ID of the application for which the net fee collected is to be queried.</p>
+<p>asset_id (int): The ID of the asset for which the net fee collected is to be queried.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object that contains the net fee collected for the given app and asset.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="auction.html" class="btn btn-neutral float-left" title="AUCTION" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="esm.html" class="btn btn-neutral float-right" title="ESM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Comdex.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
