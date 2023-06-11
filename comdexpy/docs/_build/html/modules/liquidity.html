@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIQUIDITY &mdash; comdexpy 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="VAULT" href="vault.html" />
+    <link rel="prev" title="LIQUIDATION" href="liquidation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            comdexpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Module</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="asset.html">ASSET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auction.html">AUCTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collector.html">COLLECTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="esm.html">ESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lend.html">LEND</a></li>
+<li class="toctree-l1"><a class="reference internal" href="liquidation.html">LIQUIDATION</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">LIQUIDITY</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#query">Query</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-params">1.get_params</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-generic-params">2.get_generic_params</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-pools">3.get_pools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-pool">4.get_pool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-pair">5.get_pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-pairs">6.get_pairs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-deposit-request">7.get_deposit_request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-deposit-requests">8.get_deposit_requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-withdraw-request">9.get_withdraw_request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-withdraw-requests">10.get_withdraw_requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-order">11.get_order</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-orders">12.get_orders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-orderbooks">13.get_orderbooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-farmer">14.get_farmer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-deserialize-pool-coin">15.get_deserialize_pool_coin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-pool-incentives">16.get_pool_incentives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-farmed-pool-coin">17.get_farmed_pool_coin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-total-active-queued-pool-coin">18.get_total_active_queued_pool_coin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-orders-by-orderer">19.get_orders_by_orderer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#messages">Messages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#msgcreatepair">1.MsgCreatePair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgcreatepool">2.MsgCreatePool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgdeposit">3.MsgDeposit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgwithdraw">4.MsgWithdraw</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msglimitorder">5.MsgLimitOrder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgmarketorder">6.MsgMarketOrder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgcancelorder">7.MsgCancelOrder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgcancelallorders">8.MsgCancelAllOrders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgfarm">9.MsgFarm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgunfarm">10.MsgUnfarm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vault.html">VAULT</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/asset.html">Asset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/auction.html">Auction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/collector.html">Collector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/esm.html">ESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/lend.html">Lend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/liquidation.html">Liquidation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/liquidity.html">Liquidity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/vault.html">Vault</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">comdexpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">LIQUIDITY</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/liquidity.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="liquidity">
+<h1>LIQUIDITY<a class="headerlink" href="#liquidity" title="Permalink to this heading"></a></h1>
+<section id="query">
+<h2>Query<a class="headerlink" href="#query" title="Permalink to this heading"></a></h2>
+<section id="get-params">
+<h3>1.get_params<a class="headerlink" href="#get-params" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Gets params of liquidity module.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>None</p>
+</dd>
+<dt>Returns:</dt><dd><p>Liquidity Module’s global Parameters</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-generic-params">
+<h3>2.get_generic_params<a class="headerlink" href="#get-generic-params" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Gets generic params of liquidity module for specific App ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>app_id (int): The unique identifier of the App for which the liquidity module parameters are to be fetched.</p>
+</dd>
+<dt>Returns:</dt><dd><p>GenericParams: An object containing the generic parameters of the liquidity module for the specified App ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-pools">
+<h3>3.get_pools<a class="headerlink" href="#get-pools" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“This function retrieves the pools data of the liquidity module for a given pair ID and App ID.”</p>
+<dl>
+<dt>Args:</dt><dd><p>pair_id (int): The unique identifier for the trading pair.</p>
+<p>disabled (bool): A flag to filter pools based on whether they are disabled or not.</p>
+<p>app_id (int): The unique identifier for the application requesting the data.</p>
+</dd>
+<dt>Returns:</dt><dd><p>pools: A collection of pools data from the liquidity module that match the given parameters.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-pool">
+<h3>4.get_pool<a class="headerlink" href="#get-pool" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“This function retrieves the pool data of the liquidity module for a given pair ID and App ID.”</p>
+<dl>
+<dt>Args:</dt><dd><p>pair_id (int): The unique identifier of the trading pair.</p>
+<p>app_id (int): The unique identifier of the application using the liquidity module.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Pool: An instance of the Pool class containing the relevant liquidity pool data.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-pair">
+<h3>5.get_pair<a class="headerlink" href="#get-pair" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“This function retrieves the pool data of the liquidity module for a given pair ID and App ID.”</p>
+<dl>
+<dt>Args:</dt><dd><p>pair_id (int): The unique identifier for the liquidity pair.</p>
+<p>app_id (int): The unique identifier for the app.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Pair: An instance of the Pair class containing relevant liquidity pool data.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-pairs">
+<h3>6.get_pairs<a class="headerlink" href="#get-pairs" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“This function retrieves the pool data of the liquidity module for a given denom and App ID.”</p>
+<dl>
+<dt>Args:</dt><dd><p>denom: The pair ID (denomination) for which to fetch pool data.</p>
+<p>app_id (int): The unique identifier of the application for which pool data is needed.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Pairs: The pool data of the liquidity module corresponding to the given pair ID and App ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-deposit-request">
+<h3>7.get_deposit_request<a class="headerlink" href="#get-deposit-request" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Gets deposit request details for a specific pool ID, request ID, and App ID in the liquidity module.”</p>
+<dl>
+<dt>Args:</dt><dd><p>pool_id (int): The unique identifier of the pool for which deposit request details are to be fetched.</p>
+<p>id (int): The unique identifier of the deposit request to be fetched.</p>
+<p>app_id (int): The unique identifier of the application associated with the deposit request.</p>
+</dd>
+<dt>Returns:</dt><dd><p>DepositRequest: An instance of the DepositRequest class containing the deposit request details.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-deposit-requests">
+<h3>8.get_deposit_requests<a class="headerlink" href="#get-deposit-requests" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Gets deposit requests details for a specific pool ID and App ID in the liquidity module.”</p>
+<dl>
+<dt>Args:</dt><dd><p>pool_id (int): The unique identifier for the liquidity pool.</p>
+<p>app_id (int): The unique identifier for the application using the liquidity module.</p>
+</dd>
+</dl>
+<p>Returns:</p>
+<blockquote>
+<div><p>Pair: A pair object containing the deposit request details for the specified pool and application.</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-withdraw-request">
+<h3>9.get_withdraw_request<a class="headerlink" href="#get-withdraw-request" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves a withdraw request with the given pool ID, request ID, and App ID in the liquidity module.”</p>
+<dl>
+<dt>Args:</dt><dd><p>pool_id (int): The unique identifier of the liquidity pool.</p>
+<p>id (int): The unique identifier of the withdraw request.</p>
+<p>app_id (int): The unique identifier of the application interacting with the liquidity module.</p>
+</dd>
+<dt>Returns:</dt><dd><p>WithdrawRequest: An instance of the WithdrawRequest class containing the details of the requested withdrawal.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-withdraw-requests">
+<h3>10.get_withdraw_requests<a class="headerlink" href="#get-withdraw-requests" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves a withdraw requests with the given pool ID and App ID in the liquidity module.”</p>
+<dl>
+<dt>Args:</dt><dd><p>pool_id (int): The unique identifier for the liquidity pool.</p>
+<p>app_id (int): The unique identifier for the application.</p>
+</dd>
+<dt>Returns:</dt><dd><p>WithdrawRequests: A collection of withdraw requests related to the specified pool and app.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-order">
+<h3>11.get_order<a class="headerlink" href="#get-order" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the order details for a given pair ID, order ID, and app ID in the liquidity module.”</p>
+<dl>
+<dt>Args:</dt><dd><p>pair_id (int): The unique identifier of the trading pair.</p>
+<p>id (int): The unique identifier of the order within the trading pair.</p>
+<p>app_id (int): The unique identifier of the application in the liquidity module.</p>
+</dd>
+</dl>
+<p>Returns:</p>
+<blockquote>
+<div><p>Order: An Order object containing the details of the specified order.</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-orders">
+<h3>12.get_orders<a class="headerlink" href="#get-orders" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the order details for a specified trading pair and application ID in the liquidity module.”</p>
+<dl>
+<dt>Args:</dt><dd><p>pair_id (int): The trading pair ID for which to fetch order details.</p>
+<p>app_id (int): The application ID associated with the liquidity module.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Orders: A collection of orders related to the specified trading pair and application ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-orderbooks">
+<h3>13.get_orderbooks<a class="headerlink" href="#get-orderbooks" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves orderbook data for the given app ID, pair IDs, price unit powers, and number of ticks in the liquidity module.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The application ID to fetch orderbook data for.</p>
+<p>pair_ids (List[int]): A list of pair IDs to fetch orderbook data for.</p>
+<p>price_unit_powers (List[int]): A list of price unit powers for the orderbooks.</p>
+<p>num_ticks (int): The number of ticks (price levels) to retrieve for each orderbook.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Orderbooks: A collection of orderbook data for the specified parameters.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-farmer">
+<h3>14.get_farmer<a class="headerlink" href="#get-farmer" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the details for a given app ID, pool ID, and farmer in the liquidity module.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): Application ID</p>
+<p>pool_id (int): Pool ID</p>
+<p>farmer (str): Farmer identifier</p>
+</dd>
+<dt>Returns:</dt><dd><p>OrderbookDetails: The orderbook details containing active_pool_coin and queued_pool_coin.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-deserialize-pool-coin">
+<h3>15.get_deserialize_pool_coin<a class="headerlink" href="#get-deserialize-pool-coin" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the orders details for a given pair ID and app ID in the liquidity module.”</p>
+<dl>
+<dt>Args:</dt><dd><p>pool_id (int): The pool ID.</p>
+<p>pool_coin_amount (int): The pool coin amount.</p>
+<p>app_id (int): The app ID.</p>
+</dd>
+<dt>Returns:</dt><dd><p>DeserializePoolCoin: The deserialized pool coin object for the specified query.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-pool-incentives">
+<h3>16.get_pool_incentives<a class="headerlink" href="#get-pool-incentives" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the pool incentives for a given app ID in the liquidity module.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>app_id (int): The ID of the app for which to retrieve pool incentives.</p>
+</dd>
+<dt>Returns:</dt><dd><p>PoolIncentive: An object containing information about the pool incentives for the specified app ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-farmed-pool-coin">
+<h3>17.get_farmed_pool_coin<a class="headerlink" href="#get-farmed-pool-coin" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the details of a specific farmed pool coin associated with a given pool ID and app ID from the liquidity module.”</p>
+<dl>
+<dt>Args:</dt><dd><p>pool_id (int): The unique identifier of the pool.</p>
+<p>app_id (int): The unique identifier of the application.</p>
+</dd>
+<dt>Returns:</dt><dd><p>FarmedPoolCoin: An instance of the FarmedPoolCoin class containing the details of the farmed pool coin.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-total-active-queued-pool-coin">
+<h3>18.get_total_active_queued_pool_coin<a class="headerlink" href="#get-total-active-queued-pool-coin" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“This asynchronous function retrieves the total active and queued pool coins associated with a specific app ID in the liquidity module.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>app_id (int): The unique identifier for the application in the liquidity module.</p>
+</dd>
+<dt>Returns:</dt><dd><p>TotalActiveAndQueuedPoolCoins: An object containing the total active and queued pool coins related to the given app ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-orders-by-orderer">
+<h3>19.get_orders_by_orderer<a class="headerlink" href="#get-orders-by-orderer" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Asynchronously retrieves the order details associated with a specific orderer, pair ID, and app ID
+in the liquidity module.”</p>
+<dl>
+<dt>Args:</dt><dd><p>orderer (str): The orderer’s identifier, typically an account address.</p>
+<p>pair_id (int): The unique identifier of the trading pair.</p>
+<p>app_id (int): The application ID associated with the liquidity module.</p>
+</dd>
+<dt>Returns:</dt><dd><p>OrdersByOrderer: An object containing the order details for the given inputs.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="messages">
+<h2>Messages<a class="headerlink" href="#messages" title="Permalink to this heading"></a></h2>
+<section id="msgcreatepair">
+<h3>1.MsgCreatePair<a class="headerlink" href="#msgcreatepair" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Create a pair (market) for trading A Pair can be created in two ways,</p>
+</div></blockquote>
+<dl>
+<dt>-Permission Less:</dt><dd><p>A certain amount of fees need to be paid for creating pair. The fee paid is non-refundable. A pair can be launched instantly with this method.</p>
+</dd>
+<dt>-Governance:</dt><dd><blockquote>
+<div><p>A proposal needs to be raised for creating pair via the governance module.</p>
+</div></blockquote>
+<p>A pair consists of a base coin and a quote coin and you can think of a pair in an order book. An orderer can request a limit or market order once a pair is created
+For creating a new pair, demons mentioned in base_coin_denom and quote_coin_denom should be allowed by the asset module.
+Pair can be created only with the demons that exist/are whitelisted in the asset module.</p>
+<blockquote>
+<div><dl>
+<dt>MsgCreatePair {</dt><dd><p>string creator</p>
+<p>string base_coin_denom</p>
+<p>string quote_coin_denom</p>
+<p>uint64 app_id</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<dl>
+<dt>Validation checks that are being done before running pair creation logic -</dt><dd><p>Check that app_id is valid and that an app with this ID exists in the asset module.</p>
+<p>Check that base_coin_denom is valid and exists in the asset module.</p>
+<p>Check that quote_coin_denom is valid and exists in the asset module.</p>
+<p>Check that pair isn’t already existed with the given app_id, base_coin_denom, and quote_coin_denom</p>
+</dd>
+</dl>
+<p>Transfers the pair creation fee from the creator account to the fee collector address of the app.</p>
+<p>Create a new Pair with existing + 1.</p>
+</dd>
+</dl>
+</section>
+<hr class="docutils" />
+<section id="msgcreatepool">
+<h3>2.MsgCreatePool<a class="headerlink" href="#msgcreatepool" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Create a liquidity pool in the existing pair.</p>
+<p>Pool(s) belong to a pair. Therefore, a pair must exist in order to create a pool
+For pool creation, a certain amount of fees needs to be paid (default 200 CMDX). Each pool is unique.
+At the initial creation of the pool, a fixed amount of max(deposit_coins.Amount) pool tokens is minted and sent to the creator of the pool’s account. The pool coin denom is in the form of pool{app_id}-{pool_id}.</p>
+<blockquote>
+<div><dl>
+<dt>MsgCreatePool {</dt><dd><p>string creator</p>
+<p>uint64 pair_id</p>
+<p>cosmos.base.v1beta1.Coin deposit_coins</p>
+<p>uint64 app_id</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<dl>
+<dt>Validation checks that are being done before running pool creation logic -</dt><dd><p>Check that app_id is valid and that the app with this ID exists in the asset module.</p>
+<p>Check that pair_id is valid and pair_id and there exists a pair for it.</p>
+<p>Check that param exists for the given app_id, if not then the error is returned.</p>
+<p>Check that denoms of the coins in deposit_coins match with the pair’s base_coin_denom and quote_coin_denom.</p>
+<p>Check that deposit coins are &gt;= minimum initial deposit amount</p>
+<p>Check that the pool with the same pair_id doesn’t already exist.</p>
+</dd>
+</dl>
+<p>Create and save the new pool with ID as existingPoolID + 1</p>
+<p>Transfer deposit coins from the creator’s account to the pool reserve address.</p>
+<p>Transfer pool creation fee from creator’s account to app’s fee collector address</p>
+<p>Mint new pool tokens and transfer them to the creator’s account.</p>
+<p>Create a new gauge in the rewards module for swap fee distribution.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgdeposit">
+<h3>3.MsgDeposit<a class="headerlink" href="#msgdeposit" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Deposit coins to a liquidity pool. Deposit uses a batch execution methodology.</p>
+<p>Deposit requests are accumulated in a batch for a predefined period (default is 1 block) and they are executed at the end of the batch. A minimum deposit amount is 1000000 for each denomination.
+Note that in an order book system, a pool is considered an order. Liquidity in the pool places orders conservatively. What that means is that it places buy orders lower than the pool price and places sell orders higher than the pool price.</p>
+<blockquote>
+<div><dl>
+<dt>MsgDeposit {</dt><dd><p>string depositor</p>
+<p>uint64 pool_id</p>
+<p>cosmos.base.v1beta1.Coin deposit_coins</p>
+<p>uint64 app_id</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>Validation checks that are being done before running deposit logic -</p>
+<blockquote>
+<div><p>Check that app_id is valid and that the app with this ID exists in the asset module.</p>
+<p>Check that pool_id is valid and the pool exists with the given pool_id and is not disabled.</p>
+<p>Check that deposit coins are valid and their denom matches with the denoms of a pair in the pool.</p>
+</div></blockquote>
+<p>Transfer deposit coins from depositor account to module’s global escrow address.</p>
+<p>Create a new deposit request with ID as existingDepositRequest + 1.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgwithdraw">
+<h3>4.MsgWithdraw<a class="headerlink" href="#msgwithdraw" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Withdraw coins from the liquidity pool.</p>
+<p>Withdraw uses a batch execution methodology. Withdraw requests are accumulated in a batch for a predefined period (default is 1 block) and they are executed at the end of the batch.</p>
+<blockquote>
+<div><dl>
+<dt>MsgWithdraw {</dt><dd><p>string withdrawer</p>
+<p>uint64 pool_id</p>
+<p>cosmos.base.v1beta1.Coin pool_coin</p>
+<p>uint64 app_id</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<dl>
+<dt>Validation checks that are being done before running withdraw logic -</dt><dd><p>Check that app_id is valid and the app with this ID exists in the asset module.</p>
+<p>Check that pool_id is valid and the pool exists with the given pool_id and is not disabled.</p>
+<p>Check that pool_coins denom are equal to the pool denom.</p>
+</dd>
+</dl>
+<p>Transfer pool coins from withdrawal account to module’s global escrow address.</p>
+<p>Create a new withdraw request with ID as existingWithdrawRequest + 1.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msglimitorder">
+<h3>5.MsgLimitOrder<a class="headerlink" href="#msglimitorder" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Make a limit order.</p>
+<p>The buy limit order will be matched at lower than or equal to the defined order price whereas the sell limit order will be matched at higher than or equal to the defined order price.
+The order uses a batch execution methodology. Order requests are accumulated in a batch for a predefined period (default is 1 block) and they are executed at the end of the batch.</p>
+<blockquote>
+<div><dl>
+<dt>MsgLimitOrder {</dt><dd><p>string orderer</p>
+<p>uint64 pair_id</p>
+<p>OrderDirection direction</p>
+<p>cosmos.base.v1beta1.Coin offer_coin</p>
+<p>string demand_coin_denom</p>
+<p>string price</p>
+<p>string amount</p>
+<p>timedelta order_lifespan</p>
+<p>uint64 app_id</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<dl>
+<dt>Validation checks that are being done before running limit order logic -</dt><dd><p>Check that param exists for the given app_id, if not then the error is returned.</p>
+<p>Check that app_id is valid and that an app with this ID exists in the asset module.</p>
+<p>Check that order_lifespan isn’t greater than max order lifespan.</p>
+<p>Check that pair_id is valid and pair_id and there exists a pair for it.</p>
+<p>Check that offer_coin is sufficient for the demanding coin for the given price and amount including the calculated swap fee based on the direction of order (buy/sell).</p>
+<p>Check that order isn’t too small.</p>
+</dd>
+</dl>
+<p>Transfer calculated offer coin from the orderer’s account to the pair’s escrow address.</p>
+<p>Create new order with ID as existing orderID + 1.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgmarketorder">
+<h3>6.MsgMarketOrder<a class="headerlink" href="#msgmarketorder" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Make a market order.</p>
+<p>Unlike a limit order, there is no need to input the order price.</p>
+<p>Buy market order uses MaxPriceLimitRatio of the list price, which is LastPrice * (1+MaxPriceLimitRatio).</p>
+<p>Sell market order uses negative MaxPriceLimitRatio of the last price, which is LastPrice * (1-MaxPriceLimitRatio).</p>
+<p>The order uses a batch execution methodology. Order requests are accumulated in a batch for a predefined period (default is 1 block) and they are executed at the end of the batch.</p>
+<blockquote>
+<div><dl>
+<dt>MsgMarketOrder {</dt><dd><p>string orderer</p>
+<p>uint64 pair_id</p>
+<p>OrderDirection direction</p>
+<p>cosmos.base.v1beta1.Coin offer_coin</p>
+<p>string demand_coin_denom</p>
+<p>string amount</p>
+<p>timedelta order_lifespan</p>
+<p>uint64 app_id</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<dl>
+<dt>Validation checks that are being done before running market order logic -</dt><dd><p>Check that param exists for the given app_id, if not then the error is returned.</p>
+<p>Check that app_id is valid and an app with this ID exists in the asset module.</p>
+<p>Check that order_lifespan isn’t greater than max order lifespan.</p>
+<p>Check that pair_id is valid and pair_id and there exists a pair for it.</p>
+<p>Check that offer_coin is sufficient for the demanding coin for the given amount including the calculated swap fee based on the direction of order (buy/sell).</p>
+<p>Check that order isn’t too small.</p>
+</dd>
+</dl>
+<p>Transfer calculated offer coin from the orderer’s account to the pair’s escrow address.</p>
+<p>Create new order with ID as existing orderID + 1.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgcancelorder">
+<h3>7.MsgCancelOrder<a class="headerlink" href="#msgcancelorder" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Cancel an order.</p>
+<blockquote>
+<div><dl>
+<dt>MsgCancelOrder {</dt><dd><p>string orderer</p>
+<p>uint64 pair_id</p>
+<p>uint64 order_id</p>
+<p>uint64 app_id</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<dl>
+<dt>Validation checks that are being done before running cancel order logic -</dt><dd><p>Check that app_id is valid and that an app with this ID exists in the asset module.</p>
+<p>Check that order_id is valid and that order exists with the given order_id.</p>
+<p>Check that the orderer is the same as the order request creator.</p>
+<p>Check that the order with the given ID is not already canceled.</p>
+<p>Check that the order batch ID and pair’s current batch ID are not the same.</p>
+<p>Check if the order is not already completed.</p>
+</dd>
+</dl>
+<p>If the remaining offer coin is positive, the following conditions are checked actions are performed accordingly-</p>
+<blockquote>
+<div><p>If the remaining offer coin is the same as offered coin -</p>
+<blockquote>
+<div><p>Refund the full amount to the order including the swap fee collected amount.</p>
+</div></blockquote>
+<p>Recalculate the swap fee for swapped amount i.e (swapped amount = offer coin - remaining_offercoin)</p>
+<p>Refund the remaining amount + excess collected swap_fee back to the orderer</p>
+<p>Transfer accumulated swap fee amount from pair’s escrow address to pair’s swap fee collector address</p>
+</div></blockquote>
+<p>Set order status as canceled.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgcancelallorders">
+<h3>8.MsgCancelAllOrders<a class="headerlink" href="#msgcancelallorders" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Cancel all orders.</p>
+<blockquote>
+<div><dl>
+<dt>MsgCancelAllOrders {</dt><dd><p>string orderer</p>
+<p>uint64 pair_id</p>
+<p>uint64 app_id</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>Validation checks that are being done before running cancel order logic -</p>
+<blockquote>
+<div><p>Check that app_id is valid and an app with this ID exists in the asset module.</p>
+</div></blockquote>
+<p>Get all the orders of the order from the given pair ID.</p>
+<p>Same actions are performed on each order as of cancel single order.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgfarm">
+<h3>9.MsgFarm<a class="headerlink" href="#msgfarm" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Farm pool tokens to receive farming rewards.</p>
+<blockquote>
+<div><dl>
+<dt>MsgFarm {</dt><dd><p>uint64 app_id</p>
+<p>uint64 pool_id</p>
+<p>string farmer</p>
+<p>cosmos.base.v1beta1.Coin farming_pool_coin</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<dl>
+<dt>Validation checks that are being done before running farm logic -</dt><dd><p>Check that the depositor address is a valid Bech32 address string.</p>
+<p>Check that app_id is valid and that an app with this ID exists in the asset module.</p>
+<p>Check that pool_id is valid and the pool exists with the given pool_id and is not disabled.</p>
+<p>Check that farming_pool_coin.denom is equal to the given pool_id’s pool denom.</p>
+</dd>
+</dl>
+<p>Transfer pool tokens from farmer’s account to liquidity modules’ account.</p>
+<p>Create a new queued farmer position with the current timestamp and store it.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgunfarm">
+<h3>10.MsgUnfarm<a class="headerlink" href="#msgunfarm" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Unfarm pool token from the network</p>
+<blockquote>
+<div><dl>
+<dt>MsgUnfarm {</dt><dd><p>uint64 app_id</p>
+<p>uint64 pool_id</p>
+<p>string farmer</p>
+<p>cosmos.base.v1beta1.Coin unfarming_pool_coin</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<dl>
+<dt>Validation checks that are being done before running unfarmlogic -</dt><dd><p>Check that the farmer’s address is a valid Bech32 address string.</p>
+<p>Check that app_id is valid and that an app with this ID exists in the asset module.</p>
+<p>Check that pool_id is valid and the pool exists with the given pool_id and is not disabled.</p>
+<p>Check that unfarming_pool_coin.denom is equal to the given pool_id’s pool denom.</p>
+<p>Check that pool tokens are already farmed for the given farmer.</p>
+<p>Check that available farmed tokens (queued farm position + active farming position) &gt;= unfarming_pool_coin</p>
+</dd>
+</dl>
+<p>Delete the queued farming position if queued coins are less than equal to unfarming_pool_coin, else update the queued farming position i.e (queued-coins = queued-coins - soft_unlock_coin).</p>
+<p>If queued coins are not sufficient enough for the unfarming_pool_coin coins then queued farming position is deleted after fulfilling a partial amount of unfarming_pool_coin and the remaining coins are being deducted from the active farming position of a farmer.</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="liquidation.html" class="btn btn-neutral float-left" title="LIQUIDATION" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vault.html" class="btn btn-neutral float-right" title="VAULT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Comdex.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

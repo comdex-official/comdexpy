@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ESM &mdash; comdexpy 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LEND" href="lend.html" />
+    <link rel="prev" title="COLLECTOR" href="collector.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            comdexpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Module</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="asset.html">ASSET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auction.html">AUCTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collector.html">COLLECTOR</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ESM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#query">Query</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-params">1.get_params</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-esm-trigger-params">2.get_esm_trigger_params</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-esm-status">3.get_esm_status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-current-deposit-stats">4.get_current_deposit_stats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-users-deposit-mapping">5.get_users_deposit_mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-data-after-cool-off">6.get_data_after_cool_off</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-snapshot-price">7.get_snapshot_price</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-asset-data-after-cool-off">8.get_asset_data_after_cool_off</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lend.html">LEND</a></li>
+<li class="toctree-l1"><a class="reference internal" href="liquidation.html">LIQUIDATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="liquidity.html">LIQUIDITY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vault.html">VAULT</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/asset.html">Asset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/auction.html">Auction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/collector.html">Collector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/esm.html">ESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/lend.html">Lend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/liquidation.html">Liquidation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/liquidity.html">Liquidity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/vault.html">Vault</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">comdexpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ESM</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/esm.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="esm">
+<h1>ESM<a class="headerlink" href="#esm" title="Permalink to this heading"></a></h1>
+<section id="query">
+<h2>Query<a class="headerlink" href="#query" title="Permalink to this heading"></a></h2>
+<section id="get-params">
+<h3>1.get_params<a class="headerlink" href="#get-params" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Get the parameters for a specific entity.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>The instance of the class.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The parameters for the entity.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-esm-trigger-params">
+<h3>2.get_esm_trigger_params<a class="headerlink" href="#get-esm-trigger-params" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Get the trigger parameters for a specific ESM trigger.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>id (int): The ID of the ESM trigger to retrieve the parameters for.</p>
+</dd>
+<dt>Returns:</dt><dd><p>EsmTriggerParams: The trigger parameters for the specified ESM trigger.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-esm-status">
+<h3>3.get_esm_status<a class="headerlink" href="#get-esm-status" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Get the status of an ESM with a given ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>id (int): The ID of the ESM to query.</p>
+</dd>
+<dt>Returns:</dt><dd><p>EsmStatus: The status of the ESM.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-current-deposit-stats">
+<h3>4.get_current_deposit_stats<a class="headerlink" href="#get-current-deposit-stats" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Get the current deposit statistics for a given ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>id (int): The ID of the entity to retrieve deposit statistics for.</p>
+</dd>
+<dt>Returns:</dt><dd><p>CurrentDepositStats: The current deposit statistics for the specified ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-users-deposit-mapping">
+<h3>5.get_users_deposit_mapping<a class="headerlink" href="#get-users-deposit-mapping" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“””Get the deposit mapping for the specified user.</p>
+<dl>
+<dt>Args:</dt><dd><p>id (int): The ID of the user.</p>
+<p>depositor (str): The name of the depositor.</p>
+</dd>
+<dt>Returns:</dt><dd><p>UsersDepositMapping: The deposit mapping information for the specified user.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-data-after-cool-off">
+<h3>6.get_data_after_cool_off<a class="headerlink" href="#get-data-after-cool-off" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Get data after cool off period for a given id.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>id (int): The id of the data to retrieve.</p>
+</dd>
+<dt>Returns:</dt><dd><p>DataAfterCoolOff: The data after the cool off period for the given id.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-snapshot-price">
+<h3>7.get_snapshot_price<a class="headerlink" href="#get-snapshot-price" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Get the snapshot price for a given ID and asset ID.”</p>
+<dl>
+<dt>Args:</dt><dd><p>id (int): The ID of the snapshot.</p>
+<p>asset_id (int): The ID of the asset.</p>
+</dd>
+<dt>Returns:</dt><dd><p>QuerySnapshotPriceResponse: The response object containing the snapshot price information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="get-asset-data-after-cool-off">
+<h3>8.get_asset_data_after_cool_off<a class="headerlink" href="#get-asset-data-after-cool-off" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieve asset data after cool-off period.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>app_id (int): The ID of the application to retrieve data for.</p>
+</dd>
+<dt>Returns:</dt><dd><p>AssetToAmount: A named tuple containing the asset data.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="collector.html" class="btn btn-neutral float-left" title="COLLECTOR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lend.html" class="btn btn-neutral float-right" title="LEND" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Comdex.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

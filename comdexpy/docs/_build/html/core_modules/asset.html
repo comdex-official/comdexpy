@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASSET &mdash; Python SDK For Comdex Ecosystem 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AUCTION" href="auction.html" />
+    <link rel="prev" title="Welcome to Python SDK For Comdex Ecosystem’s documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Python SDK For Comdex Ecosystem
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Core Modules Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ASSET</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#query">QUERY</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="auction.html">AUCTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auction.html#messages">Messages</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Python SDK For Comdex Ecosystem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ASSET</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/core_modules/asset.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="asset">
+<h1>ASSET<a class="headerlink" href="#asset" title="Permalink to this heading"></a></h1>
+<hr class="docutils" />
+<section id="query">
+<h2>QUERY<a class="headerlink" href="#query" title="Permalink to this heading"></a></h2>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-g<var>et_assets</var></span></kbd></dt>
+<dd><p>“Retrieve a list of assets from the server with optional pagination.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pagination (PageRequest, optional): A pagination object specifying the desired page and page size for the response. Defaults to None, which means no pagination</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing a list of assets and any associated metadata, such as total number of assets and pagination info.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-g<var>et_asset</var></span></kbd></dt>
+<dd><p>“Retrieves the asset information for a given asset ID asynchronously.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>id (int): The unique identifier of the asset to retrieve.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the ‘Asset’ class containing the asset information.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-g<var>et_asset_pairs</var></span></kbd></dt>
+<dd><p>“Fetches and returns the asset pairs from the server using the provided pagination request.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pagination (PageRequest, optional): An object containing pagination parameters such as limit and offset for the asset pairs query. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the requested asset pairs and any related metadata.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-g<var>et_asset_pair</var></span></kbd></dt>
+<dd><p>“Retrieves asset pair information for a given ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>id (int): The unique identifier for the asset pair.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing information about the asset pair corresponding to the provided ID.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-g<var>et_app</var></span></kbd></dt>
+<dd><p>“Retrieve application data based on the given ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>id (int): The unique identifier for the application to retrieve.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An AppData object containing the application’s information.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-g<var>et_gov_token_by_app</var></span></kbd></dt>
+<dd><p>“Retrieves the government token associated with a specific app by querying the asset.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>app_id (int): The unique identifier of the app for which the government token is to be retrieved.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the government token details for the specified app.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-g<var>et_apps</var></span></kbd></dt>
+<dd><p>“Queries a list of applications from the server using the provided pagination parameters.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pagination (PageRequest, optional): An object containing pagination parameters such as the page number and the number of items per page.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the list of applications and pagination information.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-g<var>et_extended_pair_vault</var></span></kbd></dt>
+<dd><p>“Retrieves the details of an ExtendedPairVault with the given ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>id (int): The unique identifier for the ExtendedPairVault to be fetched.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the details of the requested ExtendedPairVault.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-g<var>et_all_extended_pair_vaults</var></span></kbd></dt>
+<dd><p>“Retrieve all extended pair vaults from the data source.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pagination (PageRequest, optional): An instance of PageRequest containing pagination parameters such as offset and limit. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of QueryAllExtendedPairVaultsResponse containing a list of extended pair vaults and pagination details.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-g<var>et_all_extended_pair_vaults_by_app</var></span></kbd></dt>
+<dd><p>“Retrieves all extended pair vaults associated with a given application ID.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The unique identifier for the application whose extended pair vaults are to be fetched.</p>
+<p>pagination (PageRequest, optional): An optional parameter to specify pagination details for the results. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing the extended pair vaults associated with the specified application ID, along with any relevant pagination information.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-g<var>et_all_extended_pair_stable_vaults_id_by_app</var></span></kbd></dt>
+<dd><p>“Retrieves all the extended pair stable vault IDs associated with a given app_id. It supports pagination to enable efficient retrieval of large datasets.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The ID of the application for which the extended pair stable vault IDs are to be retrieved.</p>
+<p>pagination (PageRequest, optional): A pagination object containing information about the desired page size and the starting point for the results. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the response with a list of extended pair stable vault IDs and the pagination information.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-g<var>et_all_extended_pair_stable_vaults_by_app</var></span></kbd></dt>
+<dd><p>“Retrieves all extended pair stable vaults associated with the specified app ID.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The unique identifier of the application for which to retrieve the extended pair stable vaults.</p>
+<p>pagination (PageRequest, optional): An optional pagination object for limiting the results. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing a list of extended pair stable vaults associated with the given app ID and pagination details.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-g<var>et_extended_pair_vaults_by_app_without_stable</var></span></kbd></dt>
+<dd><p>“Retrieves extended pair vaults associated with a given app_id, excluding stable vaults. It also supports pagination for the results.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The unique identifier of the application for which the extended pair vaults are to be fetched.</p>
+<p>pagination (PageRequest, optional): An optional pagination object to navigate through the results. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the extended pair vaults information and any relevant pagination details.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Python SDK For Comdex Ecosystem’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="auction.html" class="btn btn-neutral float-right" title="AUCTION" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Comdex.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

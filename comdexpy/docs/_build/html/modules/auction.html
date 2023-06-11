@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AUCTION &mdash; comdexpy 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="COLLECTOR" href="collector.html" />
+    <link rel="prev" title="ASSET" href="asset.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            comdexpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Module</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="asset.html">ASSET</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">AUCTION</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#query">Query</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-surplus-auction">1.get_surplus_auction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-surplus-auctions">2.get_surplus_auctions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-surplus-biddings">3.get_surplus_biddings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-debt-auction">4.get_debt_auction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-debt-auctions">5.get_debt_auctions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-debt-biddings">6.get_debt_biddings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-dutch-auction">7.get_dutch_auction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-dutch-auctions">8.get_dutch_auctions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-dutch-biddings">9.get_dutch_biddings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-protocol-statistics">10.get_protocol_statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-biddings-for-surplus-auction">11.get_biddings_for_surplus_auction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-generic-auction-param">12.get_generic_auction_param</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-dutch-lend-auction">13.get_dutch_lend_auction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-dutch-lend-auctions">14.get_dutch_lend_auctions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-dutch-lend-biddings">15.get_dutch_lend_biddings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-filter-dutch-auctions">16.get_filter_dutch_auctions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#messages">Messages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#place-surplus-auction-bid">1.Place Surplus Auction Bid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#place-debt-auction-bid">2.Place Debt Auction Bid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#place-dutch-auction-bid">3.Place Dutch Auction Bid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgplacedutchlendbidrequest">4.MsgPlaceDutchLendBidRequest</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="collector.html">COLLECTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="esm.html">ESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lend.html">LEND</a></li>
+<li class="toctree-l1"><a class="reference internal" href="liquidation.html">LIQUIDATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="liquidity.html">LIQUIDITY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vault.html">VAULT</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/asset.html">Asset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/auction.html">Auction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/collector.html">Collector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/esm.html">ESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/lend.html">Lend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/liquidation.html">Liquidation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/liquidity.html">Liquidity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/vault.html">Vault</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">comdexpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">AUCTION</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/auction.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="auction">
+<h1>AUCTION<a class="headerlink" href="#auction" title="Permalink to this heading"></a></h1>
+<section id="query">
+<h2>Query<a class="headerlink" href="#query" title="Permalink to this heading"></a></h2>
+<section id="get-surplus-auction">
+<h3>1.get_surplus_auction<a class="headerlink" href="#get-surplus-auction" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves a specific surplus auction based on the given parameters.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The application ID associated with the surplus auction.</p>
+<p>auction_mapping_id (int): The auction mapping ID used to map the auction.</p>
+<p>auction_id (int): The unique identifier of the surplus auction.</p>
+<p>history (bool): A flag indicating whether to include auction history in the response.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the SurplusAuction class, containing information about the requested surplus auction.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-surplus-auctions">
+<h3>2.get_surplus_auctions<a class="headerlink" href="#get-surplus-auctions" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves surplus auctions data based on the given parameters.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The application ID for which to fetch surplus auction data.</p>
+<p>history (bool): A flag to determine if historical surplus auctions should be retrieved (True) or only active surplus auctions (False).</p>
+<p>pagination (PageRequest, optional): An object containing pagination information, such as page number and page size. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the surplus auctions data.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-surplus-biddings">
+<h3>3.get_surplus_biddings<a class="headerlink" href="#get-surplus-biddings" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves surplus biddings for a specific bidder and application ID.”</p>
+<dl>
+<dt>Args:</dt><dd><p>bidder (str): The identifier of the bidder.</p>
+<p>app_id (int): The identifier of the application.</p>
+<p>history (bool): A flag to include historical surplus biddings if set to True, otherwise only returns active surplus biddings.</p>
+<p>pagination (PageRequest, optional): An instance of PageRequest class for pagination. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the SurplusBiddings class, containing a list of surplus bidding objects and pagination information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-debt-auction">
+<h3>4.get_debt_auction<a class="headerlink" href="#get-debt-auction" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the details of a specific debt auction using its associated identifiers.””</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The application ID associated with the debt auction.</p>
+<p>auction_mapping_id (int): The auction mapping ID used to identify the particular auction instance.</p>
+<p>auction_id (int): The unique ID of the debt auction.</p>
+<p>history (bool): A flag to include the auction’s historical data if set to True.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the DebtAuction class containing the auction details.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-debt-auctions">
+<h3>5.get_debt_auctions<a class="headerlink" href="#get-debt-auctions" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves debt auction information based on the given parameters.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The application ID for which debt auction information is to be retrieved.</p>
+<p>history (bool): If True, retrieves past debt auctions; otherwise, retrieves ongoing debt auctions.</p>
+<p>pagination (PageRequest, optional): An optional pagination object to limit the number of results and fetch results in a paginated manner.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing the requested debt auction information based on the provided parameters.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-debt-biddings">
+<h3>6.get_debt_biddings<a class="headerlink" href="#get-debt-biddings" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the debt biddings associated with a specific bidder and application ID.”</p>
+<dl>
+<dt>Args:</dt><dd><p>bidder (str): The identifier of the bidder whose debt biddings are to be fetched.</p>
+<p>app_id (int): The identifier of the application associated with the debt biddings.</p>
+<p>history (bool): If True, includes historical debt biddings; otherwise, returns only active debt biddings.</p>
+<p>pagination (PageRequest, optional): Pagination parameters for handling large result sets. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing a list of debt biddings and pagination details, if applicable.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-dutch-auction">
+<h3>7.get_dutch_auction<a class="headerlink" href="#get-dutch-auction" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the information of a Dutch auction based on the provided parameters.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The application ID associated with the auction.</p>
+<p>auction_mapping_id (int): The ID that maps to the specific auction instance.</p>
+<p>auction_id (int): The unique ID of the Dutch auction to be retrieved.</p>
+<p>history (bool): If True, includes the auction’s history; otherwise, returns only the current state.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the DutchAuction class, containing the requested auction information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-dutch-auctions">
+<h3>8.get_dutch_auctions<a class="headerlink" href="#get-dutch-auctions" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves Dutch auction information from the server using the provided app_id, history flag, and optional pagination.””</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The application ID associated with the Dutch auctions.</p>
+<p>history (bool): If True, retrieves historical Dutch auctions; otherwise, retrieves active Dutch auctions.</p>
+<p>pagination (PageRequest, optional): An optional pagination object to fetch specific pages or limit the number of results.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing information about the queried Dutch auctions.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-dutch-biddings">
+<h3>9.get_dutch_biddings<a class="headerlink" href="#get-dutch-biddings" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves Dutch auction biddings based on the given parameters.”</p>
+<dl>
+<dt>Args:</dt><dd><p>bidder (str): The bidder’s unique identifier.</p>
+<p>app_id (int): The application’s unique identifier.</p>
+<p>history (bool): Flag to determine whether to retrieve historical biddings (True) or only active ones (False).</p>
+<p>pagination (PageRequest, optional): An optional pagination object to limit the number of results and specify the starting point for the query</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the Dutch auction biddings that match the provided criteria.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-protocol-statistics">
+<h3>10.get_protocol_statistics<a class="headerlink" href="#get-protocol-statistics" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the protocol statistics for a given application ID, with optional pagination support.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The application ID for which the protocol statistics are to be fetched.</p>
+<p>pagination (PageRequest, optional): Pagination parameters to limit the number of results returned.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the protocol statistics for the specified application ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-biddings-for-surplus-auction">
+<h3>11.get_biddings_for_surplus_auction<a class="headerlink" href="#get-biddings-for-surplus-auction" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the biddings for a surplus auction based on the provided parameter.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The application ID for which the surplus auction is being queried.</p>
+<p>auction_mapping_id (int): The auction mapping ID to identify the specific surplus auction.</p>
+<p>auction_id (int): The unique identifier for the surplus auction.</p>
+<p>history (bool): A boolean flag indicating whether to include historical data for the surplus auction.</p>
+<p>pagination (PageRequest, optional): An optional pagination object to control the number of results returned per page.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing the queried biddings for the surplus auction, along with any additional metadata as per the request parameters.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-generic-auction-param">
+<h3>12.get_generic_auction_param<a class="headerlink" href="#get-generic-auction-param" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieve the generic auction parameters for a specific app.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>app_id (int): The unique identifier for the app for which the auction parameters are to be fetched.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the generic auction parameters for the specified app.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-dutch-lend-auction">
+<h3>13.get_dutch_lend_auction<a class="headerlink" href="#get-dutch-lend-auction" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves information about a Dutch lend auction based on the provided parameters.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The application identifier.</p>
+<p>auction_mapping_id (int): The identifier for the auction mapping.</p>
+<p>auction_id (int): The identifier for the auction.</p>
+<p>history (bool): Whether to include auction history in the response.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the queried Dutch lend auction information, including auction details and history if requested.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-dutch-lend-auctions">
+<h3>14.get_dutch_lend_auctions<a class="headerlink" href="#get-dutch-lend-auctions" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves a list of Dutch lend auctions based on the given app_id, history flag, and optional pagination parameters.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The application ID for which to retrieve the Dutch lend auctions.</p>
+<p>history (bool): If True, includes past auctions in the response; if False, only returns ongoing auctions.</p>
+<p>pagination (PageRequest, optional): An object containing pagination parameters, such as limit and offset. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the list of Dutch lend auctions matching the provided parameters.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-dutch-lend-biddings">
+<h3>15.get_dutch_lend_biddings<a class="headerlink" href="#get-dutch-lend-biddings" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Fetches Dutch lend biddings for a specific bidder and app.”</p>
+<dl>
+<dt>Args:</dt><dd><p>bidder (str): The identifier of the bidder.</p>
+<p>app_id (int): The identifier of the application.</p>
+<p>history (bool): A flag indicating whether to include historical biddings.</p>
+<p>pagination (PageRequest, optional): An object containing pagination information.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing the list of Dutch lend biddings.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-filter-dutch-auctions">
+<h3>16.get_filter_dutch_auctions<a class="headerlink" href="#get-filter-dutch-auctions" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieve Dutch auction details based on given filters.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The application ID to filter Dutch auctions by.</p>
+<p>denom (List[str]): A list of denominations (currencies) to filter Dutch auctions by.</p>
+<p>history (bool): If True, include the history of Dutch auctions; if False, return only ongoing auctions.</p>
+<p>pagination (PageRequest, optional): Pagination options for the filtered results.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the filtered Dutch auction details and pagination information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="messages">
+<h2>Messages<a class="headerlink" href="#messages" title="Permalink to this heading"></a></h2>
+<section id="place-surplus-auction-bid">
+<h3>1.Place Surplus Auction Bid<a class="headerlink" href="#place-surplus-auction-bid" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><dl>
+<dt>-Bidders can bid an amount for a surplus auction in terms of the asset that protocol is accepting.</dt><dd><dl>
+<dt>MsgPlaceSurplusBidRequest {</dt><dd><p>uint64 auction_id</p>
+<p>string bidder</p>
+<p>cosmos.base.v1beta1.Coin amount</p>
+<p>uint64 app_id</p>
+<p>uint64 auction_mapping_id</p>
+</dd>
+</dl>
+<p>}</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="place-debt-auction-bid">
+<h3>2.Place Debt Auction Bid<a class="headerlink" href="#place-debt-auction-bid" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><dl>
+<dt>-Bidders can bid an amount for a debt auction in terms of the asset that protocol is accepting.</dt><dd><p>MsgPlaceDebtBidRequest {</p>
+<blockquote>
+<div><p>uint64 auction_id</p>
+<p>string bidder</p>
+<p>cosmos.base.v1beta1.Coin bid</p>
+<p>cosmos.base.v1beta1.Coin expectedUserToken</p>
+<p>uint64 app_id</p>
+<p>uint64 auction_mapping_id</p>
+</div></blockquote>
+<p>}</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="place-dutch-auction-bid">
+<h3>3.Place Dutch Auction Bid<a class="headerlink" href="#place-dutch-auction-bid" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><dl>
+<dt>-Bidders can bid an amount for a dutch auction in terms of how much collateral they want to buy and the max price that should be greater than current price of collateral.</dt><dd><p>MsgPlaceDutchBidRequest {</p>
+<blockquote>
+<div><p>uint64 auction_id</p>
+<p>string bidder</p>
+<p>cosmos.base.v1beta1.Coin amount</p>
+<p>string max</p>
+<p>uint64 app_id</p>
+<p>uint64 auction_mapping_id</p>
+</div></blockquote>
+<p>}</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgplacedutchlendbidrequest">
+<h3>4.MsgPlaceDutchLendBidRequest<a class="headerlink" href="#msgplacedutchlendbidrequest" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>MsgPlaceDutchBidRequest {</p>
+<blockquote>
+<div><p>uint64 auction_id</p>
+<p>string bidder</p>
+<p>cosmos.base.v1beta1.Coin amount</p>
+<p>uint64 app_id</p>
+<p>uint64 auction_mapping_id</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="asset.html" class="btn btn-neutral float-left" title="ASSET" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="collector.html" class="btn btn-neutral float-right" title="COLLECTOR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Comdex.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

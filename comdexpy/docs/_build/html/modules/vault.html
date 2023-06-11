@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VAULT &mdash; comdexpy 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Asset" href="../usage/asset.html" />
+    <link rel="prev" title="LIQUIDITY" href="liquidity.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            comdexpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Module</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="asset.html">ASSET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auction.html">AUCTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collector.html">COLLECTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="esm.html">ESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lend.html">LEND</a></li>
+<li class="toctree-l1"><a class="reference internal" href="liquidation.html">LIQUIDATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="liquidity.html">LIQUIDITY</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">VAULT</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#query">Query</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-vault-info">1.get_vault_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-vault-info-by-vault-id">2.get_vault_info_by_vault_id</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-vault-info-of-owner-by-app-id">3.get_vault_info_of_owner_by_app_id</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-all-vaults">4.get_all_vaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-all-vaults-by-app">5.get_all_vaults_by_app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-all-vaults-by-app-and-extended-pair">6.get_all_vaults_by_app_and_extended_pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-vault-id-of-owner-by-extended-pair-and-app">7.get_vault_id_of_owner_by_extended_pair_and_app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-vault-ids-by-app-in-all-extended-pairs">8.get_vault_ids_by_app_in_all_extended_pairs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-all-vault-ids-by-an-owner">9.get_all_vault_ids_by_an_owner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-token-minted-by-app-and-extended-pair">10.get_token_minted_by_app_and_extended_pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-token-minted-asset-wise-by-app">11.get_token_minted_asset_wise_by_app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-vault-count-by-app">12.get_vault_count_by_app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-vault-count-by-app-and-extended-pair">13.get_vault_count_by_app_and_extended_pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-total-value-locked-by-app-and-extended-pair">14.get_total_value_locked_by_app_and_extended_pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-extended-pair-ids-by-app">15.get_extended_pair_ids_by_app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-stable-vault-by-vault-id">16.get_stable_vault_by_vault_id</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-stable-vault-by-app">17.get_stable_vault_by_app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-stable-vault-by-app-and-extended-pair">18.get_stable_vault_by_app_and_extended_pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-extended-pair-vault-mapping-by-app-and-extended-pair">19.get_extended_pair_vault_mapping_by_app_and_extended_pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-extended-pair-vault-mapping-by-app">20.get_extended_pair_vault_mapping_by_app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-tvl-by-app-of-all-extended-pairs">21.get_tvl_by_app_of_all_extended_pairs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-tvl-by-app">22.get_tvl_by_app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-user-my-position-by-app">23.get_user_my_position_by_app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-pairs-locked-and-minted-statistic-by-app">24.get_pairs_locked_and_minted_statistic_by_app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-all-stable-mint-vault-rewards">25.get_all_stable_mint_vault_rewards</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#messages">Messages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#msgcreaterequest">1.MsgCreateRequest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgdepositrequest">2.MsgDepositRequest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgwithdrawrequest">3.MsgWithdrawRequest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgdrawrequest">4.MsgDrawRequest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgrepayrequest">5.MsgRepayRequest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgcloserequest">6.MsgCloseRequest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgcreatestablemintrequest">7.MsgCreateStableMintRequest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgdepositstablemintrequest">8.MsgDepositStableMintRequest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgwithdrawstablemintrequest">9.MsgWithdrawStableMintRequest</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/asset.html">Asset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/auction.html">Auction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/collector.html">Collector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/esm.html">ESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/lend.html">Lend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/liquidation.html">Liquidation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/liquidity.html">Liquidity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/vault.html">Vault</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">comdexpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">VAULT</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/vault.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="vault">
+<h1>VAULT<a class="headerlink" href="#vault" title="Permalink to this heading"></a></h1>
+<section id="query">
+<h2>Query<a class="headerlink" href="#query" title="Permalink to this heading"></a></h2>
+<section id="get-vault-info">
+<h3>1.get_vault_info<a class="headerlink" href="#get-vault-info" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries information about a vault with the specified ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>id: An integer representing the ID of the vault to be queried.</p>
+</dd>
+<dt>Returns:</dt><dd><p>QueryVaultResponse: An object representing the response from the query, which contains information about the requested vault.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-vault-info-by-vault-id">
+<h3>2.get_vault_info_by_vault_id<a class="headerlink" href="#get-vault-info-by-vault-id" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries information about a vault using a given vault ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>id (int): The ID of the vault for which information needs to be queried.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object that contains the response from the server, including the requested vault information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-vault-info-of-owner-by-app-id">
+<h3>3.get_vault_info_of_owner_by_app_id<a class="headerlink" href="#get-vault-info-of-owner-by-app-id" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries the vault information of a specific owner for a given app ID, with an optional pagination parameter.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The ID of the app to query the vault information for.</p>
+<p>owner (str): The owner of the vault information to retrieve.</p>
+<p>pagination (PageRequest, optional): A PageRequest object specifying the pagination information, such as the page size and offset. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object that contains the requested vault information for the given app ID and owner, as well as the pagination information, such as the total number of results and the next page token.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-all-vaults">
+<h3>4.get_all_vaults<a class="headerlink" href="#get-all-vaults" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieve a list of all vaults.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pagination (PageRequest, optional): pagination parameters for the query.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing a list of Vault objects.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-all-vaults-by-app">
+<h3>5.get_all_vaults_by_app<a class="headerlink" href="#get-all-vaults-by-app" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries all the vaults associated with a given app ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>app_id (int): The ID of the application for which the vaults are being queried.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The response object containing the list of vaults associated with the given app ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-all-vaults-by-app-and-extended-pair">
+<h3>6.get_all_vaults_by_app_and_extended_pair<a class="headerlink" href="#get-all-vaults-by-app-and-extended-pair" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries all vaults associated with a particular app and extended pair.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The ID of the app to which the vaults are associated.</p>
+<p>extended_pair_id (int): The ID of the extended pair to which the vaults are associated.</p>
+<p>pagination (PageRequest, optional): An optional pagination parameter to limit the number of results returned.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing a list of vaults associated with the given app and extended pair, along with pagination information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-vault-id-of-owner-by-extended-pair-and-app">
+<h3>7.get_vault_id_of_owner_by_extended_pair_and_app<a class="headerlink" href="#get-vault-id-of-owner-by-extended-pair-and-app" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries the vault ID of a particular owner based on the provided application ID, owner name, and extended pair ID.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The application ID for which to query the vault ID.</p>
+<p>owner (str): The name of the owner for which to query the vault ID.</p>
+<p>extended_pair_id (int): The ID of the extended pair for which to query the vault ID.</p>
+<p>pagination (PageRequest, optional): An optional parameter used for pagination.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing the vault ID of the owner and any pagination information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-vault-ids-by-app-in-all-extended-pairs">
+<h3>8.get_vault_ids_by_app_in_all_extended_pairs<a class="headerlink" href="#get-vault-ids-by-app-in-all-extended-pairs" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the IDs of all vaults associated with a given app ID in all extended pairs.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id: an integer representing the ID of the app for which vault IDs need to be retrieved.</p>
+<p>pagination: an optional PageRequest object representing the pagination information.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An Object containing the list of vault IDs and the pagination information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-all-vault-ids-by-an-owner">
+<h3>9.get_all_vault_ids_by_an_owner<a class="headerlink" href="#get-all-vault-ids-by-an-owner" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries all vault IDs owned by a specific owner.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>owner: An integer representing the ID of the owner whose vault IDs are being queried.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object that contains the response of the query, which includes a list of all vault IDs owned by the specified owner.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-token-minted-by-app-and-extended-pair">
+<h3>10.get_token_minted_by_app_and_extended_pair<a class="headerlink" href="#get-token-minted-by-app-and-extended-pair" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieve a list of tokens minted by a given app and extended pair.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The ID of the app.</p>
+<p>extended_pair_id (int): The ID of the extended pair.</p>
+<p>pagination (PageRequest, optional): An optional pagination request to limit the number of results. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response containing a list of tokens minted by the given app and extended pair.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-token-minted-asset-wise-by-app">
+<h3>11.get_token_minted_asset_wise_by_app<a class="headerlink" href="#get-token-minted-asset-wise-by-app" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves information about tokens minted asset-wise by a particular application (identified by app_id) from a remote server.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): An integer value representing the ID of the application for which the token minting data is to be fetched.</p>
+<p>pagination (PageRequest): An optional object of PageRequest class representing pagination details (e.g., page number and page size) for the query. Default is None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Returns the list of token minting data, total count of records, and pagination details (if pagination is requested).</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-vault-count-by-app">
+<h3>12.get_vault_count_by_app<a class="headerlink" href="#get-vault-count-by-app" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries the count of vaults for a specific application.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>app_id (int): The ID of the application for which the count of vaults is to be queried.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object that contains the response from the gRPC server after querying the count of vaults for the specified application ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-vault-count-by-app-and-extended-pair">
+<h3>13.get_vault_count_by_app_and_extended_pair<a class="headerlink" href="#get-vault-count-by-app-and-extended-pair" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries the count of vaults by application and extended pair ID.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): ID of the application to query for vault count.</p>
+<p>extended_pair_id (int): ID of the extended pair to query for vault count.</p>
+<p>pagination (PageRequest): (Optional) Page request object for pagination of results.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the count of vaults that match the given application and extended pair ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-total-value-locked-by-app-and-extended-pair">
+<h3>14.get_total_value_locked_by_app_and_extended_pair<a class="headerlink" href="#get-total-value-locked-by-app-and-extended-pair" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries the total value locked by an app and an extended pair.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): An integer representing the ID of the app.</p>
+<p>extended_pair_id (int): An integer representing the ID of the extended pair.</p>
+<p>pagination (PageRequest, optional): An optional PageRequest object representing the pagination settings for the query.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object that contains the total value locked by the specified app and extended pair.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-extended-pair-ids-by-app">
+<h3>15.get_extended_pair_ids_by_app<a class="headerlink" href="#get-extended-pair-ids-by-app" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves extended pair IDs by application ID.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id: an integer representing the ID of the application to retrieve extended pair IDs for.</p>
+<p>pagination: (optional) a PageRequest object containing pagination parameters such as the number of results to return and the page token to use for fetching subsequent pages.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the extended pair IDs associated with the specified application ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-stable-vault-by-vault-id">
+<h3>16.get_stable_vault_by_vault_id<a class="headerlink" href="#get-stable-vault-by-vault-id" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries a stable vault by its ID and returns the response.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>stable_vault_id: An integer representing the ID of the stable vault to be queried.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object representing the response received from the query to the stable vault with the given ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-stable-vault-by-app">
+<h3>17.get_stable_vault_by_app<a class="headerlink" href="#get-stable-vault-by-app" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries a stable vault by the given app ID, with an optional pagination parameter.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The ID of the app for which the stable vault is being queried.</p>
+<p>pagination (PageRequest, optional): An optional pagination object specifying the page size and number of items to skip. If not provided, the default page size will be used.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the result of the query, including a list of StableVault objects and a token for fetching the next page of results (if applicable).</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-stable-vault-by-app-and-extended-pair">
+<h3>18.get_stable_vault_by_app_and_extended_pair<a class="headerlink" href="#get-stable-vault-by-app-and-extended-pair" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves a stable vault given an app ID and an extended pair ID.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The ID of the app associated with the stable vault to retrieve.</p>
+<p>extended_pair_id (int): The ID of the extended pair associated with the stable vault to retrieve.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The response containing the stable vault associated with the given app and extended pair.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-extended-pair-vault-mapping-by-app-and-extended-pair">
+<h3>19.get_extended_pair_vault_mapping_by_app_and_extended_pair<a class="headerlink" href="#get-extended-pair-vault-mapping-by-app-and-extended-pair" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries the extended pair vault mapping by app ID and extended pair ID and returns the response.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The ID of the application to query for the extended pair mapping.</p>
+<p>extended_pair_id (int): The ID of the extended pair to query for.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The response object that contains the extended pair vault mapping information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-extended-pair-vault-mapping-by-app">
+<h3>20.get_extended_pair_vault_mapping_by_app<a class="headerlink" href="#get-extended-pair-vault-mapping-by-app" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves extended pair-vault mapping information by an application ID.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The ID of the application for which the extended pair-vault mapping information is to be retrieved.</p>
+<p>pagination (PageRequest, optional): The pagination information to be used for the query. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing the extended pair-vault mapping information for the specified application ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-tvl-by-app-of-all-extended-pairs">
+<h3>21.get_tvl_by_app_of_all_extended_pairs<a class="headerlink" href="#get-tvl-by-app-of-all-extended-pairs" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries the Total Value Locked (TVL) for all extended pairs of a given application ID.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The ID of the application to query the TVL for all its extended pairs.</p>
+<p>pagination (PageRequest): An optional parameter that represents the pagination settings for the query results.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing the queried TVL for all extended pairs of the given application ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-tvl-by-app">
+<h3>22.get_tvl_by_app<a class="headerlink" href="#get-tvl-by-app" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the Total Value Locked (TVL) for a given app ID using the Vault service.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>app_id (int): The ID of the app for which TVL is being queried.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The response object containing TVL data for the requested app.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-user-my-position-by-app">
+<h3>23.get_user_my_position_by_app<a class="headerlink" href="#get-user-my-position-by-app" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Gets the user’s position by a specified app ID and owner.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): The ID of the app to query for the user’s position.</p>
+<p>owner (str): The name of the owner of the app.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object representing the user’s position for the specified app.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-pairs-locked-and-minted-statistic-by-app">
+<h3>24.get_pairs_locked_and_minted_statistic_by_app<a class="headerlink" href="#get-pairs-locked-and-minted-statistic-by-app" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves statistics on pairs that have been locked and minted by a specific app.”</p>
+<dl>
+<dt>Args:</dt><dd><p>app_id (int): the ID of the app for which statistics are being retrieved.</p>
+<p>pagination (PageRequest): an optional object that specifies the pagination parameters for the query. If not provided, all results will be returned.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the statistics for pairs that have been locked and minted by the specified app</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-all-stable-mint-vault-rewards">
+<h3>25.get_all_stable_mint_vault_rewards<a class="headerlink" href="#get-all-stable-mint-vault-rewards" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves all the stablecoin mint vault rewards.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pagination (optional): an instance of the PageRequest class that contains pagination information such as page number and page size.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the QueryAllStableMintVaultRewardsResponse class containing all the stablecoin mint vault rewards.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="messages">
+<h2>Messages<a class="headerlink" href="#messages" title="Permalink to this heading"></a></h2>
+<section id="msgcreaterequest">
+<h3>1.MsgCreateRequest<a class="headerlink" href="#msgcreaterequest" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Users can create a vault for an app and extended_pair_vault id with an initial amount_in (collateral) and amount_out(debt).</p>
+<blockquote>
+<div><dl>
+<dt>MsgCreateRequest {</dt><dd><p>string from</p>
+<p>uint64 app_id</p>
+<p>uint64 extended_pair_vault_id</p>
+<p>string amount_in</p>
+<p>string amount_out</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgdepositrequest">
+<h3>2.MsgDepositRequest<a class="headerlink" href="#msgdepositrequest" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Vault owners can deposit extra collateral which inturn increases vault collateralization ratio.</p>
+<blockquote>
+<div><dl>
+<dt>MsgDepositRequest {</dt><dd><p>string from</p>
+<p>uint64 app_id</p>
+<p>uint64 extended_pair_vault_id</p>
+<p>uint64 user_vault_id</p>
+<p>string amount</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgwithdrawrequest">
+<h3>3.MsgWithdrawRequest<a class="headerlink" href="#msgwithdrawrequest" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Vault owners can withdraw their collateral from the vault.</p>
+<blockquote>
+<div><dl>
+<dt>MsgWithdrawRequest {</dt><dd><p>string from</p>
+<p>uint64 app_id</p>
+<p>uint64 extended_pair_vault_id</p>
+<p>uint64 user_vault_id</p>
+<p>string amount</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgdrawrequest">
+<h3>4.MsgDrawRequest<a class="headerlink" href="#msgdrawrequest" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Get more borrowed asset from the vault</p>
+<blockquote>
+<div><dl>
+<dt>MsgDrawRequest {</dt><dd><p>string from</p>
+<p>uint64 app_id</p>
+<p>uint64 extended_pair_vault_id</p>
+<p>uint64 user_vault_id</p>
+<p>string amount</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgrepayrequest">
+<h3>5.MsgRepayRequest<a class="headerlink" href="#msgrepayrequest" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Vault owners can repay their debt which will increase the collateralization ratio</p>
+<blockquote>
+<div><dl>
+<dt>MsgRepayRequest {</dt><dd><p>string from</p>
+<p>uint64 app_id</p>
+<p>uint64 extended_pair_vault_id</p>
+<p>uint64 user_vault_id</p>
+<p>string amount</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgcloserequest">
+<h3>6.MsgCloseRequest<a class="headerlink" href="#msgcloserequest" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Vault owner can close the vault by paying the entire debt</p>
+<blockquote>
+<div><dl>
+<dt>MsgCloseRequest {</dt><dd><p>string from</p>
+<p>uint64 app_id</p>
+<p>uint64 extended_pair_vault_id</p>
+<p>uint64 user_vault_id</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgcreatestablemintrequest">
+<h3>7.MsgCreateStableMintRequest<a class="headerlink" href="#msgcreatestablemintrequest" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Create Stable Mint Vault by depositing a stable token and then minting other stable token</p>
+<blockquote>
+<div><dl>
+<dt>MsgCreateStableMintRequest {</dt><dd><p>string from</p>
+<p>uint64 app_id</p>
+<p>uint64 extended_pair_vault_id</p>
+<p>string amount</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgdepositstablemintrequest">
+<h3>8.MsgDepositStableMintRequest<a class="headerlink" href="#msgdepositstablemintrequest" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Users can deposit the collateral to mint the borrowed asset at 1:1 ratio.</p>
+<blockquote>
+<div><dl>
+<dt>MsgDepositStableMintRequest {</dt><dd><p>string from</p>
+<p>uint64 app_id</p>
+<p>uint64 extended_pair_vault_id</p>
+<p>string amount</p>
+<p>uint64 stable_vault_id</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgwithdrawstablemintrequest">
+<h3>9.MsgWithdrawStableMintRequest<a class="headerlink" href="#msgwithdrawstablemintrequest" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Users can withdraw their collateral by burning the borrowed asset at 1:1 ratio.</p>
+<blockquote>
+<div><dl>
+<dt>MsgWithdrawStableMintRequest {</dt><dd><p>string from</p>
+<p>uint64 app_id</p>
+<p>uint64 extended_pair_vault_id</p>
+<p>string amount</p>
+<p>uint64 stable_vault_id</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="liquidity.html" class="btn btn-neutral float-left" title="LIQUIDITY" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../usage/asset.html" class="btn btn-neutral float-right" title="Asset" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Comdex.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

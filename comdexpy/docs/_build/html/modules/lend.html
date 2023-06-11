@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LEND &mdash; comdexpy 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LIQUIDATION" href="liquidation.html" />
+    <link rel="prev" title="ESM" href="esm.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            comdexpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Module</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="asset.html">ASSET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auction.html">AUCTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collector.html">COLLECTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="esm.html">ESM</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">LEND</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#query">Query</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-params">1.get_params</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-lend">2.get_lend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-lends">3.get_lends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-all-lend-by-owner">4.get_all_lend_by_owner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-all-lend-by-owner-and-pool">5.get_all_lend_by_owner_and_pool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-pairs">6.get_pairs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-pair">7.get_pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-asset-rates-params">8.get_asset_rates_params</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-asset-rates-param">9.get_asset_rates_param</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-pools">10.get_pools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-pool">11.get_pool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-asset-to-pair-mappings">12.get_asset_to_pair_mappings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-asset-to-pair-mapping">13.get_asset_to_pair_mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-borrows">14.get_borrows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-borrow">15.get_borrow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-all-borrow-by-owner">16.get_all_borrow_by_owner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-all-borrow-by-owner-and-pool">17.get_all_borrow_by_owner_and_pool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-pool-asset-lb-mapping">18.get_pool_asset_lb_mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-reserve-buyback-asset-data">19.get_reserve_buyback_asset_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-auction-param">20.get_auction_param</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-module-balance">21.get_module_balance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-fund-mod-bal">22.get_fund_mod_bal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-fund-reserve-bal">23.get_fund_reserve_bal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-all-reserve-stats">24.get_all_reserve_stats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-fund-mod-bal-by-asset-pool">25.get_fund_mod_bal_by_asset_pool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-lend-interest">26.get_lend_interest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-borrow-interest">27.get_borrow_interest</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#messages">Messages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#msglend">1.MsgLend:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgdeposit">2.MsgDeposit:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgwithdraw">3.MsgWithdraw:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgcloselend">4.MsgCloseLend:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgrepay">5.MsgRepay:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgdepositborrow">6.MsgDepositBorrow:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgdraw">7.MsgDraw:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgcloseborrow">8.MsgCloseBorrow:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgborrowalternate">9.MsgBorrowAlternate:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgfundmoduleaccounts">10.MsgFundModuleAccounts:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgfundreserveaccounts">11.MsgFundReserveAccounts:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msgcalculateinterestandrewards">12.MsgCalculateInterestAndRewards:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="liquidation.html">LIQUIDATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="liquidity.html">LIQUIDITY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vault.html">VAULT</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/asset.html">Asset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/auction.html">Auction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/collector.html">Collector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/esm.html">ESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/lend.html">Lend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/liquidation.html">Liquidation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/liquidity.html">Liquidity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/vault.html">Vault</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">comdexpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">LEND</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/lend.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lend">
+<h1>LEND<a class="headerlink" href="#lend" title="Permalink to this heading"></a></h1>
+<section id="query">
+<h2>Query<a class="headerlink" href="#query" title="Permalink to this heading"></a></h2>
+<section id="get-params">
+<h3>1.get_params<a class="headerlink" href="#get-params" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Gets params of lend module.”</p>
+<blockquote>
+<div><p>Args: None</p>
+<p>Returns: Lend Module’s global Parameters</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-lend">
+<h3>2.get_lend<a class="headerlink" href="#get-lend" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves a LendAsset object associated with a given ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>id (int): The unique identifier of the LendAsset to be retrieved.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The LendAsset object corresponding to the specified ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-lends">
+<h3>3.get_lends<a class="headerlink" href="#get-lends" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves a list of lends from the server, using the provided pagination settings if available.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pagination (PageRequest, optional): An instance of the PageRequest class, containing pagination settings such as the current page number and the number of items per page. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the QueryLendsResponse class, containing a list of lends and pagination information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-all-lend-by-owner">
+<h3>4.get_all_lend_by_owner<a class="headerlink" href="#get-all-lend-by-owner" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves all lend records associated with a specific owner, and returns the results with optional pagination support.”</p>
+<dl>
+<dt>Args:</dt><dd><p>owner (str): The unique identifier of the owner whose lend records are to be fetched.</p>
+<p>pagination (PageRequest, optional): An optional pagination object to retrieve results in chunks, if desired. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing a list of lend records associated with the specified owner and the pagination details, if applicable.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-all-lend-by-owner-and-pool">
+<h3>5.get_all_lend_by_owner_and_pool<a class="headerlink" href="#get-all-lend-by-owner-and-pool" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves all the lending information associated with a specific owner and pool using the provided owner and pool ID.”</p>
+<dl>
+<dt>Args:</dt><dd><p>owner (str): The owner’s unique identifier (e.g. wallet address or user ID) for whom the lending information is to be fetched.</p>
+<p>pool_id (int): The unique identifier of the pool for which the lending information is to be fetched.</p>
+<p>pagination (PageRequest, optional): An optional pagination object to control the number of records retrieved and the starting point of the records. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing the lending information for the specified owner and pool, including any pagination details if provided.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-pairs">
+<h3>6.get_pairs<a class="headerlink" href="#get-pairs" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Fetches the trading pairs from the server using pagination and returns the response as a QueryPairsResponse object.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pagination (PageRequest, optional): An instance of the PageRequest object containing pagination information such as the start key and limit. Default is None, which means no pagination is applied.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the QueryPairsResponse object containing a list of trading pairs and pagination details, if applicable.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-pair">
+<h3>7.get_pair<a class="headerlink" href="#get-pair" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieve an ExtendedPair object associated with the given ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>id (int): The unique identifier of the desired pair.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing information about the pair associated with the given ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-asset-rates-params">
+<h3>8.get_asset_rates_params<a class="headerlink" href="#get-asset-rates-params" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the asset rates parameters from the lending platform, allowing for optional pagination.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pagination (PageRequest, optional): An object containing pagination information, such as limit and offset, to control the number of results returned. Default is None, which retrieves all available data.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing the asset rates parameters and any associated pagination metadata.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-asset-rates-param">
+<h3>9.get_asset_rates_param<a class="headerlink" href="#get-asset-rates-param" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the asset rates parameters for a specified asset ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>id (int): The unique identifier of the asset for which the rates parameters are to be fetched.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the AssetRatesParams class containing the rates parameters for the specified asset.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-pools">
+<h3>10.get_pools<a class="headerlink" href="#get-pools" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries the list of available lending pools and returns the results as a QueryPoolsResponse object.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pagination (PageRequest, optional): An object specifying the pagination options for the results.Defaults to None, which returns all results.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the list of available lending pools and any relevant metadata</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-pool">
+<h3>11.get_pool<a class="headerlink" href="#get-pool" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the pool information for a given pool ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>id (int): The ID of the pool for which the information is to be retrieved.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the Pool class containing the retrieved pool information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-asset-to-pair-mappings">
+<h3>12.get_asset_to_pair_mappings<a class="headerlink" href="#get-asset-to-pair-mappings" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the asset-to-pair mappings from the underlying service. It takes an optional pagination argument and returns the mappings as a response object.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pagination (PageRequest, optional): An optional pagination object containing the pagination details such as the limit and offset for the requested data.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing the asset-to-pair mappings along with any associated metadata.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-asset-to-pair-mapping">
+<h3>13.get_asset_to_pair_mapping<a class="headerlink" href="#get-asset-to-pair-mapping" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“””Retrieves the mapping of a specific asset to a trading pair in a pool.</p>
+<dl>
+<dt>Args:</dt><dd><p>asset_id (int): The unique identifier of the asset.</p>
+<p>pool_id (int): The unique identifier of the liquidity pool.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the AssetToPairMapping data structure containing the mapping information for the given asset and pool.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-borrows">
+<h3>14.get_borrows<a class="headerlink" href="#get-borrows" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves a list of borrows from the lending service using the provided pagination information.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pagination (PageRequest, optional): An object containing pagination information (e.g., limit, offset) for querying the borrows. Default is None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the list of borrows and additional pagination details</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-borrow">
+<h3>15.get_borrow<a class="headerlink" href="#get-borrow" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Fetch the borrow asset information using the given ID and return the corresponding BorrowAsset object.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>id (int): The unique identifier of the borrow asset to be fetched.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the BorrowAsset class containing the fetched borrow asset information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-all-borrow-by-owner">
+<h3>16.get_all_borrow_by_owner<a class="headerlink" href="#get-all-borrow-by-owner" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves all borrow records associated with a given owner, with optional pagination support.”</p>
+<dl>
+<dt>Args:</dt><dd><p>owner (str): The owner for which to retrieve the borrow records.</p>
+<p>pagination (PageRequest, optional): A pagination object containing information for paginating the results. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing a list of borrow records associated with the specified owner and pagination information, if applicable.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-all-borrow-by-owner-and-pool">
+<h3>17.get_all_borrow_by_owner_and_pool<a class="headerlink" href="#get-all-borrow-by-owner-and-pool" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Queries the lending service for all borrow records associated with a given owner and pool.The results can be paginated by providing an optional pagination parameter.”</p>
+<dl>
+<dt>Args:</dt><dd><p>owner (str): The owner’s address in string format.</p>
+<p>pool_id (int): The unique identifier of the pool.</p>
+<p>pagination (PageRequest, optional): A pagination object specifying the desired number of results per page and the key for the starting point. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing a list of borrow records and pagination information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-pool-asset-lb-mapping">
+<h3>18.get_pool_asset_lb_mapping<a class="headerlink" href="#get-pool-asset-lb-mapping" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Get the mapping of pool assets to liquidity balances for a specific asset and pool.”</p>
+<dl>
+<dt>Args:</dt><dd><p>asset_id (int): The unique identifier for the asset in the pool.</p>
+<p>pool_id (int): The unique identifier for the pool.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the mapping of assets to liquidity balances for the specified asset and pool.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-reserve-buyback-asset-data">
+<h3>19.get_reserve_buyback_asset_data<a class="headerlink" href="#get-reserve-buyback-asset-data" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the reserve buyback asset data for a given asset ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>asset_id (int): The unique identifier of the asset for which the reserve buyback asset data is to be retrieved.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing the reserve buyback asset data for the specified asset ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-auction-param">
+<h3>20.get_auction_param<a class="headerlink" href="#get-auction-param" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the auction parameters for a given application ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>app_id (int): The application ID for which to fetch the auction parameters.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the AuctionParams class, containing the fetched auction parameters for the given application ID.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-module-balance">
+<h3>21.get_module_balance<a class="headerlink" href="#get-module-balance" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the balance of a specific module in a lending pool by querying the module balance using the provided ‘pool_id’.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pool_id (int): The unique identifier of the lending pool for which the module balance is to be retrieved.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the ModuleBalance class representing the balance information for the specified module in the lending pool.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-fund-mod-bal">
+<h3>22.get_fund_mod_bal<a class="headerlink" href="#get-fund-mod-bal" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Get the current modified balance of the fund.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>None</p>
+</dd>
+<dt>Returns:</dt><dd><p>The modified balance of the fund as a ModBal object.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-fund-reserve-bal">
+<h3>23.get_fund_reserve_bal<a class="headerlink" href="#get-fund-reserve-bal" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the balance information of the fund reserve.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>None</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the ReserveBal class containing the balance details of the fund reserve.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-all-reserve-stats">
+<h3>24.get_all_reserve_stats<a class="headerlink" href="#get-all-reserve-stats" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Fetches and returns all reserve statistics for the given asset ID.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>asset_id (int): The unique identifier of the asset for which to retrieve reserve statistics.</p>
+</dd>
+<dt>Returns:</dt><dd><p>An object containing all reserve statistics related to the specified asset.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-fund-mod-bal-by-asset-pool">
+<h3>25.get_fund_mod_bal_by_asset_pool<a class="headerlink" href="#get-fund-mod-bal-by-asset-pool" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the modified balance of a specific asset in a given asset pool from the lending platform.”</p>
+<dl>
+<dt>Args:</dt><dd><p>asset_id (int): The unique identifier of the asset to query.</p>
+<p>pool_id (int): The unique identifier of the asset pool to query.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A response object containing the modified balance of the specified asset in the given asset pool.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-lend-interest">
+<h3>26.get_lend_interest<a class="headerlink" href="#get-lend-interest" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the current lending interest rate from the pool.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>None</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the PoolInterest class containing the lending interest rate information from the pool.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="get-borrow-interest">
+<h3>27.get_borrow_interest<a class="headerlink" href="#get-borrow-interest" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>“Retrieves the current borrow interest rate for a lending pool.”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>None</p>
+</dd>
+<dt>Returns:</dt><dd><p>An instance of the ‘PoolInterestB’ class containing the current borrow interest rate information.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="messages">
+<h2>Messages<a class="headerlink" href="#messages" title="Permalink to this heading"></a></h2>
+<section id="msglend">
+<h3>1.MsgLend:<a class="headerlink" href="#msglend" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>-An user can come and create their own Lend Position using MsgLend.</p>
+<p>-The user provides the assetID, poolID and the amount. After the tx is complete a new lend position is created for that user with an unique lendID.</p>
+<p>-A cToken representative of the IBC-Asset is minted and then transferred to the user which denotes the borrowing power/ Available to borrow capacity.</p>
+<p>-Rewards start to get accumulated on the lent Amount if the lendingApr is above 0 and sent to the user in cToken. Available borrowing is also increased accordingly.</p>
+<blockquote>
+<div><blockquote>
+<div><dl>
+<dt>MsgLend {</dt><dd><p>string   lender</p>
+<p>uint64   asset_id</p>
+<p>cosmos.base.v1beta1.Coin   amount</p>
+<p>uint64   pool_id</p>
+<p>uint64   app_id</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgdeposit">
+<h3>2.MsgDeposit:<a class="headerlink" href="#msgdeposit" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>-An user can add further IBC-assets to their existing lend position by the Msgdeposit Txn.</p>
+<p>-As the tx is done the Amount goes to the respective cPool Module account and the user’s Available to borrow is updated.</p>
+<p>-Additional cToken is provided to the user.</p>
+<blockquote>
+<div><dl>
+<dt>MsgDeposit {</dt><dd><p>string   lender</p>
+<p>uint64   lend_id</p>
+<p>cosmos.base.v1beta1.Coin   amount</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgwithdraw">
+<h3>3.MsgWithdraw:<a class="headerlink" href="#msgwithdraw" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>-An user can withdraw further IBC-assets to their existing lend position by the Msgdeposit Txn.</p>
+<p>-User enters the amount to withdraw and then the equivalent amount of cToken is transferred to the module account of the respective cPool and finally burned.</p>
+<p>-Available to borrow is updated accordingly.</p>
+<p>-The max amount that can be withdrawn is limited to available to borrow.</p>
+<blockquote>
+<div><dl>
+<dt>MsgWithdraw {</dt><dd><p>string    lender</p>
+<p>uint64    lend_id</p>
+<p>cosmos.base.v1beta1.Coin   amount</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgcloselend">
+<h3>4.MsgCloseLend:<a class="headerlink" href="#msgcloselend" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>-The user Inputs the lendID, AmountIn(in terms of cToken), AmoutOut(in terms of IBC-Asset), pairId and Stable Borrow check.</p>
+<p>-If all the criteria are satisfied then a new borrow position is created.</p>
+<p>-Lend to borrow mapping is updated and Available to borrow is reduced by the amountIn token amount.</p>
+<p>-Interest starts to get accumulated for the borrowed position for the borrowed amount.</p>
+<blockquote>
+<div><dl>
+<dt>MsgCloseLend {</dt><dd><p>string  lender</p>
+<p>uint64  lend_id</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgrepay">
+<h3>5.MsgRepay:<a class="headerlink" href="#msgrepay" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>-An User can Repay the Borrowed Amount by using MsgRepay txn.</p>
+<p>-However the user can’t close the lend position by Msgrepay Txn.</p>
+<p>-After Repayment, the total borrowed is updated.</p>
+<p>-Whenever a user repays, first his interest is settled and then the borrowed amount is reduced.</p>
+<blockquote>
+<div><dl>
+<dt>MsgRepay {</dt><dd><p>string   borrower</p>
+<p>uint64   borrow_id</p>
+<p>cosmos.base.v1beta1.Coin   amount</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgdepositborrow">
+<h3>6.MsgDepositBorrow:<a class="headerlink" href="#msgdepositborrow" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>-This Txn is similar to Msg Deposit.</p>
+<p>-Here an user can deposit an additional amount of cToken to his borrowed position to maintain the collateralization ratio.</p>
+<p>-AmountIn is updated after the txn is done.</p>
+<p>-Available to borrow is also updated after the txn is done.</p>
+<blockquote>
+<div><dl>
+<dt>MsgDepositBorrow {</dt><dd><p>string   borrower</p>
+<p>uint64   borrow_id</p>
+<p>cosmos.base.v1beta1.Coin   amount</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgdraw">
+<h3>7.MsgDraw:<a class="headerlink" href="#msgdraw" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>-If a user wants to take out further IBC-Asset from his borrow position maintaining the collateralization ratio, then this txn is used.</p>
+<p>-Additional IBC-Assets are given to the user from the cPool moduleAccount.</p>
+<p>-The Borrow position is updated accordingly.</p>
+<blockquote>
+<div><dl>
+<dt>MsgDraw {</dt><dd><p>string   borrower</p>
+<p>uint64   borrow_id</p>
+<p>cosmos.base.v1beta1.Coin   amount</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgcloseborrow">
+<h3>8.MsgCloseBorrow:<a class="headerlink" href="#msgcloseborrow" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>-This txn is similar to the MsgCloseLend Txn.</p>
+<p>-The updated IBC-Asset Amount is taken from the user’s account (amount out + interest accumulated on that) and sent to the cPool module account.</p>
+<p>-The cTokens are sent back to the user’s account.</p>
+<p>-The borrow Position is deleted from the KV Store and also Available to Borrow is updated.</p>
+<p>-If the user doesn’t have sufficient funds then the txn fails.</p>
+<blockquote>
+<div><dl>
+<dt>MsgCloseBorrow {</dt><dd><p>string   borrower</p>
+<p>uint64   borrow_id</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgborrowalternate">
+<h3>9.MsgBorrowAlternate:<a class="headerlink" href="#msgborrowalternate" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>-This txn is a combination of lend and borrow.</p>
+<p>-The user can create a borrow position directly by lending the IBC-Assets using the lend position.</p>
+<p>-The lent IBC-Assets are converted to corresponding cAssets and using them as the deposit token a borrow position is opened.</p>
+<p>-The user can edit their lend and borrow position individually thereafter.</p>
+<blockquote>
+<div><dl>
+<dt>MsgBorrowAlternate {</dt><dd><p>string   lender</p>
+<p>uint64   asset_id</p>
+<p>uint64   pool_id</p>
+<p>cosmos.base.v1beta1.Coin   amount_in</p>
+<p>uint64   pair_id</p>
+<p>bool   is_stable_borrow</p>
+<p>cosmos.base.v1beta1.Coin   amount_out</p>
+<p>uint64   app_id</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgfundmoduleaccounts">
+<h3>10.MsgFundModuleAccounts:<a class="headerlink" href="#msgfundmoduleaccounts" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>-This txn is used to fund the cPools Module Account to bootstrap the liquidity for the protocol.</p>
+<p>-AssetId, cPool Module name and Amount is provided by the user. After the txn the specified amount is sent to the moduleAccount from the user’s account.</p>
+<blockquote>
+<div><dl>
+<dt>MsgFundModuleAccounts {</dt><dd><p>string   moduleName</p>
+<p>uint64   assetId</p>
+<p>string   lender</p>
+<p>cosmos.base.v1beta1.Coin   amount</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgfundreserveaccounts">
+<h3>11.MsgFundReserveAccounts:<a class="headerlink" href="#msgfundreserveaccounts" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><dl>
+<dt>MsgFundReserveAccounts{</dt><dd><p>uint64   assetId</p>
+<p>string   lender</p>
+<p>cosmos.base.v1beta1.Coin   amount</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="msgcalculateinterestandrewards">
+<h3>12.MsgCalculateInterestAndRewards:<a class="headerlink" href="#msgcalculateinterestandrewards" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>MsgCalculateInterestAndRewards{</dt><dd><p>string   borrower</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="esm.html" class="btn btn-neutral float-left" title="ESM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="liquidation.html" class="btn btn-neutral float-right" title="LIQUIDATION" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Comdex.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
