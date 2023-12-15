@@ -269,7 +269,7 @@ class Order(betterproto.Message):
     orderer: str = betterproto.string_field(4)
     """orderer specifies the bech32-encoded address that makes an order"""
 
-    direction: "OrderDirection" = betterproto.enum_field(5)
+    direction: OrderDirection = betterproto.enum_field(5)
     """direction specifies the order direction; either buy or sell"""
 
     offer_coin: "___cosmos_base_v1_beta1__.Coin" = betterproto.message_field(6)
@@ -478,7 +478,7 @@ class MsgLimitOrder(betterproto.Message):
     pair_id: int = betterproto.uint64_field(2)
     """pair_id specifies the pair id"""
 
-    direction: "OrderDirection" = betterproto.enum_field(3)
+    direction: OrderDirection = betterproto.enum_field(3)
     """direction specifies the order direction(buy or sell)"""
 
     offer_coin: "___cosmos_base_v1_beta1__.Coin" = betterproto.message_field(4)
@@ -518,7 +518,7 @@ class MsgMarketOrder(betterproto.Message):
     pair_id: int = betterproto.uint64_field(2)
     """pair_id specifies the pair id"""
 
-    direction: "OrderDirection" = betterproto.enum_field(3)
+    direction: OrderDirection = betterproto.enum_field(3)
     """direction specifies the order direction(buy or sell)"""
 
     offer_coin: "___cosmos_base_v1_beta1__.Coin" = betterproto.message_field(4)
