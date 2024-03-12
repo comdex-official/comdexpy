@@ -3,6 +3,7 @@ from .client import Client
 from .messages.base import BaseMessageWrapper
 from .wallet import Wallet
 from .transaction import Transaction
+from .proto.cosmos.tx.v1beta1 import BroadcastMode
 
 class SignAndBroadcastMessage():
     def __init__(self) -> None:
@@ -16,6 +17,7 @@ class SignAndBroadcastMessage():
         gas_price: float = 0.0025,
         gas_limit: int = 2000000,
         memo = "Message Signed And Broadcasted Using Comdex's Python SDK",
+        mode = BroadcastMode.BROADCAST_MODE_SYNC
     ):
         sender = wallet.get_address().to_acc_bech32()
         account = await connection.get_account(sender)
@@ -36,7 +38,13 @@ class SignAndBroadcastMessage():
         )
 
         # Sign and broadcast a transaction
-        tx_block = await connection.send_tx_sync_mode(wallet.sign_and_build(txn))
+        if mode == BroadcastMode.BROADCAST_MODE_SYNC:
+            tx_block = await connection.send_tx_sync_mode(wallet.sign_and_build(txn))
+        elif mode == BroadcastMode.BROADCAST_MODE_ASYNC:
+            tx_block = await connection.send_tx_async_mode(wallet.sign_and_build(txn))
+        else:
+            tx_block = await connection.send_tx_block_mode(wallet.sign_and_build(txn))
+
 
         # Converting to dict for readability
         response = tx_block.to_dict()
