@@ -7,7 +7,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = '0.4'
+VERSION = '0.5'
 DESCRIPTION = 'Python SDK for interacting with comdex node'
 LONG_DESCRIPTION = 'The comdexpy is a comprehensive Python library designed to provide developers with easy access to the Comdex blockchain and its ecosystem. This library enables developers to interact with the blockchain, query data, and perform various operations within the Comdex ecosystem.'
 
