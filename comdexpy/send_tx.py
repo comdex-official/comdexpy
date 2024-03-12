@@ -36,7 +36,7 @@ class SignAndBroadcastMessage():
         )
 
         # Sign and broadcast a transaction
-        tx_block = await connection.send_tx_block_mode(wallet.sign_and_build(txn))
+        tx_block = await connection.send_tx_sync_mode(wallet.sign_and_build(txn))
 
         # Converting to dict for readability
         response = tx_block.to_dict()
